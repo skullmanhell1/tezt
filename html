@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Charlotte Tree Pros | #1 Tree Removal & Service | Free Quote</title>
+    <meta name="description" content="Professional tree removal, trimming & emergency service in Charlotte, NC. Licensed & insured. 24/7 emergency response. Call now for free quote!">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        /* Header/Navigation */
+        header {
+            background: #1a4d2e;
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #ffa500;
+        }
+        
+        .phone-header {
+            background: #ffa500;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            text-decoration: none;
+            color: #1a4d2e;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                        url('https://images.pexels.com/photos/1268076/pexels-photo-1268076.jpeg?auto=compress&cs=tinysrgb&w=1920') center/cover;
+            height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+        
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        }
+        
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .cta-button {
+            background: #ffa500;
+            color: #1a4d2e;
+            padding: 18px 40px;
+            font-size: 1.3rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(255,165,0,0.5);
+        }
+        
+        /* Badges Section */
+        .badges {
+            background: #f4f4f4;
+            padding: 30px 20px;
+            text-align: center;
+        }
+        
+        .badge-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .badge {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .badge h3 {
+            color: #1a4d2e;
+            font-size: 1.2rem;
+        }
+        
+        /* Services Section */
+        .services {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+        
+        .services h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #1a4d2e;
+            margin-bottom: 40px;
+        }
+        
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        
+        .service-card-content {
+            padding: 20px;
+        }
+        
+        .service-card h3 {
+            color: #1a4d2e;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        
+        /* Before/After Gallery */
+        .gallery {
+            background: #f4f4f4;
+            padding: 60px 20px;
+        }
+        
+        .gallery h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #1a4d2e;
+            margin-bottom: 40px;
+        }
+        
+        .gallery-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-label {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(26,77,46,0.9);
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        /* Reviews Section */
+        .reviews {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+        
+        .reviews h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #1a4d2e;
+            margin-bottom: 40px;
+        }
+        
+        .review-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .review-card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .stars {
+            color: #ffa500;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+        
+        .review-card p {
+            font-style: italic;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        
+        .reviewer {
+            font-weight: bold;
+            color: #1a4d2e;
+        }
+        
+        /* Contact Form */
+        .contact-form {
+            background: linear-gradient(135deg, #1a4d2e 0%, #2d6a4f 100%);
+            padding: 60px 20px;
+            color: white;
+        }
+        
+        .contact-form h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .contact-form p {
+            text-align: center;
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+        }
+        
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            color: #333;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .submit-btn {
+            background: #ffa500;
+            color: #1a4d2e;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.3s;
+        }
+        
+        .submit-btn:hover {
+            background: #ff8c00;
+        }
+        
+        /* Areas Served */
+        .areas {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+        
+        .areas h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #1a4d2e;
+            margin-bottom: 40px;
+        }
+        
+        .areas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            text-align: center;
+        }
+        
+        .area-item {
+            background: #f4f4f4;
+            padding: 15px;
+            border-radius: 5px;
+            font-weight: 500;
+        }
+        
+        /* Footer */
+        footer {
+            background: #1a4d2e;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+        }
+        
+        footer a {
+            color: #ffa500;
+            text-decoration: none;
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+            
+            .phone-header {
+                font-size: 1.1rem;
+            }
+        }
+        
+        /* Click-to-call for mobile */
+        @media (max-width: 768px) {
+            .phone-header {
+                display: block;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">🌲 Charlotte Tree Pros</div>
+            <ul class="nav-links">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#gallery">Our Work</a></li>
+                <li><a href="#reviews">Reviews</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <a href="tel:+17045551234" class="phone-header">📞 (704) 555-1234</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Charlotte's #1 Tree Removal Experts</h1>
+            <p>Licensed & Insured | 24/7 Emergency Service | Free Quotes</p>
+            <a href="#contact" class="cta-button">GET FREE QUOTE NOW</a>
+        </div>
+    </section>
+
+    <!-- Trust Badges -->
+    <section class="badges">
+        <div class="badge-container">
+            <div class="badge">
+                <h3>✅ Fully Licensed</h3>
+                <p>NC License #12345</p>
+            </div>
+            <div class="badge">
+                <h3>🛡️ Insured</h3>
+                <p>$2M Liability Coverage</p>
+            </div>
+            <div class="badge">
+                <h3>⭐ 5-Star Rated</h3>
+                <p>200+ Happy Customers</p>
+            </div>
+            <div class="badge">
+                <h3>🚨 24/7 Emergency</h3>
+                <p>Same-Day Response</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <h2>Our Tree Services</h2>
+        <div class="service-grid">
+            <div class="service-card">
+                <img src="https://images.pexels.com/photos/1179229/pexels-photo-1179229.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Tree Removal">
+                <div class="service-card-content">
+                    <h3>Tree Removal</h3>
+                    <p>Safe removal of dangerous, dead, or unwanted trees. We handle trees of all sizes with professional equipment and expertise.</p>
+                    <a href="#contact" class="cta-button" style="padding: 10px 20px; font-size: 1rem;">Get Quote</a>
+                </div>
+            </div>
+            
+            <div class="service-card">
+                <img src="https://images.pexels.com/photos/4505898/pexels-photo-4505898.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Tree Trimming">
+                <div class="service-card-content">
+                    <h3>Tree Trimming & Pruning</h3>
+                    <p>Keep your trees healthy and beautiful. Professional trimming improves tree health and prevents property damage.</p>
+                    <a href="#contact" class="cta-button" style="padding: 10px 20px; font-size: 1rem;">Get Quote</a>
+                </div>
+            </div>
+            
+            <div class="service-card">
+                <img src="https://images.pexels.com/photos/7691768/pexels-photo-7691768.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Stump Grinding">
+                <div class="service-card-content">
+                    <h3>Stump Grinding</h3>
+                    <p>Complete stump removal and grinding. We grind stumps below ground level so you can replant or use the space.</p>
+                    <a href="#contact" class="cta-button" style="padding: 10px 20px; font-size: 1rem;">Get Quote</a>
+                </div>
+            </div>
+            
+            <div class="service-card">
+                <img src="https://images.pexels.com/photos/1118873/pexels-photo-1118873.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Emergency Service">
+                <div class="service-card-content">
+                    <h3>Emergency Storm Damage</h3>
+                    <p>24/7 emergency response for fallen trees and storm damage. We're ready when disaster strikes.</p>
+                    <a href="tel:+17045551234" class="cta-button" style="padding: 10px 20px; font-size: 1rem; background: #d00;">Call Now</a>
+                </div>
+            </div>
+            
+            <div class="service-card">
+                <img src="https://images.pexels.com/photos/3586966/pexels-photo-3586966.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Land Clearing">
+                <div class="service-card-content">
+                    <h3>Land Clearing</h3>
+                    <p>Complete lot clearing for construction, landscaping, or property development. Fast and efficient service.</p>
+                    <a href="#contact" class="cta-button" style="padding: 10px 20px; font-size: 1rem;">Get Quote</a>
+                </div>
+            </div>
+            
+            <div class="service-card">
+                <img src="https://images.pexels.com/photos/4505447/pexels-photo-4505447.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Tree Health">
+                <div class="service-card-content">
+                    <h3>Tree Health Assessment</h3>
+                    <p>Expert diagnosis of tree diseases and pest problems. We'll help save your valuable trees.</p>
+                    <a href="#contact" class="cta-button" style="padding: 10px 20px; font-size: 1rem;">Get Quote</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery" id="gallery">
+        <h2>Our Recent Projects</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://images.pexels.com/photos/1268076/pexels-photo-1268076.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Before removal">
+                <div class="gallery-label">BEFORE - Dangerous Leaning Oak</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.pexels.com/photos/1179229/pexels-photo-1179229.jpeg?auto=compress&cs=tinysrgb&w=800" alt="After removal">
+                <div class="gallery-label">AFTER - Safe & Clean</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.pexels.com/photos/4505898/pexels-photo-4505898.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Tree trimming">
+                <div class="gallery-label">Professional Trimming Work</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.pexels.com/photos/7691768/pexels-photo-7691768.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Stump grinding">
+                <div class="gallery-label">Stump Grinding Complete</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.pexels.com/photos/1118873/pexels-photo-1118873.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Storm damage">
+                <div class="gallery-label">Emergency Storm Response</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.pexels.com/photos/3586966/pexels-photo-3586966.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Land clearing">
+                <div class="gallery-label">Complete Lot Clearing</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="reviews" id="reviews">
+        <h2>What Our Customers Say</h2>
+        <div class="review-grid">
+            <div class="review-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p>"Best tree service in Charlotte! They removed a massive oak from my backyard in just one day. Professional, fast, and affordable. Highly recommend!"</p>
+                <div class="reviewer">- Michael Thompson</div>
+            </div>
+            
+            <div class="review-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p>"Called them for emergency storm damage at 2am. They were at my house within 45 minutes! Saved my roof from a fallen tree. Incredible service."</p>
+                <div class="reviewer">- Sarah Martinez</div>
+            </div>
+            
+            <div class="review-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p>"Fair pricing, showed up on time, and did a fantastic job trimming my trees. My property looks amazing now. Will definitely use them again!"</p>
+                <div class="reviewer">- David Johnson</div>
+            </div>
+            
+            <div class="review-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p>"Had 3 stumps ground and removed. They finished in half the time I expected and cleaned up perfectly. You'd never know they were there!"</p>
+                <div class="reviewer">- Jennifer Lee</div>
+            </div>
+            
+            <div class="review-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p>"Professional crew, modern equipment, and great communication. They cleared my entire lot for construction ahead of schedule."</p>
+                <div class="reviewer">- Robert Williams</div>
+            </div>
+            
+            <div class="review-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p>"I've used several tree companies over the years. These guys are by far the best. Licensed, insured, and they actually care about their work."</p>
+                <div class="reviewer">- Amanda Davis</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section class="contact-form" id="contact">
+        <h2>Get Your Free Quote Today</h2>
+        <p>Fill out the form below or call us at <a href="tel:+17045551234">(704) 555-1234</a></p>
+        
+        <form action="https://formsubmit.co/YOUR-EMAIL@example.com" method="POST">
+            <div class="form-group">
+                <label for="name">Full Name *</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="phone">Phone Number *</label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="service">Service Needed *</label>
+                <select id="service" name="service" required>
+                    <option value="">Select a service...</option>
+                    <option value="tree-removal">Tree Removal</option>
+                    <option value="tree-trimming">Tree Trimming</option>
+                    <option value="stump-grinding">Stump Grinding</option>
+                    <option value="emergency">Emergency Service</option>
+                    <option value="land-clearing">Land Clearing</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="address">Property Address *</label>
+                <input type="text" id="address" name="address" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="message">Project Details</label>
+                <textarea id="message" name="message" placeholder="Tell us about your tree service needs..."></textarea>
+            </div>
+            
+            <button type="submit" class="submit-btn">GET FREE QUOTE NOW</button>
+        </form>
+    </section>
+
+    <!-- Areas Served -->
+    <section class="areas">
+        <h2>Areas We Serve</h2>
+        <div class="areas-grid">
+            <div class="area-item">Charlotte</div>
+            <div class="area-item">Matthews</div>
+            <div class="area-item">Huntersville</div>
+            <div class="area-item">Concord</div>
+            <div class="area-item">Cornelius</div>
+            <div class="area-item">Davidson</div>
+            <div class="area-item">Mint Hill</div>
+            <div class="area-item">Pineville</div>
+            <div class="area-item">Indian Trail</div>
+            <div class="area-item">Waxhaw</div>
+            <div class="area-item">Gastonia</div>
+            <div class="area-item">Rock Hill</div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Charlotte Tree Pros | Licensed & Insured</p>
+        <p>Phone: <a href="tel:+17045551234">(704) 555-1234</a> | Email: <a href="mailto:info@charlottetreepros.com">info@charlottetreepros.com</a></p>
+        <p>Serving Charlotte, NC and surrounding areas | Available 24/7 for emergencies</p>
+    </footer>
+
+</body>
+</html>
