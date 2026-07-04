@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ATAR Year 12 Chemistry — Redox & Electrochemistry Notes</title>
+<style>
+  @page {
+    size: A4;
+    margin: 18mm 16mm 20mm 16mm;
+    @bottom-center {
+      content: "ATAR Year 12 Chemistry — Redox & Electrochemistry";
+      font-size: 8pt;
+      color: #7a7a7a;
+    }
+    @bottom-right {
+      content: "Page " counter(page) " of " counter(pages);
+      font-size: 8pt;
+      color: #7a7a7a;
+    }
+  }
+  @page :first { @bottom-center { content: ""; } @bottom-right { content: ""; } }
+
+  * { box-sizing: border-box; }
+  html { -weasy-hyphens: auto; }
+  body {
+    font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    font-size: 10.3pt;
+    line-height: 1.5;
+    color: #1f2933;
+    margin: 0;
+  }
+
+  /* ---------- Cover ---------- */
+  .cover {
+    height: 253mm;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    page-break-after: always;
+    background: linear-gradient(135deg, #0d3b66 0%, #1b6ca8 100%);
+    color: #ffffff;
+    border-radius: 6px;
+    padding: 30mm 20mm;
+  }
+  .cover .eyebrow { letter-spacing: 4px; font-size: 12pt; text-transform: uppercase; opacity: .85; margin-bottom: 12px;}
+  .cover h1 { font-size: 40pt; margin: 6px 0; line-height: 1.05; font-weight: 800;}
+  .cover .sub { font-size: 16pt; opacity: .92; margin-top: 4px;}
+  .cover .rule { width: 120px; height: 4px; background: #f4d35e; margin: 26px auto; border:none;}
+  .cover .meta { font-size: 11pt; opacity: .85; margin-top: 40px; line-height:1.8;}
+  .cover .tag {
+    display:inline-block; background: rgba(255,255,255,.15); border:1px solid rgba(255,255,255,.35);
+    padding: 5px 14px; border-radius: 20px; margin: 4px; font-size: 9.5pt;
+  }
+
+  h2 {
+    font-size: 17pt;
+    color: #0d3b66;
+    border-bottom: 3px solid #1b6ca8;
+    padding-bottom: 5px;
+    margin-top: 26px;
+    margin-bottom: 12px;
+    page-break-after: avoid;
+  }
+  h2 .num {
+    background: #0d3b66; color:#fff; border-radius: 5px; padding: 1px 10px; margin-right: 8px; font-size: 14pt;
+  }
+  h3 {
+    font-size: 12.5pt;
+    color: #1b6ca8;
+    margin-top: 16px;
+    margin-bottom: 6px;
+    page-break-after: avoid;
+  }
+  h4 { font-size: 10.8pt; color:#0d3b66; margin: 10px 0 4px; page-break-after: avoid;}
+  p { margin: 6px 0; }
+  ul, ol { margin: 6px 0 6px 0; padding-left: 20px; }
+  li { margin: 3px 0; }
+  strong { color: #0d3b66; }
+  sub, sup { font-size: 75%; }
+
+  .lead { font-size: 10.6pt; color:#3e4c59; }
+
+  /* ---------- Boxes ---------- */
+  .box { border-radius: 6px; padding: 10px 14px; margin: 12px 0; page-break-inside: avoid; }
+  .def   { background:#eaf3fb; border-left: 5px solid #1b6ca8; }
+  .key   { background:#fff8e1; border-left: 5px solid #f4a261; }
+  .tip   { background:#e8f6ef; border-left: 5px solid #2a9d8f; }
+  .warn  { background:#fdecea; border-left: 5px solid #e63946; }
+  .box .h { font-weight: 700; color:#0d3b66; display:block; margin-bottom: 3px; text-transform: uppercase; font-size: 8.7pt; letter-spacing: 1px;}
+  .warn .h { color:#b02a37;}
+  .tip .h { color:#1d7268;}
+  .key .h { color:#b5651d;}
+
+  .eq {
+    background:#f4f6f8; border:1px solid #d9e2ec; border-radius:5px;
+    padding: 8px 12px; margin: 8px 0; font-family: "Cambria Math","Cambria",Georgia,serif;
+    font-size: 10.6pt; page-break-inside: avoid;
+  }
+  .eq .lbl { color:#829ab1; font-family: "Segoe UI",Arial,sans-serif; font-size:8.3pt; float:right;}
+
+  code, .chem { font-family: "Cambria Math","Cambria",Georgia,serif; }
+
+  /* ---------- Tables ---------- */
+  table { border-collapse: collapse; width: 100%; margin: 10px 0; font-size: 9.4pt; page-break-inside: auto;}
+  th, td { border: 1px solid #cbd6e2; padding: 4px 7px; text-align: left; vertical-align: top;}
+  th { background: #0d3b66; color:#fff; font-weight:600; }
+  tr:nth-child(even) td { background:#f4f7fb; }
+  caption { caption-side: top; text-align:left; font-size:8.6pt; color:#627d98; margin-bottom:3px; font-style: italic;}
+  .center td, .center th { text-align:center; }
+
+  /* SRP data table shading */
+  .srp td.pos { color:#1d7268; font-weight:600; }
+  .srp td.neg { color:#b02a37; font-weight:600; }
+  .srp tr.she td { background:#fff3cd !important; font-weight:700; }
+
+  .twocol { column-count: 2; column-gap: 16px; }
+  .avoid { page-break-inside: avoid; }
+  .newpage { page-break-before: always; }
+
+  .toc { list-style:none; padding-left:0; }
+  .toc li { padding: 3px 0; border-bottom: 1px dotted #cbd6e2; }
+  .toc .n { display:inline-block; width:26px; color:#1b6ca8; font-weight:700;}
+
+  .mnemonic {
+    text-align:center; font-size: 15pt; font-weight: 800; color:#0d3b66;
+    letter-spacing: 1px; margin: 6px 0;
+  }
+  .small { font-size: 8.8pt; color:#627d98; }
+  .flowbox { display:flex; gap:10px; }
+  .flowbox > div { flex:1; border:1px solid #cbd6e2; border-radius:6px; padding:8px; }
+</style>
+</head>
+<body>
+
+<!-- ============ COVER ============ -->
+<div class="cover">
+  <div class="eyebrow">ATAR &nbsp;•&nbsp; Year 12 Chemistry</div>
+  <h1>REDOX &amp;<br>Electrochemistry</h1>
+  <hr class="rule">
+  <div class="sub">Complete Study Notes — Unit 3</div>
+  <div class="meta">
+    <div>
+      <span class="tag">Oxidation &amp; Reduction</span>
+      <span class="tag">Oxidation Numbers</span>
+      <span class="tag">Half-Equations</span>
+      <span class="tag">Galvanic Cells</span>
+    </div>
+    <div>
+      <span class="tag">Standard Potentials</span>
+      <span class="tag">Electrolysis</span>
+      <span class="tag">Faraday Calculations</span>
+      <span class="tag">Corrosion</span>
+    </div>
+    <div style="margin-top:26px; font-size:10pt;">Everything you need for the exam — definitions, worked<br>examples, data sheet &amp; exam traps.</div>
+  </div>
+</div>
+
+<!-- ============ CONTENTS ============ -->
+<h2>Contents</h2>
+<ul class="toc">
+  <li><span class="n">1</span> What is Redox? Core Definitions</li>
+  <li><span class="n">2</span> Oxidation Numbers (States)</li>
+  <li><span class="n">3</span> Oxidising &amp; Reducing Agents · Conjugate Pairs</li>
+  <li><span class="n">4</span> Writing &amp; Balancing Half-Equations</li>
+  <li><span class="n">5</span> Combining Half-Equations into Full Equations</li>
+  <li><span class="n">6</span> Galvanic (Voltaic) Cells</li>
+  <li><span class="n">7</span> Standard Electrode Potentials &amp; the Electrochemical Series</li>
+  <li><span class="n">8</span> Calculating Cell EMF &amp; Predicting Reactions</li>
+  <li><span class="n">9</span> Electrolytic Cells &amp; Electrolysis</li>
+  <li><span class="n">10</span> Predicting Products of Electrolysis</li>
+  <li><span class="n">11</span> Faraday's Laws — Electrolysis Calculations</li>
+  <li><span class="n">12</span> Applications: Electroplating, Refining, Extraction</li>
+  <li><span class="n">13</span> Corrosion of Iron &amp; Its Prevention</li>
+  <li><span class="n">14</span> Cells in the Real World (Batteries &amp; Fuel Cells)</li>
+  <li><span class="n">15</span> Galvanic vs Electrolytic — Summary Comparison</li>
+  <li><span class="n">16</span> Exam Skills, Common Mistakes &amp; Glossary</li>
+  <li><span class="n">A</span> Appendix: Standard Reduction Potential Data Sheet</li>
+</ul>
+
+<!-- ============ 1 ============ -->
+<h2 class="newpage"><span class="num">1</span> What is Redox?</h2>
+<p class="lead">A <strong>redox reaction</strong> is a reaction in which electrons are transferred from one species to another. Every redox reaction is two processes happening at the same time: <strong>oxidation</strong> and <strong>reduction</strong>. One cannot occur without the other.</p>
+
+<div class="box def">
+  <span class="h">Key Definitions (learn the electron definitions)</span>
+  <ul>
+    <li><strong>Oxidation</strong> = <em>loss</em> of electrons (oxidation number increases).</li>
+    <li><strong>Reduction</strong> = <em>gain</em> of electrons (oxidation number decreases).</li>
+  </ul>
+</div>
+
+<div class="mnemonic">OIL RIG</div>
+<p class="center" style="text-align:center; margin-top:-4px;"><strong>O</strong>xidation <strong>I</strong>s <strong>L</strong>oss &nbsp;·&nbsp; <strong>R</strong>eduction <strong>I</strong>s <strong>G</strong>ain &nbsp;(of electrons)</p>
+
+<h3>Three ways to describe redox</h3>
+<table class="center">
+  <tr><th>Process</th><th>Electrons</th><th>Oxygen</th><th>Hydrogen</th><th>Oxidation number</th></tr>
+  <tr><td><strong>Oxidation</strong></td><td>lost</td><td>gained</td><td>lost</td><td>increases (more +)</td></tr>
+  <tr><td><strong>Reduction</strong></td><td>gained</td><td>lost</td><td>gained</td><td>decreases (more −)</td></tr>
+</table>
+<p class="small">The electron-transfer definition is the most general and the one you should always use at ATAR level. The oxygen/hydrogen definitions are useful shortcuts (e.g. in organic and combustion reactions).</p>
+
+<div class="box key">
+  <span class="h">The golden rule</span>
+  Oxidation and reduction always occur <strong>together</strong> — the electrons lost by the species being oxidised are exactly the electrons gained by the species being reduced. Electrons are never created or destroyed.
+</div>
+
+<!-- ============ 2 ============ -->
+<h2><span class="num">2</span> Oxidation Numbers (Oxidation States)</h2>
+<p>The <strong>oxidation number</strong> is a signed number assigned to an atom that represents the charge it <em>would</em> have if all bonds were 100% ionic. It is the bookkeeping tool used to track electron transfer and identify what is oxidised and reduced.</p>
+
+<div class="box def">
+  <span class="h">Rules for Assigning Oxidation Numbers (apply in order)</span>
+  <ol>
+    <li>An atom in its <strong>free element</strong> has an oxidation number of <strong>0</strong> (e.g. Na, O<sub>2</sub>, Cl<sub>2</sub>, S<sub>8</sub>, P<sub>4</sub>).</li>
+    <li>For a <strong>monatomic ion</strong>, the oxidation number equals the ionic charge (e.g. Na<sup>+</sup> = +1, S<sup>2−</sup> = −2, Al<sup>3+</sup> = +3).</li>
+    <li><strong>Group 1</strong> metals = +1; <strong>Group 2</strong> metals = +2; <strong>Aluminium</strong> = +3 (always in compounds).</li>
+    <li><strong>Fluorine</strong> = −1 in all its compounds.</li>
+    <li><strong>Hydrogen</strong> = +1 (except −1 in metal hydrides such as NaH, CaH<sub>2</sub>).</li>
+    <li><strong>Oxygen</strong> = −2 (except −1 in peroxides e.g. H<sub>2</sub>O<sub>2</sub>; +2 in OF<sub>2</sub>; −½ in superoxides).</li>
+    <li>The sum of oxidation numbers = <strong>0</strong> for a neutral compound, or = the <strong>overall charge</strong> for a polyatomic ion.</li>
+  </ol>
+</div>
+
+<h3>Worked examples — find the unknown oxidation number</h3>
+<div class="box tip">
+  <span class="h">Example — S in sulfate, SO<sub>4</sub><sup>2−</sup></span>
+  Let S = <em>x</em>. Oxygen = −2 (×4). Sum must equal the ion charge (−2):<br>
+  <span class="eq">x + 4(−2) = −2 &nbsp;⟹&nbsp; x − 8 = −2 &nbsp;⟹&nbsp; <strong>x = +6</strong></span>
+</div>
+<div class="box tip">
+  <span class="h">Example — Mn in permanganate, MnO<sub>4</sub><sup>−</sup></span>
+  <span class="eq">x + 4(−2) = −1 &nbsp;⟹&nbsp; x = +7 &nbsp;(<strong>Mn = +7</strong>)</span>
+</div>
+<div class="box tip">
+  <span class="h">Example — Cr in dichromate, Cr<sub>2</sub>O<sub>7</sub><sup>2−</sup></span>
+  <span class="eq">2x + 7(−2) = −2 &nbsp;⟹&nbsp; 2x = +12 &nbsp;⟹&nbsp; <strong>Cr = +6</strong></span>
+</div>
+
+<div class="box key">
+  <span class="h">Using oxidation numbers to identify redox</span>
+  Compare oxidation numbers of each element <strong>before and after</strong> the reaction:
+  <ul>
+    <li>If an oxidation number <strong>increases</strong> → that element was <strong>oxidised</strong>.</li>
+    <li>If an oxidation number <strong>decreases</strong> → that element was <strong>reduced</strong>.</li>
+    <li>If <strong>no</strong> oxidation number changes → the reaction is <strong>not</strong> redox (e.g. most acid–base and precipitation reactions).</li>
+  </ul>
+</div>
+
+<h4>Disproportionation</h4>
+<p>A special redox reaction in which the <strong>same element</strong> is <em>simultaneously</em> oxidised and reduced. Example — chlorine in water:</p>
+<div class="eq">Cl<sub>2</sub> + H<sub>2</sub>O → HOCl + HCl &nbsp;&nbsp; (Cl goes 0 → +1 and 0 → −1)</div>
+
+<!-- ============ 3 ============ -->
+<h2><span class="num">3</span> Oxidising &amp; Reducing Agents · Conjugate Pairs</h2>
+<div class="box def">
+  <span class="h">Agents</span>
+  <ul>
+    <li>An <strong>oxidising agent (oxidant)</strong> <em>causes</em> oxidation by <em>accepting</em> electrons — so it is itself <strong>reduced</strong>.</li>
+    <li>A <strong>reducing agent (reductant)</strong> <em>causes</em> reduction by <em>donating</em> electrons — so it is itself <strong>oxidised</strong>.</li>
+  </ul>
+</div>
+
+<div class="box warn">
+  <span class="h">Don't get caught out</span>
+  The oxidising agent is the species that is <strong>reduced</strong>; the reducing agent is the species that is <strong>oxidised</strong>. Students frequently swap these — read the sentence twice.
+</div>
+
+<h3>Conjugate redox pairs</h3>
+<p>Just as acids have conjugate bases, every oxidant/reductant forms a <strong>conjugate redox pair</strong> linked by electron transfer:</p>
+<div class="eq">oxidised form + n e<sup>−</sup> ⇌ reduced form</div>
+<p>e.g. <span class="chem">Cu<sup>2+</sup> / Cu</span> and <span class="chem">Zn<sup>2+</sup> / Zn</span>. The stronger the oxidant, the weaker its conjugate reductant (and vice versa).</p>
+
+<table>
+  <caption>Common oxidants and reductants seen at ATAR</caption>
+  <tr><th>Strong oxidising agents</th><th>Strong reducing agents</th></tr>
+  <tr><td>MnO<sub>4</sub><sup>−</sup> (acidified), Cr<sub>2</sub>O<sub>7</sub><sup>2−</sup>, Cl<sub>2</sub>, F<sub>2</sub>, H<sub>2</sub>O<sub>2</sub>, concentrated HNO<sub>3</sub></td>
+     <td>Reactive metals (Li, K, Na, Mg, Al, Zn), H<sub>2</sub>, C, SO<sub>2</sub>, I<sup>−</sup></td></tr>
+</table>
+
+<!-- ============ 4 ============ -->
+<h2 class="newpage"><span class="num">4</span> Writing &amp; Balancing Half-Equations</h2>
+<p>A <strong>half-equation</strong> shows either the oxidation <em>or</em> the reduction process on its own, including the electrons transferred. Electrons appear on the <strong>left</strong> of a reduction half-equation and on the <strong>right</strong> of an oxidation half-equation.</p>
+
+<div class="box def">
+  <span class="h">Balancing a half-equation (acidic solution) — 5 steps</span>
+  <ol>
+    <li>Balance all atoms <strong>except O and H</strong>.</li>
+    <li>Balance <strong>O</strong> by adding <strong>H<sub>2</sub>O</strong>.</li>
+    <li>Balance <strong>H</strong> by adding <strong>H<sup>+</sup></strong>.</li>
+    <li>Balance <strong>charge</strong> by adding <strong>electrons (e<sup>−</sup>)</strong>.</li>
+    <li>Check atoms <em>and</em> charge both balance.</li>
+  </ol>
+</div>
+
+<div class="box tip">
+  <span class="h">Worked example — permanganate reduced in acid</span>
+  Half-reaction: MnO<sub>4</sub><sup>−</sup> → Mn<sup>2+</sup>
+  <span class="eq">1. Mn balanced.<br>
+  2. Balance O with water: MnO<sub>4</sub><sup>−</sup> → Mn<sup>2+</sup> + 4H<sub>2</sub>O<br>
+  3. Balance H with H<sup>+</sup>: MnO<sub>4</sub><sup>−</sup> + 8H<sup>+</sup> → Mn<sup>2+</sup> + 4H<sub>2</sub>O<br>
+  4. Balance charge (left = +7, right = +2) → add 5e<sup>−</sup> to left:<br>
+  <strong>MnO<sub>4</sub><sup>−</sup> + 8H<sup>+</sup> + 5e<sup>−</sup> → Mn<sup>2+</sup> + 4H<sub>2</sub>O</strong></span>
+</div>
+
+<div class="box def">
+  <span class="h">Balancing in basic (alkaline) solution</span>
+  Balance as if acidic first, then <strong>add OH<sup>−</sup> to both sides</strong> equal to the number of H<sup>+</sup>. Combine H<sup>+</sup> + OH<sup>−</sup> → H<sub>2</sub>O and cancel any water that appears on both sides.
+</div>
+
+<!-- ============ 5 ============ -->
+<h2><span class="num">5</span> Combining Half-Equations into a Full Equation</h2>
+<div class="box def">
+  <span class="h">Method</span>
+  <ol>
+    <li>Write the <strong>oxidation</strong> half-equation and the <strong>reduction</strong> half-equation.</li>
+    <li>Multiply each by a whole number so the <strong>electrons are equal</strong> in both.</li>
+    <li>Add the two half-equations together and <strong>cancel electrons</strong> (and any species appearing identically on both sides, e.g. H<sup>+</sup>, H<sub>2</sub>O).</li>
+  </ol>
+</div>
+
+<div class="box tip">
+  <span class="h">Worked example — MnO<sub>4</sub><sup>−</sup> oxidising Fe<sup>2+</sup> in acid</span>
+  <span class="eq">Reduction (×1): MnO<sub>4</sub><sup>−</sup> + 8H<sup>+</sup> + 5e<sup>−</sup> → Mn<sup>2+</sup> + 4H<sub>2</sub>O<br>
+  Oxidation (×5): 5Fe<sup>2+</sup> → 5Fe<sup>3+</sup> + 5e<sup>−</sup><br>
+  <span class="lbl">e<sup>−</sup> cancel (5 each)</span>
+  <strong>Overall: MnO<sub>4</sub><sup>−</sup> + 8H<sup>+</sup> + 5Fe<sup>2+</sup> → Mn<sup>2+</sup> + 5Fe<sup>3+</sup> + 4H<sub>2</sub>O</strong></span>
+  <span class="small">Check: charge on left = (−1)+(+8)+(+10) = +17; right = (+2)+(+15) = +17 ✓</span>
+</div>
+
+<!-- ============ 6 ============ -->
+<h2 class="newpage"><span class="num">6</span> Galvanic (Voltaic) Cells</h2>
+<p class="lead">A <strong>galvanic cell</strong> converts chemical energy into electrical energy using a <strong>spontaneous</strong> redox reaction. The oxidation and reduction reactions are physically separated into two <strong>half-cells</strong>, forcing the electrons to travel through an external wire — this electron flow is the electric current.</p>
+
+<h3>Components &amp; their roles</h3>
+<table>
+  <tr><th>Component</th><th>Role</th></tr>
+  <tr><td><strong>Anode</strong></td><td>Electrode where <strong>oxidation</strong> occurs. In a galvanic cell it is the <strong>negative</strong> terminal.</td></tr>
+  <tr><td><strong>Cathode</strong></td><td>Electrode where <strong>reduction</strong> occurs. In a galvanic cell it is the <strong>positive</strong> terminal.</td></tr>
+  <tr><td><strong>Salt bridge</strong></td><td>Contains an inert electrolyte (e.g. KNO<sub>3</sub>). Completes the circuit and maintains <strong>electrical neutrality</strong> by allowing ion migration between half-cells.</td></tr>
+  <tr><td><strong>External circuit (wire)</strong></td><td>Carries electrons from anode → cathode. May include a voltmeter or load.</td></tr>
+  <tr><td><strong>Electrolyte solutions</strong></td><td>Contain the ions of each half-cell that are involved in the electrode reactions.</td></tr>
+</table>
+
+<div class="box key">
+  <span class="h">Memory aids</span>
+  <ul>
+    <li><strong>AN OX</strong> — <strong>AN</strong>ode = <strong>OX</strong>idation.</li>
+    <li><strong>RED CAT</strong> — <strong>RED</strong>uction = <strong>CAT</strong>hode.</li>
+    <li>Electrons flow <strong>A → C</strong> (Anode to Cathode) through the wire, always.</li>
+    <li>Polarity: in a <strong>galvanic</strong> cell anode = <strong>−</strong>, cathode = <strong>+</strong> (this is reversed in an electrolytic cell).</li>
+  </ul>
+</div>
+
+<h3>Direction of movement</h3>
+<ul>
+  <li><strong>Electrons:</strong> anode → external wire → cathode.</li>
+  <li><strong>Conventional current:</strong> opposite to electrons (cathode → anode in the wire).</li>
+  <li><strong>Anions</strong> (−) in the salt bridge migrate <strong>toward the anode</strong>; <strong>cations</strong> (+) migrate <strong>toward the cathode</strong> — to balance the charge building up as ions are produced/consumed.</li>
+</ul>
+
+<div class="box tip">
+  <span class="h">Classic example — the Daniell cell (Zn | Cu)</span>
+  <span class="eq">Anode (oxidation): Zn(s) → Zn<sup>2+</sup>(aq) + 2e<sup>−</sup> &nbsp;&nbsp; E° = −0.76 V<br>
+  Cathode (reduction): Cu<sup>2+</sup>(aq) + 2e<sup>−</sup> → Cu(s) &nbsp;&nbsp; E° = +0.34 V<br>
+  Overall: Zn(s) + Cu<sup>2+</sup>(aq) → Zn<sup>2+</sup>(aq) + Cu(s) &nbsp;&nbsp; E°<sub>cell</sub> = +1.10 V</span>
+  The Zn electrode loses mass (dissolves); the Cu electrode gains mass; [Cu<sup>2+</sup>] falls and [Zn<sup>2+</sup>] rises.
+</div>
+
+<h3>Cell diagram notation (shorthand)</h3>
+<p>Convention: <strong>anode on the left</strong>, cathode on the right. A single line <strong>|</strong> = phase boundary; a double line <strong>||</strong> = salt bridge.</p>
+<div class="eq">Zn(s) | Zn<sup>2+</sup>(aq) &nbsp;||&nbsp; Cu<sup>2+</sup>(aq) | Cu(s)</div>
+<p class="small">If a half-cell has no solid conductor (e.g. Fe<sup>3+</sup>/Fe<sup>2+</sup>), an <strong>inert electrode</strong> such as platinum or graphite is used, e.g. Pt | Fe<sup>2+</sup>, Fe<sup>3+</sup>.</p>
+
+<!-- ============ 7 ============ -->
+<h2 class="newpage"><span class="num">7</span> Standard Electrode Potentials &amp; the Electrochemical Series</h2>
+<p>Each half-cell has a tendency to gain electrons, measured as its <strong>standard reduction potential (E°)</strong> in volts. Potentials are measured relative to the <strong>Standard Hydrogen Electrode (SHE)</strong>, which is defined as exactly <strong>0.00 V</strong>.</p>
+
+<div class="box def">
+  <span class="h">Standard conditions (the "°" symbol)</span>
+  <ul>
+    <li>Concentration of all solutions = <strong>1.0 mol L<sup>−1</sup></strong></li>
+    <li>Pressure of all gases = <strong>100 kPa (1 bar)</strong></li>
+    <li>Temperature = <strong>25 °C (298 K)</strong></li>
+    <li>Measured against the SHE (Pt electrode, H<sub>2</sub> gas, 1 mol L<sup>−1</sup> H<sup>+</sup>).</li>
+  </ul>
+</div>
+
+<div class="box key">
+  <span class="h">Reading the table (all values written as REDUCTIONS)</span>
+  <ul>
+    <li>A <strong>more positive</strong> E° → the species is a <strong>stronger oxidising agent</strong> (gains electrons readily; e.g. F<sub>2</sub>, MnO<sub>4</sub><sup>−</sup>).</li>
+    <li>A <strong>more negative</strong> E° → the reduced form is a <strong>stronger reducing agent</strong> (loses electrons readily; e.g. Li, K, Na).</li>
+    <li>The <strong>strongest oxidant</strong> sits <strong>top-left</strong>; the <strong>strongest reductant</strong> sits <strong>bottom-right</strong> of the table.</li>
+  </ul>
+</div>
+
+<div class="box tip">
+  <span class="h">The "anticlockwise / clockwise" prediction rule</span>
+  Write the two relevant half-equations with the more positive E° on top. The reaction that proceeds is: <strong>top half-equation goes forward (reduction)</strong> and <strong>bottom half-equation goes in reverse (oxidation)</strong>. Trace an anticlockwise loop: the oxidant (top-left) reacts with the reductant (bottom-right).
+</div>
+
+<!-- ============ 8 ============ -->
+<h2><span class="num">8</span> Calculating Cell EMF &amp; Predicting Reactions</h2>
+<div class="box def">
+  <span class="h">Standard cell potential (EMF)</span>
+  <div class="eq" style="font-size:12pt; text-align:center;">
+    E°<sub>cell</sub> = E°<sub>cathode</sub> − E°<sub>anode</sub>
+  </div>
+  <p class="small" style="margin:4px 0 0;">Both values are taken directly as <strong>reduction potentials</strong> from the table — do <strong>not</strong> change the sign of the anode value yourself; the minus sign in the formula does that. (Equivalently: E°<sub>cell</sub> = E°<sub>reduction</sub> + E°<sub>oxidation</sub>, where the oxidation value has its sign reversed.)</p>
+</div>
+
+<div class="box key">
+  <span class="h">What the sign of E°<sub>cell</sub> tells you</span>
+  <ul>
+    <li><strong>E°<sub>cell</sub> &gt; 0</strong> → reaction is <strong>spontaneous</strong> as written (works as a galvanic cell). Corresponds to ΔG &lt; 0.</li>
+    <li><strong>E°<sub>cell</sub> &lt; 0</strong> → <strong>non-spontaneous</strong> (would need an external power supply — electrolysis).</li>
+  </ul>
+  <span class="small">Link to free energy: ΔG° = −nFE°<sub>cell</sub>, where n = mol of electrons and F = 96 500 C mol<sup>−1</sup>.</span>
+</div>
+
+<div class="box tip">
+  <span class="h">Worked example — will silver react with copper metal?</span>
+  Half-cells: Ag<sup>+</sup> + e<sup>−</sup> → Ag (E° = +0.80 V) &nbsp;and&nbsp; Cu<sup>2+</sup> + 2e<sup>−</sup> → Cu (E° = +0.34 V).<br>
+  The higher E° (Ag<sup>+</sup>) is reduced → cathode; Cu is oxidised → anode.
+  <span class="eq">E°<sub>cell</sub> = E°<sub>cathode</sub> − E°<sub>anode</sub> = (+0.80) − (+0.34) = <strong>+0.46 V</strong> (positive ⟹ spontaneous)</span>
+  Overall: Cu(s) + 2Ag<sup>+</sup>(aq) → Cu<sup>2+</sup>(aq) + 2Ag(s).
+</div>
+
+<div class="box warn">
+  <span class="h">E° does NOT depend on how much you have</span>
+  E° is an <strong>intensive</strong> property. If you multiply a half-equation by a coefficient to balance electrons, you do <strong>not</strong> multiply its E° value. Voltage does not scale with amount of substance.
+</div>
+
+<h4>Limitations of predictions from E° values</h4>
+<ul>
+  <li>Predictions assume <strong>standard conditions</strong>; changing concentration, temperature or pressure shifts the actual potential.</li>
+  <li>E° predicts whether a reaction is <em>thermodynamically</em> favourable, <strong>not the rate</strong> — a spontaneous reaction may be immeasurably slow (kinetics).</li>
+  <li><strong>Overpotential</strong> can mean the predicted product is not the one observed (important in electrolysis, §10).</li>
+</ul>
+
+<!-- ============ 9 ============ -->
+<h2 class="newpage"><span class="num">9</span> Electrolytic Cells &amp; Electrolysis</h2>
+<p class="lead"><strong>Electrolysis</strong> uses electrical energy from an external power source to drive a <strong>non-spontaneous</strong> redox reaction (E°<sub>cell</sub> &lt; 0). It is the reverse energy conversion of a galvanic cell: electrical energy → chemical energy.</p>
+
+<h3>Key differences from a galvanic cell</h3>
+<table>
+  <tr><th>Feature</th><th>Galvanic cell</th><th>Electrolytic cell</th></tr>
+  <tr><td>Energy change</td><td>Chemical → electrical</td><td>Electrical → chemical</td></tr>
+  <tr><td>Spontaneity</td><td>Spontaneous (E°<sub>cell</sub> &gt; 0)</td><td>Non-spontaneous (needs power supply)</td></tr>
+  <tr><td>Half-cells</td><td>Two separate half-cells + salt bridge</td><td>Usually one container, two electrodes in the same electrolyte</td></tr>
+  <tr><td>Anode polarity</td><td>Negative (−)</td><td><strong>Positive (+)</strong></td></tr>
+  <tr><td>Cathode polarity</td><td>Positive (+)</td><td><strong>Negative (−)</strong></td></tr>
+</table>
+
+<div class="box key">
+  <span class="h">What stays the SAME in both cell types</span>
+  <ul>
+    <li>Oxidation <strong>always</strong> occurs at the <strong>anode</strong>; reduction <strong>always</strong> at the <strong>cathode</strong>.</li>
+    <li>Electrons <strong>always</strong> travel from anode → cathode in the external circuit.</li>
+  </ul>
+  <span class="warn" style="display:block; margin-top:6px;">It is the <strong>polarity (+/−) that flips</strong> between the two cell types, not the location of oxidation/reduction.</span>
+</div>
+
+<h3>Electrolysis of a molten salt (simplest case)</h3>
+<p>Molten ionic compounds contain only the compound's ions — no water to compete.</p>
+<div class="box tip">
+  <span class="h">Molten NaCl (Downs process)</span>
+  <span class="eq">Cathode (−): Na<sup>+</sup> + e<sup>−</sup> → Na(l)<br>
+  Anode (+): 2Cl<sup>−</sup> → Cl<sub>2</sub>(g) + 2e<sup>−</sup></span>
+  Products: sodium metal at the cathode, chlorine gas at the anode.
+</div>
+
+<!-- ============ 10 ============ -->
+<h2><span class="num">10</span> Predicting the Products of Electrolysis</h2>
+<p>In <strong>aqueous</strong> solutions, <strong>water can be oxidised or reduced</strong> in competition with the dissolved ions. You must compare the possible reactions at each electrode.</p>
+
+<div class="box def">
+  <span class="h">Water's competing half-reactions</span>
+  <span class="eq">Reduction (at cathode): 2H<sub>2</sub>O + 2e<sup>−</sup> → H<sub>2</sub>(g) + 2OH<sup>−</sup> &nbsp; E° = −0.83 V<br>
+  Oxidation (at anode): 2H<sub>2</sub>O → O<sub>2</sub>(g) + 4H<sup>+</sup> + 4e<sup>−</sup> &nbsp; E° = −1.23 V (as an oxidation)</span>
+</div>
+
+<div class="box key">
+  <span class="h">How to decide the product at each electrode</span>
+  <ol>
+    <li>List every species that could react at that electrode (ions + water).</li>
+    <li><strong>Cathode (reduction):</strong> the species with the <strong>highest (most positive) E°</strong> is reduced most easily.</li>
+    <li><strong>Anode (oxidation):</strong> the species that is oxidised most easily is the one whose reduction E° is <strong>most negative</strong> (i.e. best reducing agent).</li>
+    <li>Then apply the practical factors below — the E° prediction is a starting point only.</li>
+  </ol>
+</div>
+
+<h3>Three factors that affect the actual product</h3>
+<table>
+  <tr><th>Factor</th><th>Effect</th></tr>
+  <tr><td><strong>Standard potential (E°)</strong></td><td>The primary predictor — most easily reduced/oxidised species reacts.</td></tr>
+  <tr><td><strong>Concentration</strong></td><td>A high concentration of an ion can cause it to be discharged in preference to water (e.g. concentrated Cl<sup>−</sup> gives Cl<sub>2</sub>, not O<sub>2</sub>). Predicted by Le Châtelier / Nernst shifts.</td></tr>
+  <tr><td><strong>Overpotential (overvoltage)</strong></td><td>Extra voltage needed (beyond E°) to discharge <strong>gases</strong> — especially O<sub>2</sub> — at an electrode. This is why Cl<sub>2</sub> is often produced instead of O<sub>2</sub> despite E° predictions.</td></tr>
+  <tr><td><strong>Nature of the electrode</strong></td><td>Inert electrodes (Pt, graphite) are not consumed. <strong>Active</strong> electrodes (e.g. Cu) can themselves be oxidised at the anode instead of the solution.</td></tr>
+</table>
+
+<div class="box tip">
+  <span class="h">Worked example — electrolysis of aqueous CuSO<sub>4</sub> with inert electrodes</span>
+  <span class="eq">Cathode: Cu<sup>2+</sup> (E° = +0.34) vs H<sub>2</sub>O (E° = −0.83) → Cu<sup>2+</sup> wins → <strong>Cu(s) deposited</strong><br>
+  Anode: SO<sub>4</sub><sup>2−</sup> is very hard to oxidise, so water is oxidised → <strong>O<sub>2</sub>(g)</strong> + H<sup>+</sup></span>
+  Result: copper plates onto the cathode; oxygen bubbles at the anode; the solution becomes acidic.
+</div>
+
+<!-- ============ 11 ============ -->
+<h2 class="newpage"><span class="num">11</span> Faraday's Laws — Electrolysis Calculations</h2>
+<p>The <strong>amount</strong> of substance produced at an electrode is directly proportional to the quantity of electric charge passed. This lets us calculate masses, moles and volumes.</p>
+
+<div class="box def">
+  <span class="h">Essential formulae</span>
+  <table class="center">
+    <tr><th>Formula</th><th>Meaning of terms</th></tr>
+    <tr><td>Q = I × t</td><td>Q = charge (coulombs, C); I = current (amperes, A); t = time (seconds, s)</td></tr>
+    <tr><td>n(e<sup>−</sup>) = Q ÷ F</td><td>F = Faraday constant = <strong>96 500 C mol<sup>−1</sup></strong></td></tr>
+    <tr><td>use the half-equation mole ratio</td><td>relate mol e<sup>−</sup> to mol of product</td></tr>
+    <tr><td>m = n × M &nbsp; or &nbsp; V = n × V<sub>m</sub></td><td>convert moles to mass or gas volume</td></tr>
+  </table>
+</div>
+
+<div class="box key">
+  <span class="h">Standard 5-step method</span>
+  <ol>
+    <li>Calculate charge: <strong>Q = It</strong> (convert time to seconds!).</li>
+    <li>Calculate moles of electrons: <strong>n(e<sup>−</sup>) = Q / 96 500</strong>.</li>
+    <li>Write the electrode half-equation and read the <strong>electron : product ratio</strong>.</li>
+    <li>Calculate moles of product using that ratio.</li>
+    <li>Convert to the required quantity (mass m = nM, or gas volume V = nV<sub>m</sub>).</li>
+  </ol>
+</div>
+
+<div class="box tip">
+  <span class="h">Worked example — silver electroplating</span>
+  A current of <strong>2.00 A</strong> flows for <strong>30.0 minutes</strong> through AgNO<sub>3</sub>. What mass of silver is deposited?
+  <span class="eq">
+  Step 1: Q = It = 2.00 × (30.0 × 60) = 2.00 × 1800 = 3600 C<br>
+  Step 2: n(e<sup>−</sup>) = 3600 ÷ 96 500 = 0.03731 mol<br>
+  Step 3: Ag<sup>+</sup> + e<sup>−</sup> → Ag &nbsp;(ratio 1 e<sup>−</sup> : 1 Ag)<br>
+  Step 4: n(Ag) = 0.03731 mol<br>
+  Step 5: m = n × M = 0.03731 × 107.9 = <strong>4.03 g of silver</strong></span>
+</div>
+
+<div class="box tip">
+  <span class="h">Worked example — gas volume at the cathode</span>
+  Same charge (3600 C) in the electrolysis of water. Volume of H<sub>2</sub> at STP (V<sub>m</sub> = 24.79 L mol<sup>−1</sup> at 25 °C, 100 kPa)?
+  <span class="eq">2H<sub>2</sub>O + 2e<sup>−</sup> → H<sub>2</sub> + 2OH<sup>−</sup> &nbsp;(ratio 2 e<sup>−</sup> : 1 H<sub>2</sub>)<br>
+  n(H<sub>2</sub>) = 0.03731 ÷ 2 = 0.01865 mol<br>
+  V = 0.01865 × 24.79 = <strong>0.463 L (463 mL)</strong></span>
+</div>
+
+<div class="box warn">
+  <span class="h">Calculation traps</span>
+  <ul>
+    <li>Always convert <strong>minutes/hours → seconds</strong> before using Q = It.</li>
+    <li>Watch the <strong>electron ratio</strong>: Cu<sup>2+</sup> needs 2 e<sup>−</sup>, Al<sup>3+</sup> needs 3 e<sup>−</sup> — this changes the moles of product.</li>
+    <li>If two cells are in <strong>series</strong>, the <strong>same charge</strong> passes through both.</li>
+  </ul>
+</div>
+
+<!-- ============ 12 ============ -->
+<h2 class="newpage"><span class="num">12</span> Industrial Applications</h2>
+
+<h3>Electroplating</h3>
+<p>Coating an object with a thin metal layer for protection or appearance. The <strong>object is the cathode</strong>; the <strong>pure plating metal is the anode</strong>; the electrolyte contains ions of the plating metal.</p>
+<div class="eq">Cathode (object): M<sup>n+</sup> + n e<sup>−</sup> → M(s) &nbsp;&nbsp; Anode (pure metal): M(s) → M<sup>n+</sup> + n e<sup>−</sup></div>
+
+<h3>Electrorefining of copper</h3>
+<p>Impure copper is the <strong>anode</strong> and dissolves; pure copper deposits on the <strong>cathode</strong>. Valuable impurities (Ag, Au) collect below the anode as "anode sludge"; more reactive metals stay in solution.</p>
+
+<h3>Extraction of reactive metals (e.g. aluminium — Hall–Héroult process)</h3>
+<p>Very reactive metals (Al, Na, Mg, K) cannot be extracted by carbon reduction, so they are obtained by <strong>electrolysis of the molten compound</strong>. Aluminium oxide (Al<sub>2</sub>O<sub>3</sub>) is dissolved in molten cryolite to lower the melting point.</p>
+<div class="eq">Cathode: Al<sup>3+</sup> + 3e<sup>−</sup> → Al(l) &nbsp;&nbsp; Anode: 2O<sup>2−</sup> → O<sub>2</sub> + 4e<sup>−</sup> (carbon anodes burn away as CO<sub>2</sub>)</div>
+
+<!-- ============ 13 ============ -->
+<h2><span class="num">13</span> Corrosion of Iron &amp; Its Prevention</h2>
+<p><strong>Corrosion</strong> is the unwanted oxidation of a metal by its environment. Rusting of iron is an electrochemical process requiring <strong>both water and oxygen</strong>; it is accelerated by dissolved salts (electrolytes) and acids.</p>
+
+<div class="box def">
+  <span class="h">The electrochemistry of rusting</span>
+  <span class="eq">Anodic region (oxidation): Fe(s) → Fe<sup>2+</sup>(aq) + 2e<sup>−</sup><br>
+  Cathodic region (reduction): O<sub>2</sub>(g) + 2H<sub>2</sub>O(l) + 4e<sup>−</sup> → 4OH<sup>−</sup>(aq)</span>
+  Fe<sup>2+</sup> is then further oxidised by O<sub>2</sub> and precipitates as hydrated iron(III) oxide, Fe<sub>2</sub>O<sub>3</sub>·xH<sub>2</sub>O — <strong>rust</strong>.
+</div>
+
+<h3>Prevention methods</h3>
+<table>
+  <tr><th>Method</th><th>How it works</th></tr>
+  <tr><td><strong>Barrier coatings</strong> (paint, oil, plastic)</td><td>Physically excludes water and oxygen. Fails if the coating is scratched.</td></tr>
+  <tr><td><strong>Galvanising</strong> (zinc coating)</td><td>Dual action: barrier + <strong>sacrificial protection</strong>. Even if scratched, Zn (more reactive, more negative E°) oxidises in preference to Fe.</td></tr>
+  <tr><td><strong>Sacrificial anode</strong> (block of Zn or Mg)</td><td>A more reactive metal is attached; it is oxidised instead of the iron. Used on ship hulls and pipelines. Anode is "sacrificed" and replaced periodically.</td></tr>
+  <tr><td><strong>Cathodic protection (impressed current)</strong></td><td>An external power source forces the iron to be the <strong>cathode</strong>, so it cannot be oxidised.</td></tr>
+  <tr><td><strong>Alloying</strong> (stainless steel)</td><td>Adding Cr/Ni forms a protective, self-repairing oxide layer.</td></tr>
+</table>
+
+<div class="box key">
+  <span class="h">Why sacrificial protection works</span>
+  A metal with a <strong>more negative E°</strong> than iron (e.g. Zn −0.76 V, Mg −2.37 V vs Fe −0.44 V) is a stronger reducing agent, so it is preferentially oxidised, protecting the iron even where the coating is broken.
+</div>
+
+<!-- ============ 14 ============ -->
+<h2><span class="num">14</span> Cells in the Real World</h2>
+<div class="flowbox avoid">
+  <div>
+    <h4>Primary (non-rechargeable)</h4>
+    <p class="small">Reaction is not reversible; discarded when flat. E.g. dry cell (Zn/MnO<sub>2</sub>), alkaline cell.</p>
+  </div>
+  <div>
+    <h4>Secondary (rechargeable)</h4>
+    <p class="small">Reaction is reversed by an external supply (recharging is electrolysis). E.g. lead–acid battery, lithium-ion cell.</p>
+  </div>
+  <div>
+    <h4>Fuel cells</h4>
+    <p class="small">Reactants supplied continuously; e.g. H<sub>2</sub>/O<sub>2</sub> fuel cell producing water. High efficiency, low pollution.</p>
+  </div>
+</div>
+<div class="box tip">
+  <span class="h">Hydrogen–oxygen fuel cell (acidic)</span>
+  <span class="eq">Anode: 2H<sub>2</sub> → 4H<sup>+</sup> + 4e<sup>−</sup> &nbsp;&nbsp; Cathode: O<sub>2</sub> + 4H<sup>+</sup> + 4e<sup>−</sup> → 2H<sub>2</sub>O<br>
+  Overall: 2H<sub>2</sub> + O<sub>2</sub> → 2H<sub>2</sub>O</span>
+</div>
+
+<!-- ============ 15 ============ -->
+<h2 class="newpage"><span class="num">15</span> Galvanic vs Electrolytic — Master Comparison</h2>
+<table>
+  <tr><th></th><th>Galvanic (Voltaic) Cell</th><th>Electrolytic Cell</th></tr>
+  <tr><td><strong>Purpose</strong></td><td>Generates electricity</td><td>Uses electricity to drive a reaction</td></tr>
+  <tr><td><strong>Energy conversion</strong></td><td>Chemical → electrical</td><td>Electrical → chemical</td></tr>
+  <tr><td><strong>ΔG / E°<sub>cell</sub></strong></td><td>ΔG &lt; 0, E°<sub>cell</sub> &gt; 0 (spontaneous)</td><td>ΔG &gt; 0, E°<sub>cell</sub> &lt; 0 (non-spontaneous)</td></tr>
+  <tr><td><strong>Power source</strong></td><td>None (is the source)</td><td>External battery / power supply required</td></tr>
+  <tr><td><strong>Oxidation occurs at</strong></td><td>Anode</td><td>Anode</td></tr>
+  <tr><td><strong>Reduction occurs at</strong></td><td>Cathode</td><td>Cathode</td></tr>
+  <tr><td><strong>Anode sign</strong></td><td>Negative (−)</td><td>Positive (+)</td></tr>
+  <tr><td><strong>Cathode sign</strong></td><td>Positive (+)</td><td>Negative (−)</td></tr>
+  <tr><td><strong>Electron flow (wire)</strong></td><td>Anode → cathode</td><td>Anode → cathode</td></tr>
+  <tr><td><strong>Examples</strong></td><td>Batteries, fuel cells</td><td>Electroplating, electrorefining, Al/NaCl extraction, recharging</td></tr>
+</table>
+
+<!-- ============ 16 ============ -->
+<h2><span class="num">16</span> Exam Skills, Common Mistakes &amp; Glossary</h2>
+
+<div class="box warn">
+  <span class="h">Top exam traps to avoid</span>
+  <ul>
+    <li>Confusing the <strong>agent</strong> with the <strong>process</strong>: the oxidising agent is <em>reduced</em>.</li>
+    <li>Changing E° when you multiply a half-equation — <strong>never</strong> do this (E° is intensive).</li>
+    <li>Forgetting the salt bridge's job = <strong>maintain electrical neutrality / complete the circuit</strong> (not "carry electrons").</li>
+    <li>Mixing up cell polarity — remember only the <strong>+/−</strong> flips between cell types; oxidation is always at the anode.</li>
+    <li>Not converting <strong>time to seconds</strong> in Q = It.</li>
+    <li>Ignoring <strong>water</strong> as a competing species in aqueous electrolysis.</li>
+    <li>Not <strong>checking charge balance</strong> when balancing/combining half-equations.</li>
+    <li>Assuming a positive E°<sub>cell</sub> means the reaction is fast — it only means it is <strong>feasible</strong>.</li>
+  </ul>
+</div>
+
+<div class="box tip">
+  <span class="h">How to answer "predict and explain a reaction" questions</span>
+  <ol>
+    <li>Identify all possible half-equations from the data sheet.</li>
+    <li>Pick the strongest oxidant (highest E°) and strongest reductant (lowest E°).</li>
+    <li>Reverse the oxidation half-equation and add so electrons cancel.</li>
+    <li>Calculate E°<sub>cell</sub> = E°<sub>cathode</sub> − E°<sub>anode</sub>; if positive, the reaction occurs.</li>
+    <li>State observations (colour change, gas, deposit, mass change).</li>
+  </ol>
+</div>
+
+<h3>Glossary of key terms</h3>
+<table>
+  <tr><th>Term</th><th>Definition</th></tr>
+  <tr><td>Redox reaction</td><td>Reaction involving transfer of electrons (simultaneous oxidation and reduction).</td></tr>
+  <tr><td>Oxidation</td><td>Loss of electrons; increase in oxidation number.</td></tr>
+  <tr><td>Reduction</td><td>Gain of electrons; decrease in oxidation number.</td></tr>
+  <tr><td>Oxidising agent</td><td>Electron acceptor; is itself reduced.</td></tr>
+  <tr><td>Reducing agent</td><td>Electron donor; is itself oxidised.</td></tr>
+  <tr><td>Oxidation number</td><td>Charge an atom would have if all bonds were ionic; tracks electron transfer.</td></tr>
+  <tr><td>Half-equation</td><td>Equation showing only oxidation or only reduction, including electrons.</td></tr>
+  <tr><td>Conjugate redox pair</td><td>Oxidised and reduced forms of a species linked by e<sup>−</sup> transfer.</td></tr>
+  <tr><td>Anode</td><td>Electrode where oxidation occurs.</td></tr>
+  <tr><td>Cathode</td><td>Electrode where reduction occurs.</td></tr>
+  <tr><td>Salt bridge</td><td>Maintains electrical neutrality and completes the circuit in a galvanic cell.</td></tr>
+  <tr><td>Standard electrode potential (E°)</td><td>Reduction potential of a half-cell vs the SHE under standard conditions.</td></tr>
+  <tr><td>SHE</td><td>Standard Hydrogen Electrode; reference half-cell defined as 0.00 V.</td></tr>
+  <tr><td>Electrochemical series</td><td>List of half-reactions ordered by E° (oxidising strength).</td></tr>
+  <tr><td>Electrolysis</td><td>Using electrical energy to drive a non-spontaneous redox reaction.</td></tr>
+  <tr><td>Overpotential</td><td>Extra voltage (above E°) needed to discharge a species, esp. gases.</td></tr>
+  <tr><td>Faraday constant (F)</td><td>Charge of one mole of electrons = 96 500 C mol<sup>−1</sup>.</td></tr>
+  <tr><td>Disproportionation</td><td>One element is simultaneously oxidised and reduced.</td></tr>
+</table>
+
+<!-- ============ APPENDIX ============ -->
+<h2 class="newpage"><span class="num">A</span> Appendix — Standard Reduction Potentials (25 °C)</h2>
+<p class="small">All half-equations are written as <strong>reductions</strong>. Strongest oxidising agents are at the top (most positive E°); strongest reducing agents (reduced forms) are at the bottom (most negative E°). Values are indicative — always use the exact values on your exam data sheet.</p>
+
+<table class="srp center">
+  <caption>Ordered from strongest oxidant (top) to strongest reductant (bottom)</caption>
+  <tr><th style="text-align:left;">Reduction half-equation</th><th>E° (V)</th><th>Note</th></tr>
+  <tr><td style="text-align:left;">F<sub>2</sub>(g) + 2e<sup>−</sup> → 2F<sup>−</sup></td><td class="pos">+2.87</td><td>strongest oxidant</td></tr>
+  <tr><td style="text-align:left;">H<sub>2</sub>O<sub>2</sub> + 2H<sup>+</sup> + 2e<sup>−</sup> → 2H<sub>2</sub>O</td><td class="pos">+1.77</td><td></td></tr>
+  <tr><td style="text-align:left;">MnO<sub>4</sub><sup>−</sup> + 8H<sup>+</sup> + 5e<sup>−</sup> → Mn<sup>2+</sup> + 4H<sub>2</sub>O</td><td class="pos">+1.51</td><td>acidified permanganate</td></tr>
+  <tr><td style="text-align:left;">Cl<sub>2</sub>(g) + 2e<sup>−</sup> → 2Cl<sup>−</sup></td><td class="pos">+1.36</td><td></td></tr>
+  <tr><td style="text-align:left;">Cr<sub>2</sub>O<sub>7</sub><sup>2−</sup> + 14H<sup>+</sup> + 6e<sup>−</sup> → 2Cr<sup>3+</sup> + 7H<sub>2</sub>O</td><td class="pos">+1.33</td><td>acidified dichromate</td></tr>
+  <tr><td style="text-align:left;">O<sub>2</sub>(g) + 4H<sup>+</sup> + 4e<sup>−</sup> → 2H<sub>2</sub>O</td><td class="pos">+1.23</td><td></td></tr>
+  <tr><td style="text-align:left;">Br<sub>2</sub>(l) + 2e<sup>−</sup> → 2Br<sup>−</sup></td><td class="pos">+1.09</td><td></td></tr>
+  <tr><td style="text-align:left;">Ag<sup>+</sup> + e<sup>−</sup> → Ag(s)</td><td class="pos">+0.80</td><td></td></tr>
+  <tr><td style="text-align:left;">Fe<sup>3+</sup> + e<sup>−</sup> → Fe<sup>2+</sup></td><td class="pos">+0.77</td><td></td></tr>
+  <tr><td style="text-align:left;">O<sub>2</sub>(g) + 2H<sub>2</sub>O + 4e<sup>−</sup> → 4OH<sup>−</sup></td><td class="pos">+0.40</td><td></td></tr>
+  <tr><td style="text-align:left;">Cu<sup>2+</sup> + 2e<sup>−</sup> → Cu(s)</td><td class="pos">+0.34</td><td></td></tr>
+  <tr><td style="text-align:left;">Sn<sup>4+</sup> + 2e<sup>−</sup> → Sn<sup>2+</sup></td><td class="pos">+0.15</td><td></td></tr>
+  <tr class="she"><td style="text-align:left;">2H<sup>+</sup> + 2e<sup>−</sup> → H<sub>2</sub>(g)</td><td>0.00</td><td>SHE reference</td></tr>
+  <tr><td style="text-align:left;">Pb<sup>2+</sup> + 2e<sup>−</sup> → Pb(s)</td><td class="neg">−0.13</td><td></td></tr>
+  <tr><td style="text-align:left;">Sn<sup>2+</sup> + 2e<sup>−</sup> → Sn(s)</td><td class="neg">−0.14</td><td></td></tr>
+  <tr><td style="text-align:left;">Ni<sup>2+</sup> + 2e<sup>−</sup> → Ni(s)</td><td class="neg">−0.25</td><td></td></tr>
+  <tr><td style="text-align:left;">Fe<sup>2+</sup> + 2e<sup>−</sup> → Fe(s)</td><td class="neg">−0.44</td><td></td></tr>
+  <tr><td style="text-align:left;">Zn<sup>2+</sup> + 2e<sup>−</sup> → Zn(s)</td><td class="neg">−0.76</td><td>used in galvanising</td></tr>
+  <tr><td style="text-align:left;">2H<sub>2</sub>O + 2e<sup>−</sup> → H<sub>2</sub>(g) + 2OH<sup>−</sup></td><td class="neg">−0.83</td><td>water reduction</td></tr>
+  <tr><td style="text-align:left;">Al<sup>3+</sup> + 3e<sup>−</sup> → Al(s)</td><td class="neg">−1.66</td><td></td></tr>
+  <tr><td style="text-align:left;">Mg<sup>2+</sup> + 2e<sup>−</sup> → Mg(s)</td><td class="neg">−2.37</td><td></td></tr>
+  <tr><td style="text-align:left;">Na<sup>+</sup> + e<sup>−</sup> → Na(s)</td><td class="neg">−2.71</td><td></td></tr>
+  <tr><td style="text-align:left;">Ca<sup>2+</sup> + 2e<sup>−</sup> → Ca(s)</td><td class="neg">−2.87</td><td></td></tr>
+  <tr><td style="text-align:left;">K<sup>+</sup> + e<sup>−</sup> → K(s)</td><td class="neg">−2.93</td><td></td></tr>
+  <tr><td style="text-align:left;">Li<sup>+</sup> + e<sup>−</sup> → Li(s)</td><td class="neg">−3.04</td><td>strongest reductant</td></tr>
+</table>
+
+<div class="box key avoid">
+  <span class="h">Useful constants &amp; data</span>
+  <ul>
+    <li>Faraday constant F = 96 500 C mol<sup>−1</sup></li>
+    <li>Charge on one electron = 1.602 × 10<sup>−19</sup> C</li>
+    <li>Avogadro constant N<sub>A</sub> = 6.022 × 10<sup>23</sup> mol<sup>−1</sup></li>
+    <li>Molar gas volume V<sub>m</sub> = 24.79 L mol<sup>−1</sup> (25 °C, 100 kPa) · 22.71 L mol<sup>−1</sup> (0 °C, 100 kPa)</li>
+    <li>Q = It &nbsp;·&nbsp; n(e<sup>−</sup>) = Q/F &nbsp;·&nbsp; E°<sub>cell</sub> = E°<sub>cathode</sub> − E°<sub>anode</sub> &nbsp;·&nbsp; ΔG° = −nFE°<sub>cell</sub></li>
+  </ul>
+</div>
+
+<p class="small" style="margin-top:20px; text-align:center; color:#829ab1;">End of notes — Redox &amp; Electrochemistry · ATAR Year 12 Chemistry. Review the data sheet and worked examples regularly, and practise balancing half-equations under timed conditions.</p>
+
+</body>
+</html>
