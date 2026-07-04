@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>ATAR Year 12 Chemistry — Chapters 8 &amp; 9: Redox &amp; Galvanic Cells</title>
+<title>ATAR Year 12 Chemistry — Chapters 8–10: Redox, Galvanic Cells &amp; Electrolysis</title>
 <style>
   @page {
     size: A4;
     margin: 15mm 15mm 16mm 15mm;
     @bottom-left  { content: "ATAR Year 12 Chemistry"; font-size:7.5pt; color:#555; font-family:"DejaVu Sans",sans-serif; }
-    @bottom-center{ content: "Ch 8–9: Redox & Galvanic Cells"; font-size:7.5pt; color:#555; font-family:"DejaVu Sans",sans-serif; }
+    @bottom-center{ content: "Ch 8–10: Redox, Cells & Electrolysis"; font-size:7.5pt; color:#555; font-family:"DejaVu Sans",sans-serif; }
     @bottom-right { content: "p. " counter(page) " / " counter(pages); font-size:7.5pt; color:#555; font-family:"DejaVu Sans",sans-serif; }
   }
   * { box-sizing: border-box; }
@@ -71,9 +71,9 @@
 
 <div class="title">
   <div class="kicker">ATAR · Year 12 Chemistry · Unit 3 · Area of Study 3</div>
-  <h1>Redox Reactions &amp; Galvanic Cells</h1>
-  <div class="sub">Study Notes aligned to Chapters 8 &amp; 9</div>
-  <div class="desc">Chapter 8 Redox reactions (8.1–8.4) &amp; Chapter 9 Galvanic cells (9.1–9.5): oxidation &amp; reduction, oxidation numbers, half-equations, the reactivity series, galvanic cells, the electrochemical series, predicting reactions, everyday power sources &amp; corrosion. <em>Electrolysis is Chapter 10 and is not covered here.</em></div>
+  <h1>Redox, Galvanic Cells &amp; Electrolysis</h1>
+  <div class="sub">Study Notes aligned to Chapters 8, 9 &amp; 10</div>
+  <div class="desc">Chapter 8 Redox reactions (8.1–8.4), Chapter 9 Galvanic cells (9.1–9.5) &amp; Chapter 10 Electrolysis (10.1–10.2): oxidation &amp; reduction, oxidation numbers, half-equations, the reactivity series, galvanic cells, the electrochemical series, predicting reactions, everyday power sources, corrosion, electrolytic cells, competition at electrodes, quantitative electrolysis &amp; industrial applications.</div>
 </div>
 
 <ul class="toc">
@@ -88,6 +88,9 @@
   <li><span class="n">9.3</span>Predicting direct redox reactions</li>
   <li><span class="n">9.4</span>Everyday sources of power</li>
   <li><span class="n">9.5</span>Corrosion</li>
+  <li class="cap">Chapter 10 — Electrolysis</li>
+  <li><span class="n">10.1</span>Electrolytic cells</li>
+  <li><span class="n">10.2</span>Industrial applications</li>
   <li class="cap">Reference</li>
   <li><span class="n">R1</span>Exam traps &amp; glossary</li>
   <li><span class="n">R2</span>Standard reduction potential data</li>
@@ -576,6 +579,193 @@
 <figcaption><strong>Figure 7.</strong> Cathodic (sacrificial) protection. A more reactive metal (Mg or Zn) is connected to the buried iron. The block is the anode and is oxidised (Mg → Mg²⁺ + 2e⁻); its electrons flow into the iron, forcing the iron to be the cathode so it cannot corrode. The sacrificial anode is consumed and replaced periodically.</figcaption>
 </figure>
 
+<div class="part">Chapter 10 — Electrolysis</div>
+
+<!-- 10.1 -->
+<h2><span class="num">10.1</span>Electrolytic Cells</h2>
+<p class="lead"><strong>Electrolysis</strong> uses electrical energy from an external DC power supply to force a <strong>non-spontaneous</strong> redox reaction to occur (E°<sub>cell</sub> &lt; 0). It is the reverse energy conversion of a galvanic cell: <strong>electrical → chemical</strong> energy.</p>
+<table>
+  <tr><th>Feature</th><th>Galvanic cell</th><th>Electrolytic cell</th></tr>
+  <tr><td>Energy</td><td>chemical → electrical</td><td>electrical → chemical</td></tr>
+  <tr><td>Spontaneity</td><td>spontaneous (E°&gt;0)</td><td>non-spontaneous (E°&lt;0)</td></tr>
+  <tr><td>Power supply</td><td>none (is the source)</td><td>required</td></tr>
+  <tr><td>Anode sign</td><td>negative (−)</td><td><strong>positive (+)</strong></td></tr>
+  <tr><td>Cathode sign</td><td>positive (+)</td><td><strong>negative (−)</strong></td></tr>
+</table>
+<div class="box key">
+  <span class="h">What stays the same in both cell types</span>
+  Oxidation is <strong>always</strong> at the anode and reduction <strong>always</strong> at the cathode; electrons <strong>always</strong> travel anode → cathode. Only the <strong>polarity (+/−) flips</strong> in an electrolytic cell.
+</div>
+
+<figure>
+<svg viewBox="0 0 620 368" xmlns="http://www.w3.org/2000/svg">
+  <rect x="114" y="150" width="392" height="170" fill="#e6e6e6"/>
+  <path d="M110,150 L110,320 L510,320 L510,150" fill="none" stroke="#000" stroke-width="2.5"/>
+  <text x="310" y="306" text-anchor="middle" font-size="11">electrolyte (molten salt or aqueous solution)</text>
+  <rect x="268" y="38" width="84" height="36" fill="#fff" stroke="#000" stroke-width="1.6"/>
+  <text x="310" y="61" text-anchor="middle" font-size="11">DC supply</text>
+  <text x="260" y="52" text-anchor="end" font-size="14" font-weight="bold">−</text>
+  <text x="360" y="52" text-anchor="start" font-size="14" font-weight="bold">+</text>
+  <line x1="268" y1="56" x2="200" y2="56" stroke="#000" stroke-width="1.6"/>
+  <line x1="200" y1="56" x2="200" y2="110" stroke="#000" stroke-width="1.6"/>
+  <line x1="352" y1="56" x2="420" y2="56" stroke="#000" stroke-width="1.6"/>
+  <line x1="420" y1="56" x2="420" y2="110" stroke="#000" stroke-width="1.6"/>
+  <rect x="192" y="110" width="16" height="170" fill="#c4c4c4" stroke="#000" stroke-width="1.5"/>
+  <rect x="412" y="110" width="16" height="170" fill="#c4c4c4" stroke="#000" stroke-width="1.5"/>
+  <polygon points="195,92 200,103 205,92"/>
+  <text x="182" y="90" text-anchor="end" font-size="12">e⁻</text>
+  <polygon points="415,103 420,92 425,103"/>
+  <text x="438" y="90" text-anchor="start" font-size="12">e⁻</text>
+  <text x="176" y="122" text-anchor="middle" font-size="13" font-weight="bold">−</text>
+  <text x="444" y="122" text-anchor="middle" font-size="13" font-weight="bold">+</text>
+  <text x="200" y="344" text-anchor="middle" font-size="12" font-weight="bold">CATHODE (−)</text>
+  <text x="200" y="359" text-anchor="middle" font-size="10">reduction</text>
+  <text x="420" y="344" text-anchor="middle" font-size="12" font-weight="bold">ANODE (+)</text>
+  <text x="420" y="359" text-anchor="middle" font-size="10">oxidation</text>
+</svg>
+<figcaption><strong>Figure 8.</strong> Electrolytic cell. The DC supply pushes electrons onto the cathode (−) and pulls them from the anode (+). Note the polarity is reversed from a galvanic cell, but oxidation is still at the anode and reduction still at the cathode.</figcaption>
+</figure>
+
+<h3>At the negative electrode (cathode) — reduction</h3>
+<p>The cathode is joined to the <strong>negative</strong> terminal, so electrons are pushed onto it. <strong>Cations</strong> (or water) are attracted here and <strong>gain electrons</strong> (reduction). In a molten salt, the metal cation is reduced to the metal.</p>
+<h3>At the positive electrode (anode) — oxidation</h3>
+<p>The anode is joined to the <strong>positive</strong> terminal, so electrons are pulled from it. <strong>Anions</strong> (or water) migrate here and <strong>lose electrons</strong> (oxidation).</p>
+<div class="box ex">
+  <span class="h">Molten sodium chloride (no water present)</span>
+  <div class="eq">Cathode (−): Na<sup>+</sup> + e<sup>−</sup> → Na(l) &nbsp;&nbsp; Anode (+): 2Cl<sup>−</sup> → Cl<sub>2</sub>(g) + 2e<sup>−</sup></div>
+  <span class="note">Only the salt's ions are present, so they are discharged directly: sodium metal forms at the cathode and chlorine gas at the anode.</span>
+</div>
+
+<h3>Competition at the electrodes (aqueous solutions)</h3>
+<p>In water, <strong>H<sub>2</sub>O itself can be reduced or oxidised</strong>, competing with the dissolved ions:</p>
+<div class="eq">Cathode: 2H<sub>2</sub>O + 2e<sup>−</sup> → H<sub>2</sub>(g) + 2OH<sup>−</sup> &nbsp;(E° = −0.83 V)</div>
+<div class="eq">Anode: 2H<sub>2</sub>O → O<sub>2</sub>(g) + 4H<sup>+</sup> + 4e<sup>−</sup> &nbsp;(from O<sub>2</sub>/H<sub>2</sub>O, E° = +1.23 V)</div>
+<div class="box key">
+  <span class="h">Deciding the product at each electrode</span>
+  <ol style="margin:0;">
+    <li>List every species that could react there (ions + water).</li>
+    <li><strong>Cathode:</strong> the species with the <strong>highest E°</strong> is reduced.</li>
+    <li><strong>Anode:</strong> the species with the <strong>lowest (most negative) E°</strong> is oxidised.</li>
+    <li>Then apply the practical factors below.</li>
+  </ol>
+</div>
+<table>
+  <tr><th>Factor</th><th>Effect on the product</th></tr>
+  <tr><td><strong>E° value</strong></td><td>The primary predictor.</td></tr>
+  <tr><td><strong>Concentration</strong></td><td>A high ion concentration can cause it to discharge in preference to water (e.g. concentrated Cl<sup>−</sup> → Cl<sub>2</sub> rather than O<sub>2</sub>).</td></tr>
+  <tr><td><strong>Overpotential</strong></td><td>Extra voltage needed to release <strong>gases</strong> (especially O<sub>2</sub>); this is why Cl<sub>2</sub> often forms instead of O<sub>2</sub>.</td></tr>
+  <tr><td><strong>Electrode type</strong></td><td>Inert (Pt, C) is unchanged; an <strong>active</strong> electrode (e.g. Cu) may itself be oxidised at the anode.</td></tr>
+</table>
+<div class="box ex">
+  <span class="h">Example — aqueous CuSO<sub>4</sub> with inert electrodes</span>
+  <div class="eq">Cathode: Cu<sup>2+</sup> (+0.34) vs H<sub>2</sub>O (−0.83) → <strong>Cu(s) deposited</strong></div>
+  <div class="eq">Anode: SO<sub>4</sub><sup>2−</sup> very hard to oxidise → water oxidised → <strong>O<sub>2</sub>(g)</strong> + H<sup>+</sup></div>
+  <span class="note">Copper plates onto the cathode; O<sub>2</sub> bubbles at the anode; the solution becomes acidic.</span>
+</div>
+
+<h3>Quantitative electrolysis (Faraday's laws)</h3>
+<p>The amount of substance formed at an electrode is proportional to the electric charge passed.</p>
+<div class="box def">
+  <span class="h">Formulae &amp; method</span>
+  <table class="c" style="margin:4px 0;">
+    <tr><th>Formula</th><th>Terms</th></tr>
+    <tr><td>Q = I × t</td><td>Q charge (C); I current (A); t time (<strong>seconds</strong>)</td></tr>
+    <tr><td>n(e<sup>−</sup>) = Q ÷ F</td><td>F = 96 500 C mol<sup>−1</sup></td></tr>
+    <tr><td>half-equation ratio</td><td>relate mol e<sup>−</sup> → mol product</td></tr>
+    <tr><td>m = n × M &nbsp;/&nbsp; V = n × V<sub>m</sub></td><td>convert to mass or gas volume</td></tr>
+  </table>
+  Method: (1) Q = It → (2) n(e<sup>−</sup>) = Q/96 500 → (3) read electron:product ratio → (4) mol product → (5) convert to mass/volume.
+</div>
+<div class="box ex">
+  <span class="h">Worked example — silver electroplating</span>
+  A current of 2.00 A flows for 30.0 min through AgNO<sub>3</sub>. Mass of Ag deposited?
+  <div class="eq">Q = It = 2.00 × (30.0×60) = 3600 C</div>
+  <div class="eq">n(e<sup>−</sup>) = 3600 ÷ 96 500 = 0.03731 mol</div>
+  <div class="eq">Ag<sup>+</sup> + e<sup>−</sup> → Ag (1:1) → n(Ag) = 0.03731 mol</div>
+  <div class="eq">m = 0.03731 × 107.9 = <strong>4.03 g Ag</strong></div>
+</div>
+<div class="box warn">
+  <span class="h">Calculation traps</span>
+  Convert time to <strong>seconds</strong>; use the correct <strong>electron ratio</strong> (Cu<sup>2+</sup> needs 2e<sup>−</sup>, Al<sup>3+</sup> needs 3e<sup>−</sup>); cells <strong>in series</strong> pass the <strong>same charge</strong>.
+</div>
+
+<!-- 10.2 -->
+<h2><span class="num">10.2</span>Industrial Applications of Electrolysis</h2>
+
+<h3>Electroplating</h3>
+<p>Coating an object with a thin metal layer. The <strong>object is the cathode</strong>; the <strong>pure plating metal is the anode</strong>; the electrolyte contains ions of the plating metal, so its concentration stays roughly constant as the anode dissolves.</p>
+
+<figure>
+<svg viewBox="0 0 620 372" xmlns="http://www.w3.org/2000/svg">
+  <rect x="114" y="150" width="392" height="170" fill="#e6e6e6"/>
+  <path d="M110,150 L110,320 L510,320 L510,150" fill="none" stroke="#000" stroke-width="2.5"/>
+  <text x="310" y="308" text-anchor="middle" font-size="11">AgNO₃(aq) — contains Ag⁺ ions</text>
+  <rect x="268" y="38" width="84" height="36" fill="#fff" stroke="#000" stroke-width="1.6"/>
+  <text x="310" y="61" text-anchor="middle" font-size="11">DC supply</text>
+  <text x="260" y="52" text-anchor="end" font-size="14" font-weight="bold">−</text>
+  <text x="360" y="52" text-anchor="start" font-size="14" font-weight="bold">+</text>
+  <line x1="268" y1="56" x2="200" y2="56" stroke="#000" stroke-width="1.6"/>
+  <line x1="200" y1="56" x2="200" y2="110" stroke="#000" stroke-width="1.6"/>
+  <line x1="352" y1="56" x2="420" y2="56" stroke="#000" stroke-width="1.6"/>
+  <line x1="420" y1="56" x2="420" y2="110" stroke="#000" stroke-width="1.6"/>
+  <rect x="192" y="110" width="16" height="170" fill="#9f9f9f" stroke="#000" stroke-width="1.5"/>
+  <rect x="412" y="110" width="16" height="170" fill="#c4c4c4" stroke="#000" stroke-width="1.5"/>
+  <line x1="360" y1="210" x2="250" y2="210" stroke="#000" stroke-width="1.3" stroke-dasharray="5,4"/>
+  <polygon points="250,205 241,210 250,215"/>
+  <text x="305" y="203" text-anchor="middle" font-size="11" class="cf">Ag⁺</text>
+  <polygon points="195,92 200,103 205,92"/>
+  <text x="182" y="90" text-anchor="end" font-size="12">e⁻</text>
+  <polygon points="415,103 420,92 425,103"/>
+  <text x="438" y="90" text-anchor="start" font-size="12">e⁻</text>
+  <text x="176" y="122" text-anchor="middle" font-size="13" font-weight="bold">−</text>
+  <text x="444" y="122" text-anchor="middle" font-size="13" font-weight="bold">+</text>
+  <text x="200" y="346" text-anchor="middle" font-size="12" font-weight="bold">OBJECT (cathode −)</text>
+  <text x="200" y="361" text-anchor="middle" font-size="10" class="cf">Ag⁺ + e⁻ → Ag</text>
+  <text x="420" y="346" text-anchor="middle" font-size="12" font-weight="bold">PURE Ag (anode +)</text>
+  <text x="420" y="361" text-anchor="middle" font-size="10" class="cf">Ag → Ag⁺ + e⁻</text>
+</svg>
+<figcaption><strong>Figure 9.</strong> Electroplating with silver. Ag⁺ is reduced onto the object (cathode); the pure silver anode dissolves to replenish Ag⁺, keeping the solution concentration roughly constant.</figcaption>
+</figure>
+
+<h3>Electrorefining of copper</h3>
+<p>Impure copper is the <strong>anode</strong> (it dissolves); pure copper deposits on the <strong>cathode</strong>. Less-reactive impurities (Ag, Au) fall below as "anode sludge"; more reactive metals stay dissolved.</p>
+
+<h3>Production of sodium — the Downs process</h3>
+<p>Sodium is too reactive to extract by chemical reduction, so <strong>molten NaCl</strong> is electrolysed (with CaCl<sub>2</sub> added to lower the melting point).</p>
+<div class="eq">Cathode: Na<sup>+</sup> + e<sup>−</sup> → Na(l) &nbsp;&nbsp; Anode: 2Cl<sup>−</sup> → Cl<sub>2</sub>(g) + 2e<sup>−</sup></div>
+
+<h3>Production of aluminium — the Hall–Héroult process</h3>
+<p>Purified aluminium oxide (Al<sub>2</sub>O<sub>3</sub>) is dissolved in molten <strong>cryolite</strong> (~950 °C) to lower the melting point, then electrolysed.</p>
+<div class="eq">Cathode: Al<sup>3+</sup> + 3e<sup>−</sup> → Al(l) &nbsp;&nbsp; Anode: 2O<sup>2−</sup> → O<sub>2</sub> + 4e<sup>−</sup></div>
+
+<figure>
+<svg viewBox="0 0 560 320" xmlns="http://www.w3.org/2000/svg">
+  <path d="M110,100 L110,280 L450,280 L450,100" fill="none" stroke="#000" stroke-width="2.5"/>
+  <path d="M126,112 L126,266 L434,266 L434,112" fill="none" stroke="#555" stroke-width="3"/>
+  <rect x="128" y="138" width="304" height="110" fill="#e6e6e6"/>
+  <rect x="128" y="248" width="304" height="18" fill="#9f9f9f"/>
+  <rect x="158" y="72" width="36" height="108" fill="#555" stroke="#000" stroke-width="1"/>
+  <rect x="262" y="72" width="36" height="108" fill="#555" stroke="#000" stroke-width="1"/>
+  <rect x="366" y="72" width="36" height="108" fill="#555" stroke="#000" stroke-width="1"/>
+  <line x1="176" y1="52" x2="384" y2="52" stroke="#000" stroke-width="2"/>
+  <line x1="176" y1="52" x2="176" y2="72" stroke="#000" stroke-width="1.6"/>
+  <line x1="280" y1="52" x2="280" y2="72" stroke="#000" stroke-width="1.6"/>
+  <line x1="384" y1="52" x2="384" y2="72" stroke="#000" stroke-width="1.6"/>
+  <line x1="384" y1="52" x2="410" y2="52" stroke="#000" stroke-width="1.6"/>
+  <text x="418" y="57" font-size="14" font-weight="bold">+</text>
+  <text x="280" y="42" text-anchor="middle" font-size="10">carbon anodes</text>
+  <line x1="110" y1="150" x2="84" y2="150" stroke="#000" stroke-width="1.6"/>
+  <text x="74" y="155" font-size="14" font-weight="bold">−</text>
+  <circle cx="176" cy="192" r="3" fill="none" stroke="#000"/>
+  <circle cx="280" cy="192" r="3" fill="none" stroke="#000"/>
+  <circle cx="384" cy="192" r="3" fill="none" stroke="#000"/>
+  <text x="280" y="261" text-anchor="middle" font-size="9">molten aluminium (tapped off)</text>
+  <text x="280" y="234" text-anchor="middle" font-size="8.5">Al₂O₃ dissolved in molten cryolite (~950 °C)</text>
+  <text x="280" y="300" text-anchor="middle" font-size="9">carbon lining = cathode (−)</text>
+</svg>
+<figcaption><strong>Figure 10.</strong> Extraction of aluminium (Hall–Héroult). Cathode (carbon lining): Al³⁺ + 3e⁻ → Al(l), which collects molten at the base and is tapped off. Anode (carbon blocks): 2O²⁻ → O₂ + 4e⁻; the hot O₂ burns the carbon anodes (C + O₂ → CO₂), so they wear away and are replaced.</figcaption>
+</figure>
+
 <div class="part">Reference</div>
 
 <!-- R1 -->
@@ -648,7 +838,7 @@
   <span class="h">Key relationship</span>
   E°<sub>cell</sub> = E°<sub>cathode</sub> − E°<sub>anode</sub> &nbsp;(positive ⟹ spontaneous galvanic reaction). ΔG° = −nFE°<sub>cell</sub>, F = 96 500 C mol<sup>−1</sup>.
 </div>
-<p class="small" style="text-align:center; margin-top:14px;">Aligned to Pearson Chemistry WA 12, Chapters 8 &amp; 9. Electrolysis (Chapter 10) is covered separately. Content written as original study notes.</p>
+<p class="small" style="text-align:center; margin-top:14px;">Aligned to Pearson Chemistry WA 12, Chapters 8, 9 &amp; 10. Content written as original study notes.</p>
 
 </body>
 </html>
