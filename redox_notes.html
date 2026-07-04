@@ -89,6 +89,13 @@
   .toc li { padding:2px 0; font-size:9.3pt; break-inside:avoid; }
   .toc .n { display:inline-block; width:22px; font-weight:700; }
   .small { font-size:8.4pt; color:#333; }
+
+  /* ---------- Figures / diagrams ---------- */
+  figure { margin:10px 0; padding:0; text-align:center; page-break-inside:avoid; }
+  figure svg { width:100%; max-width:500px; height:auto; }
+  figcaption { font-size:8.3pt; color:#222; margin-top:2px; text-align:center; }
+  svg text { font-family:"DejaVu Sans", sans-serif; fill:#000; }
+  svg .cf { font-family:"DejaVu Serif", serif; }
 </style>
 </head>
 <body>
@@ -254,6 +261,58 @@
   <div class="eq"><strong>Overall: Zn(s) + Cu<sup>2+</sup>(aq) → Zn<sup>2+</sup>(aq) + Cu(s) &nbsp; E°<sub>cell</sub> = +1.10 V</strong></div>
   <span class="note">Zn electrode loses mass; Cu electrode gains mass; [Cu<sup>2+</sup>] falls, [Zn<sup>2+</sup>] rises.</span>
 </div>
+<figure>
+<svg viewBox="0 0 640 392" xmlns="http://www.w3.org/2000/svg">
+  <!-- solutions -->
+  <rect x="74" y="206" width="154" height="112" fill="#e6e6e6"/>
+  <rect x="412" y="206" width="154" height="112" fill="#e6e6e6"/>
+  <!-- beakers (open top) -->
+  <path d="M70,150 L70,320 L232,320 L232,150" fill="none" stroke="#000" stroke-width="2.5"/>
+  <path d="M408,150 L408,320 L570,320 L570,150" fill="none" stroke="#000" stroke-width="2.5"/>
+  <!-- salt bridge tube -->
+  <path d="M165,215 L165,120 Q165,108 177,108 L463,108 Q475,108 475,120 L475,215 L461,215 L461,124 Q461,122 459,122 L181,122 Q179,122 179,124 L179,215 Z" fill="#ededed" stroke="#000" stroke-width="1.6"/>
+  <text x="320" y="100" text-anchor="middle" font-size="12">salt bridge (KNO₃)</text>
+  <!-- ion flow inside bridge (labels stacked above arrows, separated L/R) -->
+  <text x="252" y="150" text-anchor="middle" font-size="11">anions</text>
+  <line x1="284" y1="162" x2="244" y2="162" stroke="#000" stroke-width="1.4"/>
+  <polygon points="244,157 235,162 244,167"/>
+  <text x="388" y="150" text-anchor="middle" font-size="11">cations</text>
+  <line x1="356" y1="162" x2="396" y2="162" stroke="#000" stroke-width="1.4"/>
+  <polygon points="396,157 405,162 396,167"/>
+  <!-- electrodes -->
+  <rect x="142" y="118" width="16" height="150" fill="#c4c4c4" stroke="#000" stroke-width="1.5"/>
+  <rect x="482" y="118" width="16" height="150" fill="#c4c4c4" stroke="#000" stroke-width="1.5"/>
+  <text x="150" y="245" text-anchor="middle" font-size="12" font-weight="bold">Zn</text>
+  <text x="490" y="245" text-anchor="middle" font-size="12" font-weight="bold">Cu</text>
+  <!-- wires + voltmeter -->
+  <line x1="150" y1="118" x2="150" y2="70" stroke="#000" stroke-width="1.6"/>
+  <line x1="150" y1="70" x2="302" y2="70" stroke="#000" stroke-width="1.6"/>
+  <line x1="338" y1="70" x2="490" y2="70" stroke="#000" stroke-width="1.6"/>
+  <line x1="490" y1="70" x2="490" y2="118" stroke="#000" stroke-width="1.6"/>
+  <circle cx="320" cy="70" r="18" fill="#fff" stroke="#000" stroke-width="1.6"/>
+  <text x="320" y="76" text-anchor="middle" font-size="15" font-weight="bold">V</text>
+  <!-- electron flow (anode to cathode) -->
+  <polygon points="243,66 253,70 243,74"/>
+  <polygon points="410,66 420,70 410,74"/>
+  <text x="225" y="62" text-anchor="middle" font-size="12">e⁻</text>
+  <text x="392" y="62" text-anchor="middle" font-size="12">e⁻</text>
+  <!-- polarity -->
+  <text x="126" y="112" text-anchor="middle" font-size="13" font-weight="bold">−</text>
+  <text x="514" y="112" text-anchor="middle" font-size="13" font-weight="bold">+</text>
+  <!-- solution labels -->
+  <text x="150" y="310" text-anchor="middle" font-size="11">ZnSO₄(aq)</text>
+  <text x="490" y="310" text-anchor="middle" font-size="11">CuSO₄(aq)</text>
+  <!-- bottom labels -->
+  <text x="150" y="346" text-anchor="middle" font-size="12" font-weight="bold">ANODE (−)</text>
+  <text x="150" y="361" text-anchor="middle" font-size="10">oxidation</text>
+  <text x="490" y="346" text-anchor="middle" font-size="12" font-weight="bold">CATHODE (+)</text>
+  <text x="490" y="361" text-anchor="middle" font-size="10">reduction</text>
+  <text x="150" y="379" text-anchor="middle" font-size="10" class="cf">Zn → Zn²⁺ + 2e⁻</text>
+  <text x="490" y="379" text-anchor="middle" font-size="10" class="cf">Cu²⁺ + 2e⁻ → Cu</text>
+</svg>
+<figcaption><strong>Figure 1.</strong> Galvanic (Daniell) cell. Electrons flow through the wire from the Zn anode (−) to the Cu cathode (+); the salt bridge carries ions to keep each half-cell neutral (anions → anode, cations → cathode).</figcaption>
+</figure>
+
 <h4>Cell diagram notation</h4>
 <p>Anode on the left. Single line <strong>|</strong> = phase boundary; double line <strong>‖</strong> = salt bridge.</p>
 <div class="eqc">Zn(s) | Zn<sup>2+</sup>(aq) ‖ Cu<sup>2+</sup>(aq) | Cu(s)</div>
@@ -266,6 +325,37 @@
   <span class="h">Standard conditions (the "°")</span>
   Solutions <strong>1.0 mol L<sup>−1</sup></strong> · gases <strong>100 kPa</strong> · temperature <strong>25 °C (298 K)</strong> · measured vs the SHE.
 </div>
+<figure>
+<svg viewBox="0 0 460 352" xmlns="http://www.w3.org/2000/svg">
+  <!-- beaker -->
+  <rect x="84" y="176" width="292" height="138" fill="#e6e6e6"/>
+  <path d="M80,120 L80,314 L380,314 L380,120" fill="none" stroke="#000" stroke-width="2.5"/>
+  <text x="320" y="300" text-anchor="middle" font-size="11">H⁺(aq), 1.0 mol L⁻¹</text>
+  <!-- gas tube (open bottom) -->
+  <path d="M198,268 L198,72 Q198,70 200,70 L242,70 Q244,70 244,72 L244,268" fill="none" stroke="#000" stroke-width="1.6"/>
+  <!-- Pt electrode -->
+  <rect x="213" y="200" width="16" height="58" fill="#333" stroke="#000" stroke-width="1"/>
+  <!-- Pt connecting wire up to circuit -->
+  <line x1="221" y1="200" x2="221" y2="50" stroke="#000" stroke-width="1.6"/>
+  <text x="221" y="42" text-anchor="middle" font-size="10">to circuit</text>
+  <!-- Pt label -->
+  <line x1="229" y1="228" x2="300" y2="228" stroke="#000" stroke-width="1"/>
+  <text x="304" y="225" font-size="10">platinised</text>
+  <text x="304" y="237" font-size="10">Pt electrode</text>
+  <!-- H2 gas inlet (side) -->
+  <line x1="150" y1="96" x2="198" y2="96" stroke="#000" stroke-width="1.6"/>
+  <polygon points="192,91 202,96 192,101"/>
+  <text x="146" y="93" text-anchor="end" font-size="10">H₂(g)</text>
+  <text x="146" y="105" text-anchor="end" font-size="10">100 kPa</text>
+  <!-- bubbles -->
+  <circle cx="211" cy="250" r="3" fill="none" stroke="#000"/>
+  <circle cx="226" cy="242" r="3" fill="none" stroke="#000"/>
+  <circle cx="216" cy="234" r="3" fill="none" stroke="#000"/>
+  <!-- value -->
+  <text x="230" y="340" text-anchor="middle" font-size="12" font-weight="bold">E° ≡ 0.00 V (by definition)</text>
+</svg>
+<figcaption><strong>Figure 2.</strong> The Standard Hydrogen Electrode (SHE): H₂ gas at 100 kPa bubbled over an inert platinised Pt electrode in 1.0 mol L⁻¹ H⁺, at 25 °C. Half-cell: 2H⁺ + 2e⁻ ⇌ H₂; assigned E° = 0.00 V so all other potentials can be measured against it.</figcaption>
+</figure>
 <div class="box key">
   <span class="h">Reading the table (all values are reductions)</span>
   <ul style="margin:0;">
@@ -330,6 +420,41 @@
   <div class="eq">Cathode (−): Na<sup>+</sup> + e<sup>−</sup> → Na(l) &nbsp;&nbsp; Anode (+): 2Cl<sup>−</sup> → Cl<sub>2</sub>(g) + 2e<sup>−</sup></div>
   <span class="note">No water present, so only the salt's ions react.</span>
 </div>
+<figure>
+<svg viewBox="0 0 620 368" xmlns="http://www.w3.org/2000/svg">
+  <!-- container -->
+  <rect x="114" y="150" width="392" height="170" fill="#e6e6e6"/>
+  <path d="M110,150 L110,320 L510,320 L510,150" fill="none" stroke="#000" stroke-width="2.5"/>
+  <text x="310" y="306" text-anchor="middle" font-size="11">electrolyte (molten salt or solution)</text>
+  <!-- power supply -->
+  <rect x="268" y="38" width="84" height="36" fill="#fff" stroke="#000" stroke-width="1.6"/>
+  <text x="310" y="61" text-anchor="middle" font-size="11">DC supply</text>
+  <text x="260" y="52" text-anchor="end" font-size="14" font-weight="bold">−</text>
+  <text x="360" y="52" text-anchor="start" font-size="14" font-weight="bold">+</text>
+  <!-- wires -->
+  <line x1="268" y1="56" x2="200" y2="56" stroke="#000" stroke-width="1.6"/>
+  <line x1="200" y1="56" x2="200" y2="110" stroke="#000" stroke-width="1.6"/>
+  <line x1="352" y1="56" x2="420" y2="56" stroke="#000" stroke-width="1.6"/>
+  <line x1="420" y1="56" x2="420" y2="110" stroke="#000" stroke-width="1.6"/>
+  <!-- electrodes -->
+  <rect x="192" y="110" width="16" height="170" fill="#c4c4c4" stroke="#000" stroke-width="1.5"/>
+  <rect x="412" y="110" width="16" height="170" fill="#c4c4c4" stroke="#000" stroke-width="1.5"/>
+  <!-- electron flow: down into cathode (left), up out of anode (right) -->
+  <polygon points="195,92 200,103 205,92"/>
+  <text x="182" y="90" text-anchor="end" font-size="12">e⁻</text>
+  <polygon points="415,103 420,92 425,103"/>
+  <text x="438" y="90" text-anchor="start" font-size="12">e⁻</text>
+  <!-- polarity -->
+  <text x="176" y="122" text-anchor="middle" font-size="13" font-weight="bold">−</text>
+  <text x="444" y="122" text-anchor="middle" font-size="13" font-weight="bold">+</text>
+  <!-- bottom labels -->
+  <text x="200" y="344" text-anchor="middle" font-size="12" font-weight="bold">CATHODE (−)</text>
+  <text x="200" y="359" text-anchor="middle" font-size="10">reduction</text>
+  <text x="420" y="344" text-anchor="middle" font-size="12" font-weight="bold">ANODE (+)</text>
+  <text x="420" y="359" text-anchor="middle" font-size="10">oxidation</text>
+</svg>
+<figcaption><strong>Figure 3.</strong> Electrolytic cell. An external DC supply forces electrons to the cathode, driving a non-spontaneous reaction. Note the polarity is reversed vs a galvanic cell (anode +, cathode −), but oxidation is still at the anode and reduction still at the cathode.</figcaption>
+</figure>
 
 <!-- ================= 10 ================= -->
 <h2><span class="num">10</span>Predicting Electrolysis Products (Aqueous)</h2>
@@ -397,6 +522,46 @@
 <h4>Electroplating</h4>
 <p>Object = <strong>cathode</strong>; pure plating metal = <strong>anode</strong>; electrolyte contains that metal's ions.</p>
 <div class="eq">Cathode: M<sup>n+</sup> + n e<sup>−</sup> → M(s) &nbsp;&nbsp; Anode: M(s) → M<sup>n+</sup> + n e<sup>−</sup></div>
+<figure>
+<svg viewBox="0 0 620 372" xmlns="http://www.w3.org/2000/svg">
+  <!-- container + solution -->
+  <rect x="114" y="150" width="392" height="170" fill="#e6e6e6"/>
+  <path d="M110,150 L110,320 L510,320 L510,150" fill="none" stroke="#000" stroke-width="2.5"/>
+  <text x="310" y="308" text-anchor="middle" font-size="11">AgNO₃(aq) — contains Ag⁺ ions</text>
+  <!-- power supply -->
+  <rect x="268" y="38" width="84" height="36" fill="#fff" stroke="#000" stroke-width="1.6"/>
+  <text x="310" y="61" text-anchor="middle" font-size="11">DC supply</text>
+  <text x="260" y="52" text-anchor="end" font-size="14" font-weight="bold">−</text>
+  <text x="360" y="52" text-anchor="start" font-size="14" font-weight="bold">+</text>
+  <!-- wires -->
+  <line x1="268" y1="56" x2="200" y2="56" stroke="#000" stroke-width="1.6"/>
+  <line x1="200" y1="56" x2="200" y2="110" stroke="#000" stroke-width="1.6"/>
+  <line x1="352" y1="56" x2="420" y2="56" stroke="#000" stroke-width="1.6"/>
+  <line x1="420" y1="56" x2="420" y2="110" stroke="#000" stroke-width="1.6"/>
+  <!-- object (cathode) as a spoon-ish plate -->
+  <rect x="192" y="110" width="16" height="170" fill="#9f9f9f" stroke="#000" stroke-width="1.5"/>
+  <!-- pure silver anode -->
+  <rect x="412" y="110" width="16" height="170" fill="#c4c4c4" stroke="#000" stroke-width="1.5"/>
+  <!-- ion migration Ag+ toward cathode -->
+  <line x1="360" y1="210" x2="250" y2="210" stroke="#000" stroke-width="1.3" stroke-dasharray="5,4"/>
+  <polygon points="250,205 241,210 250,215"/>
+  <text x="305" y="203" text-anchor="middle" font-size="11">Ag⁺</text>
+  <!-- electron flow -->
+  <polygon points="195,92 200,103 205,92"/>
+  <text x="182" y="90" text-anchor="end" font-size="12">e⁻</text>
+  <polygon points="415,103 420,92 425,103"/>
+  <text x="438" y="90" text-anchor="start" font-size="12">e⁻</text>
+  <!-- polarity -->
+  <text x="176" y="122" text-anchor="middle" font-size="13" font-weight="bold">−</text>
+  <text x="444" y="122" text-anchor="middle" font-size="13" font-weight="bold">+</text>
+  <!-- labels -->
+  <text x="200" y="346" text-anchor="middle" font-size="12" font-weight="bold">OBJECT (cathode −)</text>
+  <text x="200" y="361" text-anchor="middle" font-size="10" class="cf">Ag⁺ + e⁻ → Ag</text>
+  <text x="420" y="346" text-anchor="middle" font-size="12" font-weight="bold">PURE Ag (anode +)</text>
+  <text x="420" y="361" text-anchor="middle" font-size="10" class="cf">Ag → Ag⁺ + e⁻</text>
+</svg>
+<figcaption><strong>Figure 4.</strong> Electroplating with silver. The object is the cathode (Ag⁺ is reduced onto it); the pure silver anode dissolves to replenish Ag⁺, so the solution concentration stays roughly constant.</figcaption>
+</figure>
 <h4>Electrorefining of copper</h4>
 <p>Impure Cu = anode (dissolves); pure Cu deposits on the cathode. Ag/Au fall as "anode sludge"; more reactive metals stay in solution.</p>
 <h4>Extraction of reactive metals (aluminium — Hall–Héroult)</h4>
@@ -412,6 +577,41 @@
   <div class="eq">Cathodic: O<sub>2</sub>(g) + 2H<sub>2</sub>O(l) + 4e<sup>−</sup> → 4OH<sup>−</sup>(aq)</div>
   <span class="note">Fe<sup>2+</sup> is further oxidised by O<sub>2</sub> to hydrated iron(III) oxide, Fe<sub>2</sub>O<sub>3</sub>·xH<sub>2</sub>O = rust.</span>
 </div>
+<figure>
+<svg viewBox="0 0 540 286" xmlns="http://www.w3.org/2000/svg">
+  <!-- iron block -->
+  <rect x="50" y="172" width="440" height="70" fill="#cfcfcf" stroke="#000" stroke-width="2"/>
+  <text x="270" y="236" text-anchor="middle" font-size="12" font-weight="bold">iron (Fe)</text>
+  <!-- water droplet -->
+  <path d="M150,172 Q150,72 270,72 Q390,72 390,172 Z" fill="#e6e6e6" stroke="#000" stroke-width="1.8"/>
+  <text x="270" y="96" text-anchor="middle" font-size="10.5">water droplet (electrolyte)</text>
+  <!-- O2 from air into edges -->
+  <line x1="180" y1="52" x2="188" y2="86" stroke="#000" stroke-width="1.4"/>
+  <polygon points="183,78 190,90 190,77"/>
+  <line x1="360" y1="52" x2="352" y2="86" stroke="#000" stroke-width="1.4"/>
+  <polygon points="357,77 350,90 357,78"/>
+  <text x="176" y="46" text-anchor="middle" font-size="10">O₂</text>
+  <text x="364" y="46" text-anchor="middle" font-size="10">O₂</text>
+  <!-- region labels -->
+  <text x="270" y="150" text-anchor="middle" font-size="11" font-weight="bold">anode</text>
+  <text x="270" y="162" text-anchor="middle" font-size="9">(low O₂)</text>
+  <text x="188" y="150" text-anchor="middle" font-size="11" font-weight="bold">cathode</text>
+  <text x="188" y="162" text-anchor="middle" font-size="9">(high O₂)</text>
+  <text x="352" y="150" text-anchor="middle" font-size="11" font-weight="bold">cathode</text>
+  <text x="352" y="162" text-anchor="middle" font-size="9">(high O₂)</text>
+  <!-- rust bumps -->
+  <path d="M222,172 Q230,160 238,172" fill="#8a8a8a" stroke="#000" stroke-width="0.8"/>
+  <path d="M302,172 Q310,160 318,172" fill="#8a8a8a" stroke="#000" stroke-width="0.8"/>
+  <!-- electron flow in the metal from anode(centre) to cathodes(edges) -->
+  <line x1="255" y1="210" x2="120" y2="210" stroke="#000" stroke-width="1.4"/>
+  <polygon points="120,205 111,210 120,215"/>
+  <line x1="285" y1="210" x2="420" y2="210" stroke="#000" stroke-width="1.4"/>
+  <polygon points="420,205 429,210 420,215"/>
+  <text x="180" y="205" text-anchor="middle" font-size="10">e⁻</text>
+  <text x="360" y="205" text-anchor="middle" font-size="10">e⁻</text>
+</svg>
+<figcaption><strong>Figure 5.</strong> Rusting of iron under a water droplet. Centre (low O₂) = anode: Fe → Fe²⁺ + 2e⁻. Edges (high O₂) = cathode: O₂ + 2H₂O + 4e⁻ → 4OH⁻. Electrons travel through the metal; Fe²⁺ and OH⁻ meet to deposit rust, Fe₂O₃·xH₂O.</figcaption>
+</figure>
 <table>
   <tr><th>Method</th><th>How it works</th></tr>
   <tr><td><strong>Barrier</strong> (paint, oil, plastic)</td><td>Excludes water/O<sub>2</sub>; fails if scratched.</td></tr>
