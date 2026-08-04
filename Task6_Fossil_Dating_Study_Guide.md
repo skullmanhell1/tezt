@@ -31,6 +31,8 @@
 
 > Note: the outline names the task but does **not** state its weighting, duration, or format. Because it is called an *"Investigating…"* task and the syllabus dot point about **graphical representation** is explicitly listed, expect a **Science Inquiry / data-analysis style task**: decay curves, stratigraphic columns, half-life calculations, and evaluation of reliability, validity and limitations. It maps directly onto textbook **Activity 11.1 (Investigating radioisotope methods of dating)** and **Activity 11.2 (Investigating stratigraphy)** — do both of these before the task.
 
+Every question set in the chapter is worked in **§10** — Questions 11.1–11.4 and the end-of-chapter Review Questions.
+
 Also expect the Week 1 **Science Inquiry Skills** to be assessed alongside the content: hypotheses and predictions, analysing data, identifying trends/patterns, discussing measurement error, instrument accuracy, procedure and sample size as sources of limitation, and justifying conclusions with evidence.
 
 ---
@@ -385,7 +387,88 @@ The outline says **construction is not required**, but you still need to be able
 
 ---
 
-## 10. Chapter 11 Review Questions (pp. 320–321) — the set to work through
+## 10. Every question set in Chapter 11 — worked
+
+Chapter 11 has four in-chapter question sets (Questions 11.1–11.4) plus the end-of-chapter Review Questions. All five are covered below.
+
+### 10.1 Questions 11.1 (p. 299) — fossils and fossil formation
+
+**Recall knowledge**
+
+1. **What is a fossil?** Any preserved trace left by an organism that lived long ago — bones, teeth or shells, but also footprints, burrows, faeces or impressions of part or all of a plant or animal.
+2. **Conditions needed for fossils to form:** rapid burial (drifting sand, river mud, volcanic ash, or deliberate burial); the presence of hard body parts; the absence of decay organisms and oxygen; and a long period of stability with the remains left undisturbed. Alkaline sediment gives the best bone preservation.
+3. **Why fossils are often found near lakes and rivers:** these environments build up sediment quickly — when rivers flood or the water flow slows, mud and silt are deposited rapidly. Remains are therefore buried before decomposers and scavengers can destroy them, and the fine waterborne sediment also seals them off from oxygen.
+4. **Why hand tools rather than earthmoving equipment:** soil must be removed gently so that fragile fossils and artefacts are not broken, scratched or displaced. Hand excavation preserves the exact position of each item (which is the evidence for its relative age and its association with other finds) and allows the removed soil to be sieved so even tiny fragments are recovered. Machinery would shatter and scatter the evidence.
+5. **Artefacts:** objects deliberately made or modified by humans — for example **stone tools**; also beads, carvings, charcoal from cooking fires and cave paintings. They are frequently found in association with hominin fossils and provide evidence of behaviour, diet and technology.
+
+**Apply knowledge**
+
+6. **Why usually bones or teeth, not skin, muscle or organs:** bones and teeth are hard, heavily mineralised structures, so they resist decay, physical damage and scavenging, and their mineral content is readily replaced by new minerals during petrification. Soft tissues are rapidly broken down by decomposers and scavengers after death, so they are only preserved under exceptional oxygen-free conditions.
+7. **Soft tissue in acidic soil vs bone in alkaline soil:** in wet, **acidic**, oxygen-free soils such as peat, the acidity, waterlogging, low temperature and absence of oxygen inhibit decay organisms, so skin, hair and gut contents can survive — but the acid dissolves the mineral component of bone, so the skeleton is demineralised or destroyed. In **alkaline** soils the bone minerals are *not* dissolved; instead new minerals such as lime or iron oxide are deposited in the pores of the bone, replacing the organic matter (~35% by weight) and petrifying it while preserving structural detail. Both cases also require **rapid burial** and a **long undisturbed period**; the soft-tissue case additionally requires the exclusion of oxygen and decomposers.
+
+### 10.2 Questions 11.2 (p. 305) — dating fossils
+
+**Recall knowledge**
+
+1. **Absolute vs relative dating:** absolute dating gives the actual age of a specimen in years; relative dating only establishes whether one specimen is older or younger than another (a sequence of events), not an age in years.
+2. **Isotopes** are atoms of the same element with the same number of protons but different numbers of neutrons. Three isotopes of potassium: **potassium-39, potassium-40 and potassium-41**.
+3. **How the amount of K-40 gives an age:** K-40 is radioactive and decays to calcium-40 and argon-40 at a constant, known rate (half-life 1.25 billion years). As the rock ages the proportion of K-40 falls while Ar-40 rises, so measuring the K-40 : Ar-40 ratio gives the number of half-lives that have elapsed, and therefore the age of the rock.
+4. **Samples datable by potassium–argon:** volcanic material — lava and volcanic ash/deposits — that is older than about 200 000 years. The fossil's age is then *inferred* from the age of volcanic rock of the same age.
+5. **Samples datable by carbon-14:** material that was once living and still contains organic carbon — charcoal, wood, bone collagen, plant remains, shell, and organic binders in pigments — up to about 60 000 years old.
+6. **Half-life** is the time required for half of any quantity of a radioactive isotope to decay into a stable form. C-14 = **5730 ± 40 years**; K-40 = **1.25 billion years** (1250 million).
+7. **Dating a wooden artefact:** radiocarbon (carbon-14) dating, because wood contains organic carbon; or **dendrochronology** (tree-ring dating) if the growth rings are intact and the wood is less than about 9000 years old.
+8. **Why superposition needs other factors considered:** the sequence may have been disturbed. Distortions of Earth's crust can fold, fault, tilt or completely invert strata; erosion can remove layers; and specimens can be introduced *after* deposition by burrowing animals or by humans digging or burying — in which case a specimen may be younger than layers lying above it.
+9. **Index fossils** are fossils of organisms that existed for only a short period of time, were widely distributed, abundant and easily identified. Because their presence pins a layer to a narrow time window, finding the same index fossil in strata at different locations shows those strata are the same age. This allows **correlation** of rock layers hundreds or thousands of kilometres apart and makes relative dating far more precise.
+10. **Reasons for gaps in the fossil record:** fossilisation needs a rare combination of conditions, so it is a chance event; soft-bodied organisms and soft tissues are rarely preserved; acidic soils destroy bone and volcanic heat destroys remains; most fossils that exist have not been found because they are buried too deep or are inaccessible; some are not recognised as fossils, or are destroyed by agriculture, industry or construction; and fossils are often fragmentary or impossible to date because no suitable datable material is associated with them.
+
+**Apply knowledge**
+
+11. **Compare K-40, Ca-40 and Ar-40:** all three have the same **mass number, 40** (same total of protons + neutrons), but different **proton numbers**, so they are different elements — K-40 has 19 protons and 21 neutrons, Ca-40 has 20 protons and 20 neutrons, and Ar-40 has 18 protons and 22 neutrons. This shows that when K-40 decays the mass number does not change, only the balance of protons and neutrons: converting a neutron into a proton produces **calcium-40**, while converting a proton into a neutron produces **argon-40**.
+12. **Why C-14 dating is called radiocarbon dating:** it relies on a **radioactive** isotope of **carbon** (C-14) and the age is calculated from the radiation emitted as it decays — hence "radio" + "carbon".
+13. **Why C-14 only works on things that were once living:** C-14 enters organisms only while they are alive — plants fix atmospheric carbon dioxide (including C-14) by photosynthesis and animals take it in by eating plants. The clock starts **at death**, when intake stops and the C-14 already in the tissues begins to decline without replacement. Material that was never alive has never fixed atmospheric carbon in this way, so there is no C-14 : C-12 ratio that can be interpreted as an age.
+14. **Ordering fossils in the soil-layer diagram (figure-dependent):** apply the **principle of superposition** — the fossils in the topmost layer are the youngest and those in the deepest layer are the oldest, so list the colours in order from the top layer downwards. If the same colour appears in more than one layer, those fossils span that time range; if a colour appears in only one layer it can be placed precisely in the sequence. *(Read the actual colours off your copy of the diagram.)*
+
+### 10.3 Questions 11.3 (p. 310) — comparative anatomy
+
+**Recall knowledge**
+
+1. **Homologous structures** are structures with the same basic structure and arrangement of parts, though not necessarily the same function. **Vestigial structures** are reduced structures that no longer fulfil their original function.
+2. **Embryos as evidence:** vertebrate embryos are far more similar to one another than the adults are. Comparing developmental stages reveals shared features — slits and arches in the neck homologous to fish gill slits (which never become gills in humans or chickens), a tail, a two-chambered heart and similar brain development. Retaining a shared developmental pattern in species whose adults differ greatly is strong evidence of **common ancestry followed by divergence**.
+3. **Homologous structures as evidence:** the vertebrate **forelimb** contains the same bones in the same arrangement in the frog's forelimb, the whale's flipper, the horse's leg, the human arm, the bat's wing and the bird's wing — despite being used for walking, swimming, flight and manipulation. Identical structure with different function is best explained by inheritance of the pattern from a shared ancestor, with subsequent modification by natural selection for different ways of life.
+4. **Five human vestigial structures:** the nictitating membrane (third eyelid remnant); the muscles that move the external ear; the third molars (wisdom teeth); the coccyx (fused tail vertebrae); and the muscles at the base of the hairs (which produce goosebumps). *(Others: the pyramidalis muscles, nipples in males, and — debatably — the appendix.)*
+
+**Apply knowledge**
+
+5. **Importance of fossils as evidence for evolution:** fossils are the only direct physical record of organisms that are now extinct. They show what extinct species were like, allow sequences of gradual change to be reconstructed (the horse; the hominin lineage), allow the anatomy of extinct and living species to be compared, and — once dated — place those changes on a timeline so that the *order and rate* of change can be established. Associated material (surrounding rock, other fossils, pollen) also reveals diet, contemporary species and climate.
+6. **The appendix:** it was regarded as vestigial because its removal appears to have no ill effects, implying it had lost its original role in digesting tough plant matter. Research now indicates it contributes to the **immune system** and acts as a reservoir that produces and stores **beneficial gut bacteria** able to recolonise the intestine after illness. A structure with a current, useful function does not meet the definition of a vestigial structure, which is why its status is now debated.
+
+### 10.4 Questions 11.4 (p. 313) — phylogenetic trees
+
+**Recall knowledge**
+
+1. **Phylogenetic tree:** a diagram (also called a dendrogram) showing the inferred evolutionary relationships between organisms descended from a common ancestor, with the ancestral form at the base and the descendant species at the tips of the branches.
+2. **What they are used for:** representing evolutionary relationships and probable evolutionary pathways; organising knowledge of genetic diversity and structural classification; simplifying complex relationships so they can be understood; and presenting a **hypothesis** of relatedness that can be tested and revised as new data appear.
+
+**Apply knowledge**
+
+3. **Why "phylogenetic":** *phylo-* refers to a lineage, race or line of descent and *-genetic* to origin or descent, so the word means "showing the origin of a lineage". It is called a **tree** because the branching pattern spreading from a single base resembles a trunk dividing into limbs and twigs.
+4. **The cat tree (figure-dependent — read it off your copy):**
+    - **(a)** The two cats whose branches join **highest up** (closest to the present) share the most recent common ancestor. Method: trace each pair back to the node where their lines meet; the highest node wins.
+    - **(b)** Whichever of the tiger and jaguar joins the lion's lineage at the **higher node** is more closely related to the lion. Compare the two nodes rather than the horizontal distance between the tips — horizontal spacing on a phylogenetic tree carries no meaning.
+    - **(c)** The domestic cat's lineage separated from the big cats much earlier — it is not a *Panthera* species — so far more time has passed since their common ancestor. Over that longer period many more independent mutations have accumulated in each lineage, so the domestic cat shows the greatest number of DNA differences from the others.
+5. **Constructing the tree from the DNA data:** cluster the most similar species first, then work outwards.
+    - **C and D** share the most DNA (**98%**), so they are joined first — the most recent common ancestor.
+    - **A and B** are next (**80%**), so they are joined at a slightly lower node.
+    - Every cross-pair value is lower again (B–C 75%, B–D 72%, A–C 65%, A–D 62%, averaging ≈68.5%), so the **(A,B)** and **(C,D)** pairs join at a deeper node as sister groups.
+    - All four species are living, so all four branch tips are drawn **level** at the top, and an axis shows time or percentage similarity.
+
+![Phylogenetic tree answering Questions 11.4 Q5](task6_figures/figF_phylogenetic_tree_Q5.png)
+
+> Remember: the outline states that **constructing** phylogenetic trees is *not required* for Task 6 — but this question is excellent practice for the interpretation skills that **are** examinable, and the same clustering logic is used to read any tree.
+
+### 10.5 Review Questions (pp. 320–321)
+
+These are the end-of-chapter questions. Answer them under timed conditions once the four sets above are done.
 
 **Recall:** 1 (define fossil; five forms) · 2 (fossil vs artefact; index fossil; "index artefacts"?) · 3 (best soils; why soft tissue rare) · 4 (relative vs absolute; why relative is still used) · 5 (**three-column table of methods + advantages + limitations** — see §9) · 6 (principle of superposition; when it fails) · 7 (phylogenetic trees and their purpose) · 8 (homologous structures + example) · 9 (vestigial organs; four human examples; significance to evolution).
 
@@ -430,7 +513,9 @@ The outline says **construction is not required**, but you still need to be able
 - [ ] Explain the uses of fossil pollen
 - [ ] List at least six reasons the fossil record is incomplete
 - [ ] Interpret a phylogenetic tree (recency of common ancestor, extinct branches, tree = hypothesis)
-- [ ] Complete textbook **Activities 11.1, 11.2** (and 11.3 for tree interpretation) and **Review Questions pp. 320–321**
+- [ ] Complete textbook **Activities 11.1, 11.2** (and 11.3 for tree interpretation)
+- [ ] Work through **Questions 11.1, 11.2, 11.3 and 11.4** (answers in §10.1–10.4)
+- [ ] Sit the **Review Questions pp. 320–321** under timed conditions (§10.5)
 
 ---
 
