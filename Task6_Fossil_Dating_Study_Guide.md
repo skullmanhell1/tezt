@@ -15,12 +15,14 @@
 | Textbook | **CH 11 (pp. 295–321)**, Review Questions **pp. 320–321**, plus AYKQ |
 
 **Syllabus content examined by this task (verbatim from the outline):**
+
 - Evolutionary relationships between groups can be represented using phylogenetic trees (*construction of phylogenetic trees is NOT required*).
 - The fossil record is incomplete and cannot represent the entire biodiversity of a time or location, due to many factors affecting fossil formation, the persistence of fossils, and accessibility of fossilised remains.
 - Sequencing a fossil record requires a **combination** of relative and absolute dating techniques to place fossils onto the geological timeline.
 - Both relative techniques (**stratigraphy, index fossils**) and absolute techniques (**radiocarbon, potassium–argon**) have **limitations of application**.
 
 **Learning intentions listed for these weeks:**
+
 - Fossils and fossil **formation**
 - **Problems and limitations** of the fossil record
 - **Application and limitations** of relative dating: stratigraphy and index fossils
@@ -76,9 +78,11 @@ Whole skeletons are rare (e.g. *Homo ergaster* skull from Kenya, ~1.8 My, recons
 - As the rock ages: **K-40 decreases, Ar-40 increases** → measuring the **K-40 : Ar-40 ratio** gives the rock's age (Figure 11.6 = parent-decay / daughter-buildup curves crossing at 1 half-life).
 - **Half-life of K-40 = 1.25 × 10⁹ years (1.25 billion = 1250 million years).**
   ⚠️ The chapter text contains a **typo**: "1250 billion years (1.25 × 10⁹ years)". The bracketed figure is correct (1.25 billion); Activity 11.1B quotes "around 1300 million years". Use **1.25 billion years** and expect either figure to be accepted.
+
 - **Argon is a gas** — it escapes from molten lava, so the "clock" starts when the lava **solidifies**; trapped Ar-40 in solid lava must therefore have come from K-40 decay.
 
 **Limitations of potassium–argon dating**
+
 - Only works on **suitable rock types** — volcanic/lava deposits (not all rocks are suitable).
 - Only useful for material **older than ~200 000 years** (theoretical limit 100 000–200 000). After 100 000 years only **0.0053%** of K-40 has decayed — below reliable detection limits.
 - It dates the **rock, not the fossil** — you need volcanic rock **of the same age** adjacent to (e.g. burying) the fossil, and the fossil's age is then **inferred**.
@@ -95,6 +99,7 @@ Whole skeletons are rare (e.g. *Homo ergaster* skull from Kenya, ~1.8 My, recons
 - **AMS (accelerator mass spectrometry) radiocarbon dating** breaks the sample into constituent atoms and counts isotope atoms — works on as little as **100 µg (0.0001 g)**. This allows accurate dating of **cave-painting pigments**, which often contain charcoal or organic binders (honey, milk, blood, oil seed).
 
 **Limitations of radiocarbon dating**
+
 - Material must contain **organic (carbon) compounds** — i.e. it must once have been living.
 - Maximum useful age ≈ **60 000 years** (by ~70 000 years only **0.021%** of C-14 remains — too little to measure accurately).
 - The atmospheric **C-14 : C-12 ratio is not constant** (it was once assumed to be) → dates must be treated with caution. **Corrections** are possible for roughly the **last 9000 years** using independent evidence such as **tree-ring dating (dendrochronology)**.
@@ -121,6 +126,7 @@ Whole skeletons are rare (e.g. *Homo ergaster* skull from Kenya, ~1.8 My, recons
 
 **(a) Principle of superposition** — in undisturbed sedimentary rock, **upper layers are younger than those beneath**, so fossils/artefacts in upper layers are younger.
 *Limitations / when it fails:*
+
 - **Distortions of Earth's crust** (folding, faulting, tilting, overturning) can invert or offset a sequence.
 - Fossils/artefacts can be **buried later** by animals (burrowing) or by early humans (digging, graves) → the specimen may be **younger** than layers above it.
 - Erosion can remove layers; material can wash or fall down cracks.
@@ -128,6 +134,7 @@ Whole skeletons are rare (e.g. *Homo ergaster* skull from Kenya, ~1.8 My, recons
 **(b) Correlation of rock strata** — matching layers between different areas (sometimes thousands of km apart) by examining the rock itself and the fossils it contains. **Rocks containing the same fossils are assumed to be the same age.**
 
 **Index fossils** — fossils that are especially useful for correlation because they:
+
 1. were present on Earth for only a **short, limited period of time**;
 2. are **widely (geographically) distributed**;
 3. are **abundant** in the strata; and
@@ -184,6 +191,7 @@ Starting decay rate for living/recently dead material = **15.6 nuclei/s/g**; hal
 Plot decay rate (y) against age (x) to 60 000 years, join with a **smooth curve** (not a ruled line), label axes with units, and read values by interpolation.
 
 **Worked answers to Activity 11.1A Q3** (read off the curve; calculated values shown):
+
 - **(a)** Charcoal at 8.9 nuclei/s/g → 8.9/15.6 = 0.571 remaining → ≈ **0.81 half-lives ≈ 4600 years old** (graph read ~4500–5000 y).
 - **(b)** Wood of 9000 years → 9000/5730 = 1.57 half-lives → 0.337 remaining → ≈ **5.3 nuclei/s/g** (graph read ~5–5.5).
 - **(c)** If the wood is much **older** than the 9000-year tools: the wood came from an already-old tree/timber that was **re-used** or was already dead when deposited; older material was **redeposited/washed in**, or the deposits were **disturbed** (burrowing animals, human digging, roof collapse, trampling) mixing layers; sample **contaminated** with old carbon; the tools may have been misdated.
@@ -193,6 +201,7 @@ Plot decay rate (y) against age (x) to 60 000 years, join with a **smooth curve*
 
 ### 5.3 Activity 11.1B — Potassium–argon (method for the volcano diagram)
 Layers **A, C, E, G = lava**; layers **B, D, F = sediment** deposited between eruptions.
+
 - **Q1 — Why no Ar-40 in layer A?** A is the **youngest/most recent** lava. Argon-40 is a gas that escapes while lava is molten, so the clock starts on solidification; insufficient time has passed for a **detectable** amount of K-40 (half-life 1.25 billion years) to decay to Ar-40.
 - **Q2 — Ratio in layer E:** count symbols: ratio = K-40 atoms : Ar-40 atoms. Convert to half-lives — 1:1 ⇒ 1 half-life ⇒ ~1.25 billion y; 1:3 ⇒ 2 half-lives ⇒ ~2.5 billion y. State the ratio in simplest form, then the age.
 - **Q3 — What is the material in B, D, F?** **Sedimentary** material (sand/silt/mud/ash weathered and deposited by wind and water) laid down **between eruptions** during the long quiet intervals, then buried by the next lava flow.
@@ -215,6 +224,7 @@ Layers **A, C, E, G = lava**; layers **B, D, F = sediment** deposited between er
 ## 6. Phylogenetic trees — what you DO need
 
 The outline says **construction is not required**, but you still need to be able to **interpret** them.
+
 - **Phylogenetic tree (dendrogram):** a diagram showing the **evolutionary relationships** between organisms descended from a common ancestor. Ancestor at the **base**; descendants at branch tips.
 - **Closer branching = more recent common ancestor = more closely related.** Species alive today are drawn **level**; an **extinct** species' branch **ends lower down**. An axis shows **time**.
 - Trees are built from presence/absence of traits, DNA differences, or amino-acid sequence differences — greatest similarity = branches closest together.
