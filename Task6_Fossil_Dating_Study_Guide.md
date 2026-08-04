@@ -121,6 +121,8 @@ Whole skeletons are rare (e.g. *Homo ergaster* skull from Kenya, ~1.8 My, recons
 
 *(Only C-14 and K–Ar are examinable in detail; the rest show that methods overlap and are chosen to suit the sample and age range.)*
 
+This table is drawn as a timeline in **Figure D (§5.5)** — worth a look, because it makes the 60 000–200 000 year gap between radiocarbon and potassium–argon obvious.
+
 ### 3.4 Relative dating — stratigraphy
 **Stratigraphy** = the study of layers (strata). Two uses:
 
@@ -140,6 +142,8 @@ Whole skeletons are rare (e.g. *Homo ergaster* skull from Kenya, ~1.8 My, recons
 3. are **abundant** in the strata; and
 4. are **easily recognised/identified**.
 Examples: **trilobites** (lived ~500–300 Mya then went extinct), ammonites, and some **fossil pollen grains**.
+
+See **Figure E (§5.9)** for a worked stratigraphic diagram showing superposition within a site and index-fossil correlation between sites.
 
 **Fossil pollen (palynology)** — some pollen grains work as index fossils; even when they don't, preserved pollen lets a botanist reconstruct the **type and amount of vegetation**, and hence the **climate**, at the time the deposit formed. This can **confirm or refute** relative dates obtained by other methods.
 
@@ -163,15 +167,93 @@ Absolute methods each need a **particular set of circumstances** (right material
 
 ## 5. Graphical representation and calculations (the "investigating" part)
 
-### 5.1 The two curves you must be able to draw and read
-1. **Carbon-14 decay curve (Fig 11.8):** x-axis = age of sample (thousand years), y-axis = ratio of C-14 to C-12 (1 in 10¹² → 0.5 → 0.25 → 0.125…). Each dot = one half-life = 5730 years. Smooth exponential decay curve.
-2. **Potassium–argon parent/daughter curves (Fig 11.6):** x-axis = number of half-lives, y-axis = % of atoms. **Parent (K-40) decays** from 100% downward; **daughter (Ar-40) builds up** from 0% upward; the curves **cross at 50% after one half-life**.
+This is the part of the syllabus the outline flags explicitly — *"how these techniques are represented graphically and used to accurately date the fossil"* — so it is the most likely place for marks in Task 6.
 
-**Half-life rules:** after *n* half-lives, remaining fraction = (½)ⁿ → 50%, 25%, 12.5%, 6.25%, 3.125%…
-Age = *n* × half-life, where *n* = number of half-lives elapsed.
-Parent : daughter ratio 1:1 → 1 half-life; 1:3 → 2 half-lives; 1:7 → 3 half-lives.
+### 5.1 How to sketch a decay curve — step by step
 
-### 5.2 Activity 11.1A — Radiocarbon decay table (worked)
+**Step 1 — Build the data table before you draw anything.** Halve the starting quantity repeatedly and add one half-life to the age each time. Go to at least 5–6 half-lives so the flattening tail is obvious.
+
+**Step 2 — Put the variables on the correct axes.** Time (age, or number of half-lives) is the **independent** variable and goes on the **x-axis**. The measured quantity (decay rate, % remaining, mass of parent, C-14 : C-12 ratio) is the **dependent** variable and goes on the **y-axis**.
+
+**Step 3 — Label both axes with the quantity *and* its unit.** e.g. `Age of sample (years BP)` and `Decay rate (nuclei s⁻¹ g⁻¹)`. More marks are lost here than anywhere else on a graphing question.
+
+**Step 4 — Choose a sensible scale.** Start both axes at zero (a decay curve must show the t = 0 starting value), use even increments (1, 2, 5, 10, 20, 50…), keep the increments constant, and make the plotted data fill at least half the grid in both directions.
+
+**Step 5 — Plot and draw.** Mark each point with a small neat dot or cross, then draw a **single smooth curve** through them. Never join the points with ruled straight segments, and never let the curve touch or cross the x-axis — radioactive decay approaches zero but never reaches it (it is asymptotic).
+
+**Step 6 — Show the half-life on the graph.** Draw one "staircase": a horizontal construction line from half the starting value across to the curve, then a vertical line down to the x-axis. Label it **"1 half-life = 5730 years"**. This demonstrates you understand what the graph *means*, not just how to plot it.
+
+**Step 7 — Read values off with dashed construction lines**, and quote the answer with units and a sensible precision (e.g. "≈ 4600 years", not "4638.2 years" — you read it off a graph).
+
+**Marking-point checklist for any graph you draw**
+
+| ✔ | Marking point |
+|---|---|
+| 1 | Correct variable on each axis (time on x) |
+| 2 | Both axes labelled with quantity **and** unit |
+| 3 | Even, sensible scale; origin included |
+| 4 | Points plotted accurately (within half a small square) |
+| 5 | Smooth curve, not dot-to-dot; curve does not hit the x-axis |
+| 6 | Half-life shown/labelled, or key values annotated |
+| 7 | Title, or a clear statement of what the graph shows |
+
+**Common mistakes that cost marks**
+
+- Ruling straight lines between points (turns an exponential curve into a zigzag).
+- Forgetting units on the y-axis, or writing "amount" instead of the actual measured quantity.
+- Uneven x-axis increments (e.g. 5730, 11 460, 20 000, 30 000).
+- Letting the curve flatten *onto* the axis, or stopping the curve at the last point instead of continuing the trend.
+- Reading a value without drawing the construction lines (examiners want to see the method).
+- Plotting *age* on the y-axis out of habit.
+- Using the C-14 curve for a rock, or the K–Ar curve for charcoal.
+
+### 5.2 Figure A — the carbon-14 decay curve (activity against age)
+
+![Carbon-14 decay curve](task6_figures/figA_carbon14_decay_curve.png)
+
+This is the graph to reproduce for **Activity 11.1A**. Starting activity 15.6 nuclei/s/g halves every 5730 years. Note how the dotted "staircase" works: across from 7.8 to the curve, down to 5730 y; across from 3.9, down to 11 460 y; and so on. The red dashed lines show the read-off method for Q3a — enter the graph at the measured activity, go across to the curve, then straight down to the age.
+
+### 5.3 Figure B — the C-14 : C-12 ratio curve (textbook Fig 11.8 style)
+
+![Fall in the C-14 to C-12 ratio](task6_figures/figB_c14_c12_ratio_curve.png)
+
+Same physics, different y-axis: this version plots the **ratio** of C-14 to C-12 as a fraction of the living value of 1 in 10¹². Use this one when a question gives you a ratio rather than a decay rate — as Review Q15 does (0.25 in 10¹² = two half-lives = 11 460 years).
+
+### 5.4 Figure C — potassium–argon parent/daughter curves (textbook Fig 11.6 style)
+
+![Potassium-40 decay and argon-40 build-up](task6_figures/figC_potassium_argon_curves.png)
+
+**How to sketch it:** x-axis = number of half-lives (or age in billions of years); y-axis = number or % of atoms. Draw the **parent (K-40)** curve falling from 100%, and the **daughter (Ar-40)** curve rising from 0% as its mirror image. The two must **cross at 50% after exactly one half-life**, and parent + daughter must always add to 100%.
+
+| K-40 : Ar-40 ratio | % parent remaining | Half-lives elapsed | Age of rock |
+|---|---|---|---|
+| all parent, no daughter | 100% | 0 | just solidified |
+| 1 : 1 | 50% | 1 | 1.25 billion years |
+| 1 : 3 | 25% | 2 | 2.5 billion years |
+| 1 : 7 | 12.5% | 3 | 3.75 billion years |
+| 1 : 15 | 6.25% | 4 | 5 billion years (older than Earth — so you would not see this) |
+
+### 5.5 Figure D — which method for which age
+
+![Useful range of the absolute dating methods](task6_figures/figD_dating_method_ranges.png)
+
+Table 11.1 drawn as a timeline (log scale). Use it to justify a **choice** of technique, which is exactly what "limitations of application" questions ask. Note the shaded band: between about **60 000 and 200 000 years** a sample is too old for radiocarbon and too young for potassium–argon, which is why thermoluminescence, ESR and uranium-series methods matter, and why relative dating is still needed.
+
+### 5.6 Half-life maths — both directions
+
+**Rule:** after *n* half-lives the fraction remaining = (1/2)ⁿ → 50%, 25%, 12.5%, 6.25%, 3.125%…  and **age = n × half-life**.
+
+**(a) Given the amount, find the age.**
+fraction = measured ÷ original → count how many halvings that is (*n*) → age = *n* × 5730.
+*Example:* 1.5 nuclei/s/g from a start of 15.6 → 15.6 ÷ 1.5 = 10.4. Since 2³ = 8 and 2⁴ = 16, *n* is between 3 and 4 — precisely log₂10.4 = 3.38 → **age ≈ 3.38 × 5730 ≈ 19 400 years**. Without a log button, read it off Figure A or bracket it: "between 17 190 and 22 920 years".
+
+**(b) Given the age, find the amount.**
+*n* = age ÷ half-life → remaining = original × (1/2)ⁿ.
+*Example:* 9000 years → n = 9000 ÷ 5730 = 1.57 → (1/2)^1.57 = 0.337 → 15.6 × 0.337 = **≈ 5.3 nuclei/s/g**.
+
+**(c) Parent : daughter shortcut (K–Ar).** Convert the ratio to "fraction of parent left", then count half-lives: 1:1 → 1/2 left → 1 half-life; 1:3 → 1/4 left → 2 half-lives; 1:7 → 1/8 left → 3 half-lives. Multiply by 1.25 billion years.
+
+### 5.7 Activity 11.1A — Radiocarbon decay table (worked)
 Starting decay rate for living/recently dead material = **15.6 nuclei/s/g**; half-life 5730 y.
 
 | Half-lives | Age (years) | Radioactivity (nuclei/s/g) | Fraction remaining |
@@ -199,7 +281,7 @@ Plot decay rate (y) against age (x) to 60 000 years, join with a **smooth curve*
 - **(e)** Bone at 1.5 nuclei/s/g → 15.6/1.5 = 10.4 → log₂10.4 = 3.38 half-lives → ≈ **19 400 years old** (graph read ~19 000–20 000). *(Only possible if collagen/organic carbon survives.)*
 - **(f)** Wood tree-ring dated at 4000 y → 4000/5730 = 0.70 half-lives → 0.616 remaining → ≈ **9.6 nuclei/s/g**.
 
-### 5.3 Activity 11.1B — Potassium–argon (method for the volcano diagram)
+### 5.8 Activity 11.1B — Potassium–argon (method for the volcano diagram)
 Layers **A, C, E, G = lava**; layers **B, D, F = sediment** deposited between eruptions.
 
 - **Q1 — Why no Ar-40 in layer A?** A is the **youngest/most recent** lava. Argon-40 is a gas that escapes while lava is molten, so the clock starts on solidification; insufficient time has passed for a **detectable** amount of K-40 (half-life 1.25 billion years) to decay to Ar-40.
@@ -209,7 +291,26 @@ Layers **A, C, E, G = lava**; layers **B, D, F = sediment** deposited between er
 - **Q5 — Conditions assisting fossilisation:** rapid burial; hard body parts; absence of decomposers/oxygen; long undisturbed period; alkaline sediment.
 - **Q6 — Dating layer B at 40 000–70 000 y (too young for K–Ar):** use **radiocarbon dating** on any organic material/charcoal in the layer (valid up to ~60 000 y; based on C-14 → N-14 decay with 5730-y half-life, measuring the C-14:C-12 ratio); **thermoluminescence** on sediments/ceramics (measures light released from trapped electrons that accumulate since burial/heating; 300–100 000 y); **electron spin resonance** on tooth enamel/shell/quartz (measures trapped unpaired electrons; up to ~100 000–300 000 y); plus **relative dating** — it must be younger than lava layer C and older than lava layer A (superposition), and **index fossils** can correlate it with dated strata elsewhere.
 
-### 5.4 Activity 11.2 — Stratigraphy (how to answer)
+### 5.9 Figure E — reading and correlating stratigraphic columns
+
+![Superposition within a site and correlation between sites](task6_figures/figE_stratigraphy_correlation.png)
+
+**The two rules this diagram shows**
+
+1. **Within one column (superposition):** the layer at the top is the youngest, the layer at the bottom is the oldest — so at Site 1, layer 1 is younger than layer 4, which is younger than the lava flow at the base.
+2. **Between columns (correlation):** layers containing the **same index fossil** are the same age, even though they sit at different depths and the columns don't line up. Columns can be offset like this because of faulting, tilting, uplift or erosion — *not* because superposition has failed.
+
+**How to attack a strata question**
+
+- Number the layers in each column from the top down before you start.
+- Order each column internally using superposition first.
+- Draw the correlation lines between matching index fossils; those layers are now "pinned" to each other.
+- Any **absolute** date (from lava by K–Ar, or from charcoal/organic material by C-14) can then be transferred across the correlation lines, and everything above it is younger and everything below is older.
+- Finish by naming the single oldest and single youngest layer **across all sites**, and say which rule you used.
+
+**Watch for the trap:** a fossil can be *younger* than the layers above it if it was introduced later — by a burrowing animal, plant roots, water moving it down a crack, or humans digging. Say so whenever a question gives an anomalous result.
+
+### 5.10 Activity 11.2 — Stratigraphy (how to answer)
 - **How were the sediments formed?** Successive **deposition** of sand/silt/mud by water (rivers, floods, lakes, sea) or wind, compacted over long periods into layers.
 - **Why don't the layers in series A and B align?** **Earth movements** — faulting (vertical displacement along a fault), folding/tilting, uplift or subsidence, plus **erosion** removing part of a sequence and later deposition on top (unconformity).
 - **Oldest stratum:** the **lowest** layer in the deepest series, by the **principle of superposition**; confirm with **correlation** — where the same index fossils appear in two series, those layers are the same age, so you can order layers across sites.
@@ -304,7 +405,7 @@ The outline says **construction is not required**, but you still need to be able
 
 - **"State/identify"** = one-word or one-line answer. **"Describe"** = features/steps, no reasoning required. **"Explain"** = give the mechanism and the *why*. **"Compare"** = both similarities and differences, with linking words (*whereas*, *both*). **"Evaluate/Discuss limitations"** = make a judgement supported by evidence and state the constraints.
 - Whenever you name a dating technique, get in the marking points: **what decays into what**, **the half-life**, **what is measured (ratio)**, **the age range**, **the material needed**, and **one or two limitations**.
-- For any graph: **label both axes with units**, use a **sensible even scale**, plot points accurately, draw a **smooth curve** for decay data, and show **dashed interpolation lines** when reading a value off it.
+- For any graph: **label both axes with units**, use a **sensible even scale**, plot points accurately, draw a **smooth curve** for decay data, and show **dashed interpolation lines** when reading a value off it. The full method and the marking-point checklist are in **§5.1**.
 - For calculations: show **fraction remaining → number of half-lives → × half-life = age**, and give the answer with **units** and a sensible number of significant figures.
 - For "sequence the fossil record" questions: use **superposition first**, then **index fossils to correlate sites**, then **absolute dates to anchor the sequence**, and finish by stating that a **combination** of methods is needed because each has restricted application.
 - For validity/reliability wording: sources of error include small/contaminated samples, disturbed stratigraphy, assuming a constant atmospheric C-14 ratio, assuming a constant decay rate, instrument detection limits, and dating rock rather than the fossil itself. Improvements: larger samples, repeated/replicate measurements, cross-checking with a second independent method, calibration curves.
@@ -319,7 +420,10 @@ The outline says **construction is not required**, but you still need to be able
 - [ ] Explain K-40 → Ca-40 + Ar-40, half-life 1.25 billion y, what's measured, range > 200 000 y, all limitations
 - [ ] Explain C-14 formation and decay to N-14, half-life 5730 y, ratio 1:10¹², range ≤ 60 000 y, AMS, all limitations
 - [ ] Reproduce Table 11.1 (at least C-14, K–Ar, dendrochronology, TL, ESR ranges)
+- [ ] Sketch a decay curve from scratch to the §5.1 checklist (axes, units, scale, smooth curve, half-life annotated)
 - [ ] Draw and read a C-14 decay curve; do half-life calculations both directions (activity → age, age → activity)
+- [ ] Convert a parent : daughter ratio into half-lives and an age (1:1, 1:3, 1:7)
+- [ ] Use Figure D to justify which dating method suits a given sample and age
 - [ ] Draw/interpret the K-40 decay + Ar-40 buildup graph; convert parent:daughter ratios to half-lives
 - [ ] Apply the principle of superposition and state three reasons it can fail
 - [ ] Explain correlation of strata and the four criteria of an index fossil
