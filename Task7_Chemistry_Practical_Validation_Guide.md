@@ -1,8 +1,8 @@
-# Task 8 — Chemistry: Organic Materials Practicals (Experiments 31 & 32)
+# Task 7 — Chemistry: Practical Validation, Reactions of Organic Molecules (Exp 31 & 32)
 
 **Source material:** `Experiment 31.pdf` (*Exploring Chemistry Year 12*, pp. 92–94, "Reactivity of alcohols") and `Exp 32 - Esters.pdf` (pp. 95–96, "Esters"), both from the **Organic materials** chapter.
 
-> **Scope note, so you know what this is:** there is **no chemistry course outline** in the repo — the only outline present is the Human Biology one — so I cannot confirm what your Chemistry Task 8 formally is (its weighting, format or due date). What follows covers **both chemistry practicals in the repo, completely**: the theory behind them, the method, a full risk assessment, expected results, and worked answers to all 17 of their questions. If Task 8 is a different topic, send me the chemistry outline and I'll rebuild this against it.
+> **Where this sits in the course:** the ATCHE 2026 outline lists **Task 7 (Science Inquiry): Practical (Laboratory) Validation Exercises — Reactions of Organic Molecules**, under **test conditions**, at **Week 22 (Term 3, Week 2)**. That week’s content is the combustion and oxidation of alcohols, esterification, and the physical properties of organic compounds — exactly what Experiments 31 and 32 cover, so this guide is the preparation for that validation. The separate topic test, **Task 8: Test 4 Organic Molecules** (Week 23), is covered by `Task8_Test4_Organic_Molecules_Guide.md`, which works from Pearson 13.1–13.6 and 14.1–14.3.
 
 ---
 
@@ -23,7 +23,7 @@
 
 ### Oxidation products and what you see
 
-![Oxidation of primary, secondary and tertiary alcohols](task8_figures/figA_alcohol_oxidation_pathways.png)
+![Oxidation of primary, secondary and tertiary alcohols](task7_figures/figA_alcohol_oxidation_pathways.png)
 
 | Oxidising agent | Colour change | Species responsible |
 |---|---|---|
@@ -219,7 +219,7 @@ Justify it with the evidence from *this* experiment:
 
 **Esterification** is the reaction of a **carboxylic acid** with an **alcohol**, catalysed by concentrated sulfuric acid, forming an **ester** and **water**. Because a small molecule (water) is eliminated as two molecules join, it is a **condensation** reaction, and it is **reversible**.
 
-![Esterification is a condensation reaction](task8_figures/figB_esterification_condensation.png)
+![Esterification is a condensation reaction](task7_figures/figB_esterification_condensation.png)
 
 ```
 R–COOH  +  R′–OH   ⇌   R–COO–R′  +  H₂O
@@ -412,4 +412,4 @@ If you are asked for a **theoretical or percentage yield** for tube A (ethyl eth
 
 ### Note on the other files in this repo
 
-`hp12wa8e_11_Otherevidenceofevolution.pdf`, `KSSHS_Course_Outline_(1)_ATHBY_2026_v2.docx` and the `Task6_*` files are **Human Biology**, not Chemistry. The `html` file is an unrelated web page. **There is no chemistry course outline in the repo** — upload it and I can tie this guide to the actual Task 8 requirements, weighting and marking key.
+The chemistry course outline is `KSSHS ATCHE Course Outline 2026.docx` and the textbook is `Pearson - Chemistry - Year 12 Unit 4.pdf`. The `hp12wa8e_11_*.pdf`, `KSSHS_Course_Outline_(1)_ATHBY_2026_v2.docx` and `Task6_*` files are **Human Biology**. The `html` file is an unrelated web page.
