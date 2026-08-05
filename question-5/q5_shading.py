@@ -151,10 +151,42 @@ PARTS = [
     ),
 ]
 
+# ---------------------------------------------------------------- part (e)
+# Two crop yields with z = -1 and z = 1.5.
+PARTS_E = [
+    dict(
+        title="(e)(i)  a harvest yield of z-score < \u22121   "
+              "(X = 3.45 bushels)",
+        shade_from=-4.0,
+        shade_to=-1.0,
+        statement=r"$P(Z < -1) = 15.9\%$",
+        workings="0.1 + 0.5 + 1.7 + 4.4 + 9.2 = 15.9%",
+        fname="q5e_i_below_minus1.png",
+    ),
+    dict(
+        title="(e)(ii)  a harvest yield of z-score > 1.5   "
+              "(X = 4.575 bushels)",
+        shade_from=1.5,
+        shade_to=4.0,
+        statement=r"$P(Z > 1.5) = 6.7\%$",
+        workings="4.4 + 1.7 + 0.5 + 0.1 = 6.7%",
+        fname="q5e_ii_above_1p5.png",
+    ),
+    dict(
+        title="(e)(iii)  a harvest yield with \u22121 < z-score < 1.5   "
+              "(X between 3.45 and 4.575 bushels)",
+        shade_from=-1.0,
+        shade_to=1.5,
+        statement=r"$P(-1 < Z < 1.5) = 77.4\%$",
+        workings="93.3% \u2212 15.9% = 77.4%",
+        fname="q5e_iii_bounded.png",
+    ),
+]
+
 
 def main():
     # Individual figures.
-    for part in PARTS:
+    for part in PARTS + PARTS_E:
         fig, ax = plt.subplots(figsize=(9, 3.4))
         draw(ax, part["title"], part["shade_from"], part["shade_to"],
              part["statement"], part["workings"])
@@ -177,6 +209,20 @@ def main():
     fig.savefig("q5_all_parts.png", dpi=160, facecolor="white")
     plt.close(fig)
     print("wrote q5_all_parts.png")
+
+    # Combined sheet for part (e).
+    fig, axes = plt.subplots(3, 1, figsize=(9.5, 10.4))
+    for ax, part in zip(axes, PARTS_E):
+        draw(ax, part["title"], part["shade_from"], part["shade_to"],
+             part["statement"], part["workings"])
+    fig.suptitle(
+        "Question 5(e) \u2014 two crop yields with z = \u22121 and z = 1.5",
+        fontsize=12, fontweight="bold", y=0.997,
+    )
+    fig.tight_layout(rect=[0, 0, 1, 0.98])
+    fig.savefig("q5e_all_parts.png", dpi=160, facecolor="white")
+    plt.close(fig)
+    print("wrote q5e_all_parts.png")
 
     # -------------------------------------------------------------- PDF build
     A4 = (8.27, 11.69)
@@ -278,6 +324,82 @@ def main():
                  "Note: because each band is rounded to 1 d.p., totals may differ "
                  "from calculator values by about 0.1%.",
                  fontsize=8.5, style="italic", color="#555555")
+        pdf.savefig(fig, facecolor="white")
+        plt.close(fig)
+
+        # ------------------------------------------------------- part (e) pages
+        fig, axes = plt.subplots(3, 1, figsize=A4)
+        for ax, part in zip(axes, PARTS_E):
+            draw(ax, part["title"], part["shade_from"], part["shade_to"],
+                 part["statement"], part["workings"], scale=0.78)
+        fig.suptitle(
+            "Question 5(e) \u2014 Two crop yields with z = \u22121 and z = 1.5",
+            fontsize=11.5, fontweight="bold", y=0.985,
+        )
+        fig.tight_layout(rect=[0, 0.01, 1, 0.955])
+        pdf.savefig(fig, facecolor="white")
+        plt.close(fig)
+
+        for part in PARTS_E:
+            fig, ax = plt.subplots(figsize=(A4[1], A4[0] * 0.72))
+            draw(ax, part["title"], part["shade_from"], part["shade_to"],
+                 part["statement"], part["workings"])
+            fig.tight_layout()
+            pdf.savefig(fig, facecolor="white")
+            plt.close(fig)
+
+        # Part (e) worked answers.
+        fig = plt.figure(figsize=A4)
+        fig.text(0.5, 0.955, "Question 5(e) \u2014 Worked answers",
+                 ha="center", fontsize=14, fontweight="bold")
+        e_lines = [
+            ("h", "Given"),
+            ("t", r"          Two crop yields with $z_1 = -1$ and $z_2 = 1.5$,"
+                  r"  where $\mu = 3.9$ and $\sigma = 0.45$ bushels."),
+            ("s", ""),
+            ("h", "Probabilities"),
+            ("b", r"(i)    A harvest yield with $z < -1$"),
+            ("t", "          Bands from the left tail up to $-1$:"),
+            ("t", "          $0.1 + 0.5 + 1.7 + 4.4 + 9.2$"),
+            ("a", r"          $P(Z < -1) = 15.9\%$"),
+            ("s", ""),
+            ("b", r"(ii)   A harvest yield with $z > 1.5$"),
+            ("t", "          Bands from $1.5$ out to the right tail:"),
+            ("t", "          $4.4 + 1.7 + 0.5 + 0.1$"),
+            ("a", r"          $P(Z > 1.5) = 6.7\%$"),
+            ("s", ""),
+            ("b", r"(iii)  A harvest yield with $-1 < z < 1.5$"),
+            ("t", "          The bands between the two marks:"),
+            ("t", "          $15.0 + 19.1 + 19.1 + 15.0 + 9.2$"),
+            ("t", r"          or  $93.3\% - 15.9\%$"),
+            ("a", r"          $P(-1 < Z < 1.5) = 77.4\%$"),
+            ("s", ""),
+            ("t", r"          Check:  $15.9\% + 6.7\% + 77.4\% = 100\%$  "
+                  r"\u2014 the three regions tile the whole distribution."),
+            ("s", ""),
+            ("h", "Actual yields (X-scores)"),
+            ("b", r"          Rearranging  $z = \dfrac{X-\mu}{\sigma}$  gives"
+                  r"  $X = \mu + z\sigma$"),
+            ("s", ""),
+            ("t", r"          $z = -1:$    $X = 3.9 + (-1)(0.45) = 3.9 - 0.45$"),
+            ("a", r"                          $X = 3.45$ bushels"),
+            ("s", ""),
+            ("t", r"          $z = 1.5:$   $X = 3.9 + (1.5)(0.45) = 3.9 + 0.675$"),
+            ("a", r"                          $X = 4.575$ bushels"),
+            ("s", ""),
+            ("t", r"          So the two crop yields were $3.45$ bushels "
+                  r"(one S.D. below $\mu$)"),
+            ("t", r"          and $4.575$ bushels (one and a half S.D. above "
+                  r"$\mu$)."),
+        ]
+        y = 0.905
+        for kind, text in e_lines:
+            if kind == "s":
+                y -= 0.011
+                continue
+            fig.text(0.07, y, text.replace("\\u2014", "\u2014"),
+                     ha="left", va="top", **style[kind])
+            y -= {"h": 0.0235, "m": 0.040}.get(kind, 0.0205)
         pdf.savefig(fig, facecolor="white")
         plt.close(fig)
 
@@ -437,6 +559,23 @@ def main():
     print(f"  (b) 100 - cum[1.5]       = {round(100 - CUMULATIVE[1.5], 1)}%")
     print(f"  (c) cum[0.5] - cum[-0.5] = {round(CUMULATIVE[0.5] - CUMULATIVE[-0.5], 1)}%")
     print(f"  (d) cum[1.5] - cum[1.0]  = {round(CUMULATIVE[1.5] - CUMULATIVE[1.0], 1)}%")
+
+    e_checks = [
+        ("e i", band_sum(-3.5, -1.0), 15.9),
+        ("e ii", band_sum(1.5, 3.5), 6.7),
+        ("e iii", band_sum(-1.0, 1.5), 77.4),
+    ]
+    print("\npart (e) band-sum verification")
+    for name, got, expect in e_checks:
+        flag = "OK " if abs(got - expect) < 1e-9 else "BAD"
+        print(f"  ({name}) {flag} band sum = {got}%  expected {expect}%")
+    e_total = round(sum(g for _, g, _ in e_checks), 1)
+    print(f"  (e) regions tile the distribution: total = {e_total}% "
+          f"{'OK' if abs(e_total - 100.0) < 1e-9 else 'BAD'}")
+
+    print("\npart (e) X-scores  (X = mu + z*sigma = 3.9 + z*0.45)")
+    for z in (-1.0, 1.5):
+        print(f"  z = {z:+.1f}  ->  X = {3.9 + z * 0.45:.3f} bushels")
 
     print("\nQ4 z-scores  (z = (X - 3.9) / 0.45)")
     for label, X in [("i", 4.125), ("ii", 4.35), ("iii", 3.675), ("iv", 4.575)]:
