@@ -89,7 +89,7 @@ ISSUE_YEAR = "2026"
 ISSUE_MONTH = "AUGUST"
 ISSUE_JP = "8月号"
 
-FEATURE = dict(name="Owner Name", car="2013 Nissan 370Z", ig="@yourhandle")
+# (owner credit removed - the hero now carries the car identity instead)
 
 PLATE_8 = [(0.345, 0.636, 0.672, 0.714)]
 
@@ -101,14 +101,11 @@ CARDS = [
     # as its own shot rather than a duplicate of the cover image.
     # 7.jpg also carries the hero. Framed high here to catch the sun flare and
     # roofline - a tight mid-car crop looked like a duplicate of card 03.
-    dict(src="7.jpg", idx="01", jp="夕陽", name="Owner One",
-         car="370Z · Golden Hour", ig="@handle_one",
+    dict(src="7.jpg", idx="01", jp="夕陽", cap="GOLDEN HOUR",
          bias_y=0.26, zoom=1.06, plate=None, contrast=1.20, expo=0.94),
-    dict(src="8.jpg", idx="02", jp="正面", name="Owner Two",
-         car="370Z · Front End", ig="@handle_two",
+    dict(src="8.jpg", idx="02", jp="正面", cap="FRONT END",
          bias_y=0.40, zoom=1.06, plate=PLATE_8),
-    dict(src="9.jpg", idx="03", jp="斜め前", name="Owner Three",
-         car="370Z · Three Quarter", ig="@handle_three",
+    dict(src="9.jpg", idx="03", jp="斜め前", cap="THREE QUARTER",
          bias_y=0.46, zoom=1.12, plate=None),
 ]
 
@@ -333,7 +330,9 @@ def build_poster():
     # All vehicle data now lives in the black bar at the base of the sheet,
     # so the mid-page cream band is gone and the hero reclaims that height.
     foot_h = s(262)
-    cards_pad, card_img_h, card_txt_h = s(16), s(336), s(100)
+    # caption is two lines shorter without the owner credit, so the photos
+    # take that height back
+    cards_pad, card_img_h, card_txt_h = s(16), s(378), s(58)
     cards_block = cards_pad * 2 + card_img_h + card_txt_h
     banner_h = s(60)
 
@@ -374,7 +373,12 @@ def build_poster():
     # Size the wordmark so it genuinely spans the sheet - a masthead with cream
     # margins either side reads as timid. Solve for the point size that fills
     # the measure, then let the geometry below follow the resulting ink height.
-    target_w = W - s(40)
+    # Fit must budget for its own decoration: the contour stroke grows the ink
+    # on every side and the offset shadow extends right and down. Sizing to
+    # W-40 and then adding a 7px stroke plus a 13px shadow clipped both edges.
+    STROKE = max(1, s(6))
+    SHADOW = s(10)
+    target_w = W - s(112) - STROKE * 2 - SHADOW
     lo, hi = 40, 900
     for _ in range(22):
         mid = (lo + hi) / 2
@@ -383,20 +387,29 @@ def build_poster():
         else:
             hi = mid
     f_mast = font(ANTON, int(lo))
-    mb = d.textbbox((0, mast_top), MAST, font=f_mast)
+
+    # Anton carries a large top bearing: at this point size the ink begins
+    # ~134px below the anchor, which left a dead cream band under the strip.
+    # Solve the draw position from where the INK should land, not the anchor.
+    probe = d.textbbox((0, 0), MAST, font=f_mast)
+    bearing_x, bearing_y = probe[0], probe[1]
+    draw_y = strip_h + s(16) - bearing_y
+
+    mb = d.textbbox((0, draw_y), MAST, font=f_mast)
     mw = mb[2] - mb[0]
-    mast_ink_top, mast_ink_bot = mb[1], mb[3]
-    mast_ink_h = mast_ink_bot - mast_ink_top
-    mx = (W - mw) / 2 - mb[0]
+    mast_ink_bot = mb[3]
+    mast_ink_h = mast_ink_bot - mb[1]
+    mx = (W - mw) / 2 - bearing_x
 
     # hard offset shadow, then a single clean contour - the previous 8-way
     # glyph stamping produced a lumpy, uneven halo
-    d.text((mx + s(13), mast_top + s(13)), MAST, font=f_mast, fill=RED_D)
-    d.text((mx, mast_top), MAST, font=f_mast, fill=INK,
-           stroke_width=max(1, s(7)), stroke_fill=CREAM_L)
+    d.text((mx + SHADOW, draw_y + SHADOW), MAST, font=f_mast, fill=RED_D)
+    d.text((mx, draw_y), MAST, font=f_mast, fill=INK,
+           stroke_width=STROKE, stroke_fill=CREAM_L)
 
-    # The photo should clip only the feet of the letters, not bisect them.
-    hero_top = int(mast_ink_bot - mast_ink_h * 0.20)
+    # The photo should clip only the feet of the letters. At 0.20 the hook of
+    # the J was cut and the wordmark read as ".JDMYARD".
+    hero_top = int(mast_ink_bot - mast_ink_h * 0.11)
     hero_h = hero_bot - hero_top
 
     # ================================================ HERO
@@ -475,16 +488,15 @@ def build_poster():
     canvas.paste(bimg, (s(30), hero_bot - bsz - s(26)), bimg)
     d = ImageDraw.Draw(canvas)
 
-    # ---- feature credit, to the right of the badge
-    f_name = kaushan(40)
-    f_meta = rob(15, "Regular")
-    fx = s(30) + bsz + s(20)
-    fy = hero_bot - s(104)
-    d.text((fx, fy), FEATURE["name"], font=f_name, fill=GOLD,
-           stroke_width=max(1, s(2)), stroke_fill=(16, 12, 8))
-    d.text((fx + s(2), fy + s(52)), FEATURE["car"], font=f_meta, fill=CREAM_L)
-    d.text((fx + s(2), fy + s(72)), f"Instagram: {FEATURE['ig']}", font=f_meta,
-           fill=CREAM_D)
+    # ---- car identity beside the badge (owner credit removed)
+    f_ident = font(ARCHIVO, s(34), "Black")
+    f_meta = arch(12, "Bold")
+    fx = s(30) + bsz + s(22)
+    fy = hero_bot - s(94)
+    d.text((fx, fy), MODEL, font=f_ident, fill=CREAM_L,
+           stroke_width=max(1, s(3)), stroke_fill=(14, 10, 8))
+    ibb = d.textbbox((fx, fy), MODEL, font=f_ident)
+    track(d, (fx + s(2), ibb[3] + s(8)), MODEL_SUB, f_meta, GOLD, spacing=s(2))
 
     # ---- issue block, bottom right of the hero
     ib_w, ib_h = s(168), s(126)
@@ -535,13 +547,12 @@ def build_poster():
         ch2 = s(38)
         chip(d, (cx, cy, cx + ch2, cy + ch2), c["idx"], anton(23), RED, CREAM_L)
 
-        ty = cy + card_img_h + s(14)
+        # caption: Japanese label over the shot description. Owner names and
+        # handles removed.
+        ty = cy + card_img_h + s(12)
         track(d, (cx + s(2), ty), c["jp"], njp(14, "Bold"), RED_D, spacing=s(2))
-        track(d, (cx + s(2), ty + s(24)), c["name"], osw(20, "SemiBold"), INK,
-              spacing=s(0.5))
-        d.text((cx + s(2), ty + s(50)), c["car"], font=rob(14), fill=INK_S)
-        d.text((cx + s(2), ty + s(70)), f"Instagram: {c['ig']}", font=rob(14),
-               fill=(122, 112, 100))
+        track(d, (cx + s(2), ty + s(24)), c["cap"], osw(18, "SemiBold"), INK,
+              spacing=s(0.6))
 
     # ================================================ DATA BAR (base of sheet)
     # Black information bar carrying all the vehicle data: spec figures across
