@@ -113,9 +113,22 @@ CARDS = [
 ]
 
 FOOT_HANDLE = "@jdmyard"
-FOOT_L = "FIND US ON SOCIAL MEDIA"
-FOOT_M = "YOUR MONTHLY DOSE OF INSPIRATION · MOTIVATION · STANCE"
 FOOT_STAMP = "日本製"
+FOOT_BRAND = "JDM YARD"
+FOOT_TAG = "REAL PARTS. REAL PERFORMANCE."
+
+FOOT_TITLE = "NISSAN 370Z (2009 - 2020)"
+FOOT_BODY = [
+    "A FRONT-ENGINE, REAR-WHEEL-DRIVE JDM SPORTS COUPE BUILT",
+    "AROUND THE NATURALLY ASPIRATED VQ37VHR V6, A SHORT",
+    "WHEELBASE AND HYDRAULIC STEERING.",
+]
+FOOT_RIGHT = [
+    "NISSAN 370Z",
+    "2009 - 2020  /  Z34  /  RWD",
+    "VQ37VHR  ·  3.7 L  ·  V6",
+    "THE MODERN Z",
+]
 
 # ---------------------------------------------------------------- fonts
 ANTON = FONTS / "Anton-Regular.ttf"
@@ -317,10 +330,11 @@ def build_poster():
     d = ImageDraw.Draw(canvas)
 
     # ---------------- geometry (bottom-up, so nothing can leave dead space)
-    foot_h = s(120)
-    cards_pad, card_img_h, card_txt_h = s(16), s(330), s(100)
+    # All vehicle data now lives in the black bar at the base of the sheet,
+    # so the mid-page cream band is gone and the hero reclaims that height.
+    foot_h = s(262)
+    cards_pad, card_img_h, card_txt_h = s(16), s(336), s(100)
     cards_block = cards_pad * 2 + card_img_h + card_txt_h
-    band_h = s(152)
     banner_h = s(60)
 
     strip_h = s(62)
@@ -328,8 +342,7 @@ def build_poster():
 
     foot_top = H - foot_h
     cards_top = foot_top - cards_block
-    band_top = cards_top - band_h
-    banner_top = band_top - banner_h
+    banner_top = cards_top - banner_h
     hero_bot = banner_top
 
     # ================================================ TOP STRIP
@@ -503,54 +516,6 @@ def build_poster():
     track(d, ((W - bw2) / 2, banner_top + (banner_h - (bb[3] - bb[1])) / 2 - bb[1]),
           RED_BANNER, f_bn, CREAM_L, spacing=s(4))
 
-    # ================================================ CAR + TECHNICAL BAND
-    # Car identity on the left, spec figures ruled off to the right. This is
-    # the information that was carried on the spec sheet.
-    d.rectangle([0, band_top, W, band_top + band_h], fill=CREAM_L)
-    d.rectangle([0, band_top, W, band_top + s(4)], fill=INK)
-
-    bx = s(30)
-    # header row
-    f_bt = arch(11, "Bold")
-    track(d, (bx, band_top + s(14)), BAND_TITLE, f_bt, INK, spacing=s(2.4))
-    btw = track_w(d, BAND_TITLE, f_bt, s(2.4))
-    track(d, (bx + btw + s(14), band_top + s(14)), BAND_TITLE_JP, njp(11),
-          RED_D, spacing=s(2))
-    f_ml = arch(9.5, "Bold")
-    mlw = track_w(d, META_LINE, f_ml, s(1.4))
-    track(d, (W - s(30) - mlw, band_top + s(15)), META_LINE, f_ml,
-          (140, 130, 116), spacing=s(1.4))
-    d.line([(bx, band_top + s(36)), (W - s(30), band_top + s(36))],
-           fill=CREAM_D, width=max(1, s(1)))
-
-    # model name, left
-    name_w = int(W * 0.34)
-    msize = s(48)
-    while msize > s(20) and font(ARCHIVO, msize, "Black").getlength(MODEL) > name_w:
-        msize -= s(1)
-    f_model = font(ARCHIVO, msize, "Black")
-    d.text((bx, band_top + s(52)), MODEL, font=f_model, fill=INK)
-    mbb = d.textbbox((bx, band_top + s(52)), MODEL, font=f_model)
-    track(d, (bx + s(2), mbb[3] + s(8)), MODEL_SUB, arch(12, "Bold"), RED_D,
-          spacing=s(2))
-
-    # spec cells, right
-    cells_x = bx + name_w + s(26)
-    cells_w = W - s(30) - cells_x
-    n_cells = len(SPEC_CELLS)
-    cell_w = cells_w / n_cells
-    f_ck = arch(9, "Bold")
-    f_cv = osw(20, "SemiBold")
-    for i, (k, v) in enumerate(SPEC_CELLS):
-        cxx = cells_x + cell_w * i
-        track(d, (cxx, band_top + s(58)), k, f_ck, (146, 136, 122),
-              spacing=s(1.3))
-        track(d, (cxx, band_top + s(74)), v, f_cv, INK, spacing=s(0.4))
-        if i < n_cells - 1:
-            d.line([(cxx + cell_w - s(12), band_top + s(54)),
-                    (cxx + cell_w - s(12), band_top + s(104))],
-                   fill=CREAM_D, width=max(1, s(1)))
-
     # ================================================ OWNER CARDS
     pad = s(20)
     gap = s(16)
@@ -578,34 +543,88 @@ def build_poster():
         d.text((cx + s(2), ty + s(70)), f"Instagram: {c['ig']}", font=rob(14),
                fill=(122, 112, 100))
 
-    # ================================================ FOOTER
-    d.rectangle([0, foot_top, W, H], fill=CREAM)
-    d.rectangle([0, foot_top, W, foot_top + s(4)], fill=INK)
-    f_f1 = arch(14, "Bold")
-    f_f2 = rob(15, "Regular")
-    track(d, (s(30), foot_top + s(28)), FOOT_L, f_f1, INK, spacing=s(1.6))
-    d.text((s(30), foot_top + s(52)), FOOT_HANDLE, font=rob(19, "Bold"),
-           fill=RED_D)
-    # centre line lifted onto the same optical row as the handle, and a rule
-    # run under it, so the middle of the footer is not left empty
-    fmw = track_w(d, FOOT_M, f_f1, s(1.8))
-    fmx = (W - fmw) / 2
-    track(d, (fmx, foot_top + s(56)), FOOT_M, f_f1, INK_S, spacing=s(1.8))
-    d.line([(fmx, foot_top + s(78)), (fmx + fmw, foot_top + s(78))],
-           fill=CREAM_D, width=max(1, s(1)))
-    f_fjp = njp(13, "Bold")
-    jpw = track_w(d, "日本車専門誌", f_fjp, s(4))
-    track(d, ((W - jpw) / 2, foot_top + s(88)), "日本車専門誌", f_fjp,
-          (150, 140, 126), spacing=s(4))
-    # 日本製 stamp - boxed and inked up. At CREAM_D on cream it was invisible
-    # and read as a printing fault rather than a mark.
-    f_stamp = njp(26, "Black")
+    # ================================================ DATA BAR (base of sheet)
+    # Black information bar carrying all the vehicle data: spec figures across
+    # the top, description left and identity right, brand lockup along the base.
+    d.rectangle([0, foot_top, W, H], fill=INK)
+    d.rectangle([0, foot_top, W, foot_top + s(5)], fill=RED)
+
+    L = s(30)
+    R = W - s(30)
+    WHITE_ = CREAM_L
+    MUTED = (176, 172, 166)
+    FAINT = (128, 124, 118)
+    HAIR_D = (58, 54, 50)
+
+    # ---- header row
+    f_bt = arch(11, "Bold")
+    track(d, (L, foot_top + s(18)), BAND_TITLE, f_bt, WHITE_, spacing=s(2.4))
+    btw = track_w(d, BAND_TITLE, f_bt, s(2.4))
+    track(d, (L + btw + s(14), foot_top + s(18)), BAND_TITLE_JP, njp(11),
+          (226, 104, 110), spacing=s(2))
+    f_ml = arch(9.5, "Bold")
+    mlw = track_w(d, META_LINE, f_ml, s(1.4))
+    track(d, (R - mlw, foot_top + s(19)), META_LINE, f_ml, FAINT,
+          spacing=s(1.4))
+    d.line([(L, foot_top + s(40)), (R, foot_top + s(40))], fill=HAIR_D,
+           width=max(1, s(1)))
+
+    # ---- spec figures across the full measure
+    n_cells = len(SPEC_CELLS)
+    cell_w = (R - L) / n_cells
+    f_ck = arch(9, "Bold")
+    f_cv = osw(21, "SemiBold")
+    for i, (k, v) in enumerate(SPEC_CELLS):
+        cxx = L + cell_w * i
+        track(d, (cxx, foot_top + s(52)), k, f_ck, FAINT, spacing=s(1.3))
+        track(d, (cxx, foot_top + s(68)), v, f_cv, WHITE_, spacing=s(0.4))
+        if i < n_cells - 1:
+            d.line([(cxx + cell_w - s(14), foot_top + s(50)),
+                    (cxx + cell_w - s(14), foot_top + s(96))],
+                   fill=HAIR_D, width=max(1, s(1)))
+    d.line([(L, foot_top + s(110)), (R, foot_top + s(110))], fill=HAIR_D,
+           width=max(1, s(1)))
+
+    # ---- description left, identity right.
+    # Leading is tight here on purpose: at 20px both columns overran the rule
+    # below them, clipping the last line of each.
+    f_ft = arch(16, "Bold")
+    f_fb = rob(14.5, "Regular")
+    ry = foot_top + s(120)
+    track(d, (L, ry), FOOT_TITLE, f_ft, WHITE_, spacing=s(1.4))
+    for i, line in enumerate(FOOT_BODY):
+        d.text((L, ry + s(24) + i * s(18)), line, font=f_fb, fill=MUTED)
+
+    ry2 = ry
+    for i, line in enumerate(FOOT_RIGHT):
+        f = arch(14, "Bold") if i == 0 else f_fb
+        col = WHITE_ if i == 0 else MUTED
+        lw = d.textlength(line, font=f)
+        d.text((R - lw, ry2), line, font=f, fill=col)
+        ry2 += s(22) if i == 0 else s(18)
+
+    d.line([(L, foot_top + s(206)), (R, foot_top + s(206))], fill=HAIR_D,
+           width=max(1, s(1)))
+
+    # ---- brand lockup along the base
+    by2 = foot_top + s(216)
+    f_bd = font(ANTON, s(30))
+    d.text((L, by2), FOOT_BRAND, font=f_bd, fill=WHITE_)
+    bdw = d.textlength(FOOT_BRAND, font=f_bd)
+    d.text((L + bdw + s(14), by2 + s(12)), FOOT_HANDLE, font=rob(16, "Bold"),
+           fill=(232, 96, 104))
+
+    f_tag = arch(11, "Bold")
+    tgw = track_w(d, FOOT_TAG, f_tag, s(2.4))
+    track(d, ((W - tgw) / 2, by2 + s(16)), FOOT_TAG, f_tag, MUTED,
+          spacing=s(2.4))
+
+    f_stamp = njp(20, "Black")
     sw2 = track_w(d, FOOT_STAMP, f_stamp, s(3))
-    stx = W - sw2 - s(46)
-    sty = foot_top + s(34)
-    d.rectangle([stx - s(14), sty - s(9), stx + sw2 + s(12), sty + s(38)],
-                outline=RED_D, width=max(1, s(2)))
-    track(d, (stx, sty), FOOT_STAMP, f_stamp, RED_D, spacing=s(3))
+    stx, sty = R - sw2 - s(12), by2 + s(8)
+    d.rectangle([stx - s(11), sty - s(7), stx + sw2 + s(9), sty + s(30)],
+                outline=(226, 104, 110), width=max(1, s(2)))
+    track(d, (stx, sty), FOOT_STAMP, f_stamp, (232, 110, 116), spacing=s(3))
 
     # ================================================ PRINT FINISH
     canvas = print_pass(canvas)
