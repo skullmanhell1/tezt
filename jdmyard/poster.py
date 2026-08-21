@@ -296,15 +296,12 @@ def build_poster():
     banner_h = s(64)
 
     strip_h = s(62)
-    mast_top = strip_h + s(6)
-    mast_h = s(186)
+    mast_top = strip_h + s(10)
 
     foot_top = H - foot_h
     cards_top = foot_top - cards_block
     banner_top = cards_top - banner_h
-    hero_top = mast_top + mast_h - s(46)          # photo cuts into the masthead
     hero_bot = banner_top
-    hero_h = hero_bot - hero_top
 
     # ================================================ TOP STRIP
     d.rectangle([0, 0, W, strip_h], fill=INK)
@@ -332,22 +329,33 @@ def build_poster():
     track(d, ((W - ew) / 2, s(36)), STRIP_EN, f_se, (176, 166, 148), spacing=s(3))
 
     # ================================================ MASTHEAD
-    # Oversized wordmark, letter-spaced to span the sheet. Drawn now so the
-    # hero photo can cut across its lower edge.
-    f_mast = anton(178)
-    base_sp = s(2)
-    mw = track_w(d, MAST, f_mast, base_sp)
-    avail = W - s(52)
-    if mw > avail:                                 # tighten to fit the sheet
-        base_sp = base_sp - (mw - avail) / max(1, len(MAST) - 1)
-        mw = track_w(d, MAST, f_mast, base_sp)
-    mx = (W - mw) / 2
-    hard_text(d, (mx, mast_top), MAST, f_mast, INK, outline=CREAM_L,
-              ow=s(5), shadow=RED_D, off=s(11), spacing=base_sp)
+    # Size the wordmark so it genuinely spans the sheet - a masthead with cream
+    # margins either side reads as timid. Solve for the point size that fills
+    # the measure, then let the geometry below follow the resulting ink height.
+    target_w = W - s(40)
+    lo, hi = 40, 900
+    for _ in range(22):
+        mid = (lo + hi) / 2
+        if font(ANTON, int(mid)).getlength(MAST) < target_w:
+            lo = mid
+        else:
+            hi = mid
+    f_mast = font(ANTON, int(lo))
+    mb = d.textbbox((0, mast_top), MAST, font=f_mast)
+    mw = mb[2] - mb[0]
+    mast_ink_top, mast_ink_bot = mb[1], mb[3]
+    mast_ink_h = mast_ink_bot - mast_ink_top
+    mx = (W - mw) / 2 - mb[0]
 
-    # The wordmark's ink bottom sits below where the photo cuts across, so the
-    # two small caps lines are drawn later, as hero overlays - otherwise they
-    # are buried under the photo entirely.
+    # hard offset shadow, then a single clean contour - the previous 8-way
+    # glyph stamping produced a lumpy, uneven halo
+    d.text((mx + s(13), mast_top + s(13)), MAST, font=f_mast, fill=RED_D)
+    d.text((mx, mast_top), MAST, font=f_mast, fill=INK,
+           stroke_width=max(1, s(7)), stroke_fill=CREAM_L)
+
+    # The photo should clip only the feet of the letters, not bisect them.
+    hero_top = int(mast_ink_bot - mast_ink_h * 0.20)
+    hero_h = hero_bot - hero_top
 
     # ================================================ HERO
     hero, hero_ok = load(HERO, W, hero_h)
@@ -364,20 +372,24 @@ def build_poster():
     # hairline frame so the photo sits on the stock rather than floating
     d.rectangle([0, hero_top, W - 1, hero_bot - 1], outline=CREAM_D, width=s(2))
 
-    # masthead sub-lines, riding on the photo's top scrim
-    f_msub = njp(16, "Bold")
+    # masthead sub-lines, riding on the photo's top scrim. Both sit left - on
+    # the right they collided with the corner flash.
+    f_msub = njp(17, "Bold")
     f_men = arch(13, "Bold")
-    enw = track_w(d, MAST_EN, f_men, s(6))
-    track(d, (mx + s(8), hero_top + s(14)), MAST_SUB, f_msub, (232, 150, 150),
+    sub_x = s(30)
+    jw = track_w(d, MAST_SUB, f_msub, s(5))
+    track(d, (sub_x, hero_top + s(16)), MAST_SUB, f_msub, (236, 158, 158),
           spacing=s(5))
-    track(d, (mx + mw - enw - s(8), hero_top + s(18)), MAST_EN, f_men,
-          CREAM_D, spacing=s(6))
+    sep = sub_x + jw + s(14)
+    d.rectangle([sep, hero_top + s(20), sep + s(2), hero_top + s(38)], fill=GOLD)
+    track(d, (sep + s(14), hero_top + s(22)), MAST_EN, f_men, CREAM_D,
+          spacing=s(6))
 
     # ---- giant stacked kanji, left, overlapping the photo
-    f_st = njp(132, "Black")
-    st_x = s(34)
-    line_h = s(134)
-    st_y = hero_top + s(96)
+    f_st = njp(158, "Black")
+    st_x = s(28)
+    line_h = s(156)
+    st_y = hero_top + s(84)
     for i, ln in enumerate(STACK):
         ly = st_y + i * line_h
         d.text((st_x + s(10), ly + s(10)), ln, font=f_st, fill=(20, 14, 12))
@@ -393,35 +405,44 @@ def build_poster():
     chip(d, (st_x + s(4), yy, st_x + s(4) + yw + s(24), yy + s(34)),
          STACK_YEARS, f_yr, GOLD, (26, 20, 8), spacing=s(2))
 
-    # ---- badge + flash
-    bsz = s(150)
-    bimg = badge_round(bsz)
-    canvas.paste(bimg, (W - bsz - s(30), hero_top + s(120)), bimg)
+    # ---- corner flash, top right
     fl = diagonal_flash(BANNER_JP, s(140), s(62))
-    canvas.paste(fl, (W - fl.width - s(26), hero_top + s(26)), fl)
+    canvas.paste(fl, (W - fl.width - s(26), hero_top + s(30)), fl)
     d = ImageDraw.Draw(canvas)
 
-    # ---- cover lines with category chips, lower left over the scrim
-    f_cat = njp(13, "Bold")
-    f_line = njp(21, "Bold")
-    cl_x = s(34)
-    cl_y = hero_bot - s(58) - s(52) * len(COVER_LINES)
+    # ---- cover lines, right aligned down the right of the frame.
+    # These sit over the bonnet, which is otherwise a large empty highlight -
+    # keeping them left under the kanji left the composition lopsided.
+    f_cat = njp(14, "Bold")
+    f_line = njp(24, "Bold")
+    cl_right = W - s(30)
+    cl_y = hero_top + hero_h * 0.40
     for cat, line in COVER_LINES:
-        cwid = track_w(d, cat, f_cat, s(1.5)) + s(18)
-        chip(d, (cl_x, cl_y + s(4), cl_x + cwid, cl_y + s(26)), cat, f_cat,
+        lw = track_w(d, line, f_line, s(1))
+        cwid = track_w(d, cat, f_cat, s(1.5)) + s(20)
+        # chip sits above its line, both flush to the right margin
+        chip(d, (cl_right - cwid, cl_y, cl_right, cl_y + s(24)), cat, f_cat,
              RED, CREAM_L, spacing=s(1.5))
-        d.text((cl_x + cwid + s(10), cl_y - s(2)), line, font=f_line,
-               fill=CREAM_L, stroke_width=max(1, s(3)), stroke_fill=(16, 12, 10))
-        cl_y += s(52)
+        d.text((cl_right - lw, cl_y + s(28)), line, font=f_line, fill=CREAM_L,
+               stroke_width=max(1, s(4)), stroke_fill=(14, 10, 9))
+        cl_y += s(74)
 
-    # ---- feature credit, bottom left under the cover lines
+    # ---- badge, bottom left over the paving
+    bsz = s(128)
+    bimg = badge_round(bsz)
+    canvas.paste(bimg, (s(30), hero_bot - bsz - s(26)), bimg)
+    d = ImageDraw.Draw(canvas)
+
+    # ---- feature credit, to the right of the badge
     f_name = kaushan(40)
     f_meta = rob(15, "Regular")
-    fy = hero_bot - s(52)
-    d.text((s(36), fy - s(6)), FEATURE["name"], font=f_name, fill=GOLD,
+    fx = s(30) + bsz + s(20)
+    fy = hero_bot - s(104)
+    d.text((fx, fy), FEATURE["name"], font=f_name, fill=GOLD,
            stroke_width=max(1, s(2)), stroke_fill=(16, 12, 8))
-    d.text((s(38) + track_w(d, FEATURE["name"], f_name, 0) + s(16), fy + s(12)),
-           f"{FEATURE['car']}  ·  {FEATURE['ig']}", font=f_meta, fill=CREAM_D)
+    d.text((fx + s(2), fy + s(52)), FEATURE["car"], font=f_meta, fill=CREAM_L)
+    d.text((fx + s(2), fy + s(72)), f"Instagram: {FEATURE['ig']}", font=f_meta,
+           fill=CREAM_D)
 
     # ---- issue block, bottom right of the hero
     ib_w, ib_h = s(168), s(126)
