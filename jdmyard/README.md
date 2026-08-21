@@ -67,3 +67,48 @@ render reads as a live site. `URL_TEXT` sets the address shown. Set
   `SECUBE PAYMENT` → `SECURE PAYMENT`, `Afterpey / Zio` → `Afterpay / Zip`.
 - The browser toolbar is drawn, not screenshotted — so the address reads
   cleanly at any export size. Toggle it with `SHOW_CHROME`.
+
+
+---
+
+# Poster (`poster.py`)
+
+A4-proportioned magazine-style cover poster.
+
+```sh
+python3 poster.py              # 1654 x 2339  (A4 @ 200dpi)
+POSTER_W=2480 python3 poster.py   # A4 @ 300dpi, for print
+```
+
+Output: `poster.png` / `poster@2480.png`.
+
+## Structure
+
+Top strip → masthead block (wordmark, stars, MAGAZINE, tagline, 日本車専門誌)
+→ full-bleed hero with round badge, outlined headline and gold script subhead
+→ feature strip (owner name in script) → three owner cards → bottom social bar.
+
+Hero height is derived from whatever is left over after the fixed blocks, so
+changing `mast_h`, `bot_h` or the card sizes never leaves dead space above the
+bottom bar. The masthead is measured at render time and prints a clearance
+check — if content would slide under the hero, the script warns with the exact
+number of pixels to add to `mast_h`.
+
+## Swapping photos
+
+`HERO` and the three entries in `CARDS` each take a `src` filename from
+`assets/`, plus `bias_y`, `zoom` and `expo` with the same meaning as in
+`build.py`. To use a new photo, drop it in `assets/` and change `src`.
+
+## Copy
+
+All text sits in named constants at the top of the file: `STRIP`, `MAST_1`,
+`MAST_2`, `SUBHEAD`, `TAGLINE`, `JP_TAGLINE`, `BADGE`, `HEAD_1`, `HEAD_2`,
+`FEATURE`, `CARDS`, and the `BOT_*` values. Owner names and handles are
+placeholders.
+
+## Note on the reference
+
+The layout language follows newsstand car-magazine convention. The masthead,
+wordmark and all copy are JDM Yard's own — no third-party magazine name, logo
+or trade dress is reproduced.
