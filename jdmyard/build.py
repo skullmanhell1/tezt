@@ -24,6 +24,7 @@ OUT.mkdir(exist_ok=True)
 # ---------------------------------------------------------------- canvas spec
 W = int(os.environ.get("JDM_W", 1600))     # output width; JDM_W=3200 for 2x
 SCALE = W / 1024.0            # reference mock was 1024 wide
+CHROME_H = int(30 * SCALE)    # browser toolbar strip
 HEADER_H = int(84 * SCALE)
 TRUST_H = int(52 * SCALE)
 TILE_W = W // 3
@@ -45,6 +46,10 @@ HAIRLINE = (38, 38, 42)
 # Number plate in 2.jpg is legible. Set False to leave it untouched.
 BLUR_PLATE = True
 PLATE_2 = [(0.325, 0.572, 0.690, 0.650)]     # normalised box around "1FCM597"
+
+# Fake browser toolbar across the top, so the render reads as a live site.
+SHOW_CHROME = True
+URL_TEXT = "jdmyard.com"
 
 # ---------------------------------------------------------------- fonts
 JP_PATH = FONTS / "NotoSansJP[wght].ttf"
@@ -306,6 +311,96 @@ def icon_cart(d, x, y, sz, col):
                   outline=col, width=lw)
 
 
+# ---------------------------------------------------------------- browser bar
+CH_BG = (248, 249, 250)
+CH_LINE = (222, 224, 228)
+CH_ICON = (95, 99, 104)
+CH_TEXT = (32, 33, 36)
+
+
+def _arrow(d, cx, cy, size, lw, direction=1):
+    """Simple chevron-and-shaft arrow. direction 1 = right, -1 = left."""
+    half = size / 2
+    tipx = cx + half * direction
+    tailx = cx - half * direction
+    d.line([(tailx, cy), (tipx, cy)], fill=CH_ICON, width=lw)
+    d.line([(tipx, cy), (tipx - half * 0.55 * direction, cy - half * 0.55)],
+           fill=CH_ICON, width=lw)
+    d.line([(tipx, cy), (tipx - half * 0.55 * direction, cy + half * 0.55)],
+           fill=CH_ICON, width=lw)
+
+
+def draw_chrome(page):
+    """Stack a Chrome-style toolbar above the rendered page."""
+    ch = CHROME_H
+    out = Image.new("RGB", (W, ch + page.height), CH_BG)
+    out.paste(page, (0, ch))
+    d = ImageDraw.Draw(out)
+
+    d.rectangle([0, 0, W, ch - 1], fill=CH_BG)
+    d.line([(0, ch - 1), (W, ch - 1)], fill=CH_LINE, width=1)
+
+    cy = ch / 2
+    lw = max(1, s(1.4))
+
+    # back / forward
+    _arrow(d, s(17), cy, s(10), lw, direction=-1)
+    _arrow(d, s(38), cy, s(10), lw, direction=1)
+
+    # reload: open circle with a small head at the top
+    r = s(6)
+    rx = s(60)
+    d.arc([rx - r, cy - r, rx + r, cy + r], 300, 240, fill=CH_ICON, width=lw)
+    d.line([(rx + r * 0.5, cy - r), (rx + r * 0.5, cy - r * 0.15)],
+           fill=CH_ICON, width=lw)
+    d.line([(rx + r * 0.5, cy - r), (rx + r * 1.25, cy - r)],
+           fill=CH_ICON, width=lw)
+
+    # address pill
+    px0, px1 = s(78), W - s(96)
+    ph = s(19)
+    d.rounded_rectangle([px0, cy - ph / 2, px1, cy + ph / 2], radius=ph / 2,
+                        fill=(255, 255, 255), outline=CH_LINE, width=max(1, s(1)))
+
+    # tiny "tune"/site icon inside the pill
+    ix = px0 + s(9)
+    ir = s(4)
+    d.ellipse([ix - ir, cy - ir, ix + ir, cy + ir], outline=(128, 132, 138),
+              width=max(1, s(1)))
+    d.line([(ix - ir, cy), (ix + ir, cy)], fill=(128, 132, 138),
+           width=max(1, s(1)))
+
+    f_url = rob(s(10.5), "Regular")
+    d.text((ix + s(9), cy - s(6)), URL_TEXT, font=f_url, fill=CH_TEXT)
+
+    # right-hand icons: star, profile, kebab
+    sx = W - s(76)
+    star_r = s(6)
+    pts = []
+    import math
+    for k in range(10):
+        ang = -math.pi / 2 + k * math.pi / 5
+        rad = star_r if k % 2 == 0 else star_r * 0.45
+        pts.append((sx + rad * math.cos(ang), cy + rad * math.sin(ang)))
+    d.polygon(pts, outline=CH_ICON)
+
+    ux = W - s(50)
+    ur = s(7)
+    d.ellipse([ux - ur, cy - ur, ux + ur, cy + ur], outline=CH_ICON,
+              width=max(1, s(1)))
+    hr = s(2.4)
+    d.ellipse([ux - hr, cy - s(3) - hr, ux + hr, cy - s(3) + hr], fill=CH_ICON)
+    d.arc([ux - s(5), cy - s(1), ux + s(5), cy + s(8)], 200, 340,
+          fill=CH_ICON, width=max(1, s(1)))
+
+    kx = W - s(24)
+    dr = max(1, s(1.5))
+    for dy in (-s(5), 0, s(5)):
+        d.ellipse([kx - dr, cy + dy - dr, kx + dr, cy + dy + dr], fill=CH_ICON)
+
+    return out
+
+
 # ---------------------------------------------------------------- build
 def build():
     canvas = Image.new("RGB", (W, H), BLACK)
@@ -417,7 +512,7 @@ def build():
         ("ライト・電装", "LIGHTING", "Visibility & Style",
          "1.jpg", 0.56, 1.18, 0.96, None),
         ("エアロパーツ", "AERO PARTS", "Form & Function",
-         "2.jpg", 0.47, 1.34, 0.74, PLATE_2),
+         "2.jpg", 0.46, 1.04, 0.78, PLATE_2),
         ("ホイール・アクセサリー", "WHEELS & ACCESSORIES", "Stance & Performance",
          "3.JPG", 0.46, 1.02, 0.94, None),
         ("エンジン・駆動系", "PERFORMANCE", "Power & Reliability",
@@ -523,10 +618,14 @@ def build():
     stw = track_w(d, st, f_stamp, s(2))
     track(d, (W - s(24) - stw, fy0 + s(10)), st, f_stamp, (58, 58, 63), spacing=s(2))
 
+    if SHOW_CHROME:
+        canvas = draw_chrome(canvas)
+
     suffix = "" if W == 1600 else f"@{W}"
     out = OUT / f"jdmyard{suffix}.png"
     canvas.save(out, "PNG")
-    print(f"wrote {out}  ({W}x{H})  photos found: {found_count}/6")
+    print(f"wrote {out}  ({canvas.width}x{canvas.height})  "
+          f"photos found: {found_count}/6  chrome: {SHOW_CHROME}")
     return out
 
 

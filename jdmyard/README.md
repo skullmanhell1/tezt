@@ -5,8 +5,8 @@ in the repo root.
 
 | File | Size | Use |
 |---|---|---|
-| `jdmyard-hero.png` | 1600 × 843 | web |
-| `jdmyard-hero@2x.png` | 3200 × 1686 | retina / print |
+| `jdmyard-hero.png` | 1600 × 889 | web |
+| `jdmyard-hero@2x.png` | 3200 × 1779 | retina / print |
 
 ## Tile mapping
 
@@ -57,8 +57,13 @@ black-point crush, vignette, grain.
 `BLUR_PLATE = True` pixelates the number plate in `2.jpg`. Set it to `False`
 to leave the plate legible.
 
+`SHOW_CHROME = True` stacks a Chrome-style toolbar above the page, so the
+render reads as a live site. `URL_TEXT` sets the address shown. Set
+`SHOW_CHROME = False` for a clean hero with no browser frame.
+
 ## Notes
 
 - Copy corrected from the original mockup: `LOAYS RETURN` → `EASY RETURNS`,
   `SECUBE PAYMENT` → `SECURE PAYMENT`, `Afterpey / Zio` → `Afterpay / Zip`.
-- Browser chrome from the mockup screenshot is intentionally not reproduced.
+- The browser toolbar is drawn, not screenshotted — so the address reads
+  cleanly at any export size. Toggle it with `SHOW_CHROME`.
