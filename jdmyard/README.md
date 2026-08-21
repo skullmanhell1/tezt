@@ -94,11 +94,39 @@ bottom bar. The masthead is measured at render time and prints a clearance
 check — if content would slide under the hero, the script warns with the exact
 number of pixels to add to `mast_h`.
 
+## Variants
+
+```sh
+python3 poster.py                     # A: hero 1.jpg, cards 7/8/9
+POSTER_VARIANT=b python3 poster.py    # B: hero 7.jpg, cards 8/9/3
+```
+
+Variant B promotes the golden-hour shot to the hero. `1.jpg` is a tight crop of
+spoiler and taillight — it does not read as a car at cover size, and the poster
+lives or dies on its hero. `7.jpg` is the only full-car shot dramatic enough to
+carry the page, so it moves up and the wheel shot backfills the third card.
+
 ## Swapping photos
 
 `HERO` and the three entries in `CARDS` each take a `src` filename from
 `assets/`, plus `bias_y`, `zoom` and `expo` with the same meaning as in
 `build.py`. To use a new photo, drop it in `assets/` and change `src`.
+
+The plate is legible in `8.jpg` as well as `2.jpg`; `PLATE_8` pixelates it.
+
+## Japanese-magazine treatment
+
+Density devices borrowed from Japanese car-magazine convention:
+
+- marker-separated cover lines in the top strip, gold Latin against white kana
+- stacked kanji headline (`STACK`) in white with a red outline and hard offset
+  shadow, over a gold year chip
+- rotated corner flash (`BANNER_JP`)
+- marker-led cover lines down the right of the hero (`COVER_LINES`), gold Latin
+  above white Japanese
+- gold issue box with number, Japanese date and Latin month
+- `print_pass()` finishes with a halftone dot screen, grain and a warm tint so
+  it reads as printed stock rather than a flat digital export
 
 ## Copy
 
