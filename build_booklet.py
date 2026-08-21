@@ -178,10 +178,28 @@ class Book:
             self.line(M, y - 8, CW, LGREY if col == INK else (0.25, 0.25, 0.28))
         return y - 30
 
+    def tab(self, label):
+        """Vertical red section tab on the outer edge of interior pages."""
+        c = self.c
+        h = 168
+        y0 = PH / 2 - h / 2
+        self.rect(PW - 20, y0, 7, h, RED)
+        c.saveState()
+        c.translate(PW - 26, y0)
+        c.rotate(90)
+        c.setFillColorRGB(*GREY)
+        t = c.beginText(0, 0)
+        t.setFont(BOLD, 7)
+        t.setCharSpace(2.4)
+        t.textOut(label.upper())
+        c.drawText(t)
+        c.restoreState()
+
     def footer(self, label, light=False):
         col = GREY if not light else (0.62, 0.62, 0.66)
         self.line(M, 46, CW, LGREY if not light else (0.22, 0.22, 0.26))
-        self.txt("JDM YARD", M, 33, BOLD, 7, col, space=1.6)
+        self.rect(M, 30.5, 6, 6, RED)
+        self.txt("JDM YARD", M + 12, 33, BOLD, 7, col, space=1.6)
         self.txt(label.upper(), PW / 2, 33, REG, 7, col, space=1.6, align="c")
         self.txt(f"PAGE {self.page}", PW - M, 33, REG, 7, col, space=1.6, align="r")
 
@@ -258,7 +276,7 @@ rows = [("01", "Introduction / About", "3"),
         ("04", "Visual / Semiotic Analysis \u2014 Signs & Symbols", "6"),
         ("05", "Visual / Semiotic Analysis \u2014 Meaning & Misreading", "7"),
         ("06", "The Product / Design \u2014 Mood Board", "8"),
-        ("07", "The Product / Design \u2014 Development & Sketches", "9"),
+        ("07", "The Product / Design \u2014 Design System & Development", "9"),
         ("08", "The Product / Design \u2014 Photography & Contact Sheet", "10"),
         ("09", "Marketing Plan", "11"),
         ("10", "Conclusion / Call to Action", "12")]
@@ -346,7 +364,13 @@ b.para("\u201cGenuine and quality aftermarket JDM parts, sold by people who actu
        "understand the cars \u2014 shipped Australia-wide.\u201d",
        x2 + 14, yb - 46, colw - 28, OBL, 9.2, 13)
 
+b.txt("The buyer's world: a modified Z at home, shot for social media \u2014 the exact behaviour this "
+      "brand is built around.", M, 218, OBL, 8, GREY)
+tw3 = (CW - 2 * 10) / 3
+for i, f in enumerate(["9.jpg", "1.jpg", "2.jpg"]):
+    b.img_cover(IMG(f), M + i * (tw3 + 10), 74, tw3, 136)
 b.footer("Introduction / About")
+b.tab("01 \u00b7 Introduction")
 
 # =====================================================================
 # 4 - RESEARCH: DEFINITION & DEMOGRAPHICS
@@ -407,6 +431,7 @@ b.txt("The kind of detail this audience actually spends money on \u2014 the owne
       M, 70 + bh4 + 10, OBL, 8, GREY)
 b.img_cover(IMG("6.jpg"), M, 70, CW, bh4)
 b.footer("Subculture Research")
+b.tab("02 \u00b7 Subculture Research")
 
 # =====================================================================
 # 5 - RESEARCH: INTERESTS, BELIEFS, LIFESTYLE
@@ -472,6 +497,7 @@ b.para("Every value in this research points at the same product decision: stock 
        "packaging and print worth keeping. The brand should reward knowledge, not hide it.",
        M, y2 - 18, CW * 0.9, REG, 9.4, 13.6)
 b.footer("Subculture Research")
+b.tab("03 \u00b7 Subculture Research")
 
 # =====================================================================
 # 6 - SEMIOTIC ANALYSIS: SIGNIFIERS
@@ -541,6 +567,7 @@ b.para("Badging, spoiler, smoked tail lights and a low stance \u2014 the owner's
        "signifiers. The brand's job is to sell the parts that create them, using the same language.",
        rx, rgy - 28 - ih2, rw, OBL, 7.9, 10.8, GREY)
 b.footer("Visual / Semiotic Analysis")
+b.tab("04 \u00b7 Semiotic Analysis")
 
 # =====================================================================
 # 7 - SEMIOTIC ANALYSIS: MEANING TABLE + MISREADING
@@ -599,6 +626,7 @@ b.para("JDM YARD deliberately uses the coded symbols insiders recognise \u2014 J
        "retailers and the wider public who see the packaging or the website.",
        M + 18, yy - 52, CW - 36, REG, 9.2, 13.2, (0.88, 0.88, 0.9))
 b.footer("Visual / Semiotic Analysis")
+b.tab("05 \u00b7 Semiotic Analysis")
 
 # =====================================================================
 # 8 - PRODUCT: MOOD BOARD
@@ -628,12 +656,13 @@ b.bullets([
 
 b.tagline_strip(64, 20, dark=False)
 b.footer("The Product / Design", light=True)
+b.tab("06 \u00b7 The Product / Design")
 
 # =====================================================================
 # 9 - PRODUCT: DESIGN DEVELOPMENT
 # =====================================================================
 b.new()
-y = b.section_head("07", "THE PRODUCT / DESIGN", "DEVELOPMENT & SKETCHES")
+y = b.section_head("07", "THE PRODUCT / DESIGN", "DESIGN DEVELOPMENT")
 
 lw = CW * 0.52
 b.img_fit(IMG("poster.png"), M, y - 400, lw, 392, align="l")
@@ -654,17 +683,60 @@ yy = b.bullets([
     "Photo strip of the owner's own car, captioned like an editorial feature.",
 ], rx, y - 26, rw, 8.9, 12.6, 6)
 
-b.kicker("SKETCH DEVELOPMENT", rx, yy - 6)
-sh = 150
-b.frame(rx, yy - 24 - sh, rw, sh, GREY, 0.8, [3, 3])
-b.txt("MOUNT SCANNED SKETCHES HERE", rx + rw / 2, yy - 24 - sh / 2 - 3, BOLD, 8, GREY,
-      space=1.8, align="c")
-b.txt("(hand-drawn masthead, layout thumbnails, sticker ideas)",
-      rx + rw / 2, yy - 24 - sh / 2 - 18, REG, 7.6, GREY, align="c")
-b.para("Layout thumbnails and masthead lettering were sketched by hand first, then rebuilt digitally. "
-       "The printed sketch page is filed with this booklet for checking.",
-       rx, yy - 38 - sh, rw, REG, 8.8, 12.2, GREY)
+b.kicker("THE DESIGN SYSTEM", rx, yy - 8)
+
+# colour palette
+sy = yy - 26
+chips = [("INK", "#0E0E10", INK, WHITE),
+         ("PAPER", "#F4F2EF", PAPER, INK),
+         ("RACE RED", "#C8102E", RED, WHITE)]
+chw = (rw - 2 * 8) / 3
+for i, (nm, hexv, colr, txtc) in enumerate(chips):
+    cx = rx + i * (chw + 8)
+    b.rect(cx, sy - 46, chw, 46, colr)
+    if colr == PAPER:
+        b.frame(cx, sy - 46, chw, 46, LGREY)
+    b.txt(nm, cx + 7, sy - 20, BOLD, 6.8, txtc, space=1.1)
+    b.txt(hexv, cx + 7, sy - 32, REG, 6.8, txtc)
+
+# type specimen
+ty2 = sy - 62
+b.line(rx, ty2, rw, LGREY)
+specs = [("DISPLAY", "Heavy sans, tight, all caps", BOLD, 15),
+         ("BODY", "Clean sans, generous leading", REG, 10.5)]
+sy2 = ty2 - 18
+for nm, desc, fnt, fsz in specs:
+    b.txt("Aa", rx, sy2 - 4, fnt, fsz + 4, INK, space=-0.4)
+    b.txt(nm, rx + 46, sy2, BOLD, 7, RED, space=1.6)
+    b.txt(desc, rx + 46, sy2 - 11, REG, 8.2, GREY)
+    sy2 -= 30
+b.txt("\u30a2", rx, sy2 - 4, JP, 17, INK)
+b.txt("JAPANESE", rx + 46, sy2, BOLD, 7, RED, space=1.6)
+b.txt("Kana and kanji for cultural signal", rx + 46, sy2 - 11, REG, 8.2, GREY)
+
+# rules of the system
+b.line(rx, sy2 - 26, rw, LGREY)
+b.bullets([
+    "One accent colour only \u2014 red is reserved for emphasis, never decoration.",
+    "Every layout sits on the same margin and column grid as this booklet.",
+    "Photography is always the owner's real car, never stock imagery.",
+], rx, sy2 - 44, rw, 8.6, 12, 4.5, GREY)
+b.kicker("FROM RESEARCH TO PRODUCT", M, 196)
+b.rect(M, 78, CW, 104, INK)
+steps = [("01", "RESEARCH", "Definition, demographics, values and shared beliefs of the subculture."),
+         ("02", "SEMIOTICS", "Which signs the group uses, what they mean, and what to avoid."),
+         ("03", "MOOD BOARD", "Palette, type pairing and photographic tone locked in."),
+         ("04", "PRODUCT", "Store, magazine and poster built from one design system.")]
+stw = (CW - 36 - 3 * 12) / 4
+for i, (n, t, d) in enumerate(steps):
+    sx = M + 18 + i * (stw + 12)
+    b.txt(n, sx, 152, BOLD, 15, RED, space=-0.5)
+    b.txt(t, sx, 136, BOLD, 7.6, WHITE, space=1.4)
+    b.para(d, sx, 124, stw, REG, 7.9, 11, (0.8, 0.8, 0.84))
+    if i < 3:
+        b.rect(sx + stw + 4, 128, 1, 30, (0.35, 0.35, 0.4))
 b.footer("The Product / Design")
+b.tab("07 \u00b7 The Product / Design")
 
 # =====================================================================
 # 10 - PRODUCT: WEBSITE + CONTACT SHEET
@@ -688,6 +760,7 @@ b.para("Nine frames were shot for the campaign and contact-sheeted for selection
 cs = 288
 b.img_fit(IMG("Contact sheet.png"), M + (CW - cs) / 2, yc - 58 - cs, cs, cs)
 b.footer("The Product / Design")
+b.tab("08 \u00b7 The Product / Design")
 
 # =====================================================================
 # 11 - MARKETING PLAN
@@ -755,12 +828,13 @@ b.img_cover(IMG("1.jpg"), M, band_y, CW * 0.46, 104)
 rx3 = M + CW * 0.46 + 18
 b.kicker("SALES FUNNEL, SIMPLIFIED", rx3, band_y + 92)
 b.bullets([
-    "See the car content on Instagram or TikTok \u2192 follow the account.",
-    "Meet the brand in person at a car meet \u2192 take a free poster and stickers.",
-    "Buy a small part or merch item \u2192 receive Issue 01 in the box.",
+    "See the car content on Instagram or TikTok, then follow the account.",
+    "Meet the brand in person at a car meet, then take a free poster and stickers.",
+    "Buy a small part or merch item, then receive Issue 01 in the box.",
     "Come back for the expensive parts \u2014 wheels, exhaust and aero.",
 ], rx3, band_y + 74, CW - CW * 0.46 - 18, 8.6, 12, 3.4)
 b.footer("Marketing Plan")
+b.tab("09 \u00b7 Marketing Plan")
 
 # =====================================================================
 # 12 - CONCLUSION / CALL TO ACTION
