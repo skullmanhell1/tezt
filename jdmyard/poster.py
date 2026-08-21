@@ -1,0 +1,653 @@
+#!/usr/bin/env python3
+"""
+JDM YARD poster - aged Japanese car-magazine treatment.
+
+Cream stock rather than black. Oversized masthead that the hero photo cuts
+across, giant stacked kanji with hard offset shadows, category-chipped cover
+lines, a red banner, a big issue block, and three bordered owner cards.
+Finished with a warm faded grade, halftone screen and paper texture.
+
+Layout language follows Japanese car-magazine convention. All branding and
+copy are JDM Yard's own - no third-party magazine name, logo, masthead or
+trade dress is reproduced.
+
+Usage:  python3 poster.py                 # 1654 x 2339  (A4 @ 200dpi)
+        POSTER_W=2480 python3 poster.py   # A4 @ 300dpi, print
+Output: out/poster.png
+"""
+
+import math
+import os
+from pathlib import Path
+from PIL import Image, ImageDraw, ImageFilter, ImageEnhance, ImageChops
+
+from build import blur_regions, font, track, track_w, vgrad, FONTS, ASSETS
+
+OUT = Path(__file__).parent / "out"
+OUT.mkdir(exist_ok=True)
+
+W = int(os.environ.get("POSTER_W", 1654))
+H = int(round(W * 297 / 210.0))
+SC = W / 1654.0
+
+
+def s(px):
+    return max(1, int(round(px * SC)))
+
+
+# ---------------------------------------------------------------- palette
+CREAM = (234, 226, 206)
+CREAM_D = (216, 205, 180)
+CREAM_L = (243, 237, 222)
+INK = (30, 27, 25)
+INK_S = (58, 52, 48)
+RED = (183, 30, 33)
+RED_D = (132, 18, 22)
+GOLD = (212, 166, 52)
+TEAL = (88, 112, 106)
+
+# ---------------------------------------------------------------- copy
+STRIP_ITEMS = ["最新パーツ情報", "実測データ", "オーナー特集"]
+STRIP_EN = "REAL PARTS · REAL OWNERS · REAL PERFORMANCE"
+
+MAST = "JDMYARD"
+MAST_SUB = "日本車専門誌"
+MAST_EN = "MAGAZINE"
+
+STACK = ["最強", "ゼット", "列伝"]
+STACK_YEARS = "2009 → 2020"
+BANNER_JP = "特集"
+
+COVER_LINES = [
+    ("徹底比較", "VQ37VHR 実測パワー検証"),
+    ("新作", "エアロパーツ最新カタログ"),
+    ("基礎", "足回りセッティング入門"),
+    ("完全版", "排気系チューン全ガイド"),
+]
+
+RED_BANNER = "本物のパーツ。本物のパフォーマンス。"
+
+# ---- car identity + technical data band
+MODEL = "NISSAN 370Z"
+MODEL_SUB = "Z34  ·  2009 - 2020  ·  RWD"
+META_LINE = "MANUFACTURED BY NISSAN MOTOR CO., LTD.  ·  ORIGIN : JAPAN"
+BAND_TITLE = "TECHNICAL DATA"
+BAND_TITLE_JP = "主要諸元"
+
+# Commonly cited Z34 figures - verify against the actual car before printing.
+SPEC_CELLS = [
+    ("ENGINE", "VQ37VHR"),
+    ("DISPLACEMENT", "3696 CC"),
+    ("POWER", "328 HP"),
+    ("TORQUE", "366 NM"),
+    ("0 - 100 KM/H", "5.1 S"),
+    ("KERB WEIGHT", "1520 KG"),
+]
+
+ISSUE_NO = "01"
+ISSUE_YEAR = "2026"
+ISSUE_MONTH = "AUGUST"
+ISSUE_JP = "8月号"
+
+# (owner credit removed - the hero now carries the car identity instead)
+
+PLATE_8 = [(0.345, 0.636, 0.672, 0.714)]
+
+HERO = dict(src=os.environ.get("POSTER_HERO", "7.jpg"),
+            bias_y=0.46, zoom=1.02, plate=None)
+
+CARDS = [
+    # 7.jpg also carries the hero, so this card is framed much tighter to read
+    # as its own shot rather than a duplicate of the cover image.
+    # 7.jpg also carries the hero. Framed high here to catch the sun flare and
+    # roofline - a tight mid-car crop looked like a duplicate of card 03.
+    dict(src="7.jpg", idx="01", jp="夕陽", cap="GOLDEN HOUR",
+         bias_y=0.26, zoom=1.06, plate=None, contrast=1.20, expo=0.94),
+    dict(src="8.jpg", idx="02", jp="正面", cap="FRONT END",
+         bias_y=0.40, zoom=1.06, plate=PLATE_8),
+    dict(src="9.jpg", idx="03", jp="斜め前", cap="THREE QUARTER",
+         bias_y=0.46, zoom=1.12, plate=None),
+]
+
+FOOT_HANDLE = "@jdmyard"
+FOOT_STAMP = "日本製"
+FOOT_BRAND = "JDM YARD"
+FOOT_TAG = "REAL PARTS. REAL PERFORMANCE."
+
+FOOT_TITLE = "NISSAN 370Z (2009 - 2020)"
+FOOT_BODY = [
+    "A FRONT-ENGINE, REAR-WHEEL-DRIVE JDM SPORTS COUPE BUILT",
+    "AROUND THE NATURALLY ASPIRATED VQ37VHR V6, A SHORT",
+    "WHEELBASE AND HYDRAULIC STEERING.",
+]
+FOOT_RIGHT = [
+    "NISSAN 370Z",
+    "2009 - 2020  /  Z34  /  RWD",
+    "VQ37VHR  ·  3.7 L  ·  V6",
+    "THE MODERN Z",
+]
+
+# ---------------------------------------------------------------- fonts
+ANTON = FONTS / "Anton-Regular.ttf"
+KAUSHAN = FONTS / "KaushanScript-Regular.ttf"
+ARCHIVO = FONTS / "Archivo[wdth,wght].ttf"
+OSWALD = FONTS / "Oswald[wght].ttf"
+ROBOTO = FONTS / "RobotoCondensed.ttf"
+NOTOJP = FONTS / "NotoSansJP[wght].ttf"
+
+
+def anton(sz):
+    return font(ANTON, s(sz))
+
+
+def kaushan(sz):
+    return font(KAUSHAN, s(sz))
+
+
+def arch(sz, w="SemiBold"):
+    return font(ARCHIVO, s(sz), w)
+
+
+def osw(sz, w="Bold"):
+    return font(OSWALD, s(sz), w)
+
+
+def rob(sz, w="Regular"):
+    return font(ROBOTO, s(sz), w)
+
+
+def njp(sz, w="Bold"):
+    return font(NOTOJP, s(sz), w)
+
+
+# ---------------------------------------------------------------- treatment
+def vintage_grade(img):
+    """
+    Warm, faded newsstand-print look - the opposite of the cool crushed grade
+    used for the website hero. Blacks lift rather than crush, highlights warm,
+    saturation drops but does not die.
+    """
+    img = img.convert("RGB")
+    img = ImageEnhance.Color(img).enhance(0.62)
+    img = ImageEnhance.Contrast(img).enhance(1.04)
+
+    # fade: lift the toe, pull the shoulder down
+    def curve(v):
+        v = v / 255.0
+        v = 0.055 + v * 0.90            # faded black + white point
+        v = v ** 0.98
+        return int(min(255, max(0, v * 255)))
+    img = img.point([curve(i) for i in range(256)] * 3)
+
+    # warm split-tone: amber highlights, softly cool shadows
+    r, g, b = img.split()
+    r = r.point(lambda v: min(255, v + int(16 * (v / 255) + 5)))
+    g = g.point(lambda v: min(255, v + int(5 * (v / 255))))
+    b = b.point(lambda v: max(0, v - int(14 * (v / 255)) + 4))
+    return Image.merge("RGB", (r, g, b))
+
+
+def paper(size):
+    """Cream stock with mottling, so flat areas are not dead digital fill."""
+    base = Image.new("RGB", size, CREAM)
+    blotch = Image.effect_noise(size, 26).filter(
+        ImageFilter.GaussianBlur(max(2, s(9))))
+    blotch = blotch.point(lambda v: 118 + int((v - 128) * 0.55))
+    tinted = ImageChops.multiply(base, blotch.convert("RGB").point(
+        lambda v: 170 + int(v * 0.34)))
+    return Image.blend(base, tinted, 0.55)
+
+
+def print_pass(img, dot_alpha=0.05, grain=0.09):
+    """Halftone dot screen + grain."""
+    w, h = img.size
+    cell = max(3, s(5))
+    tile = Image.new("L", (cell, cell), 255)
+    td = ImageDraw.Draw(tile)
+    r = max(1, cell * 0.30)
+    td.ellipse([cell / 2 - r, cell / 2 - r, cell / 2 + r, cell / 2 + r], fill=176)
+    screen = Image.new("L", (w + cell, h + cell))
+    for y in range(0, h + cell, cell):
+        for x in range(0, w + cell, cell):
+            screen.paste(tile, (x, y))
+    screen = screen.crop((0, 0, w, h)).filter(ImageFilter.GaussianBlur(0.6))
+    img = Image.blend(img, ImageChops.multiply(img, screen.convert("RGB")),
+                      dot_alpha)
+    noise = Image.effect_noise((w, h), 12).convert("RGB")
+    return Image.blend(img, ImageChops.add(img, noise, scale=1.0, offset=-112),
+                       grain)
+
+
+def edge_age(img, strength=0.30):
+    """Darken and warm the sheet edges, like a shelf-worn cover."""
+    w, h = img.size
+    mask = Image.new("L", (w, h), 0)
+    d = ImageDraw.Draw(mask)
+    inset = int(min(w, h) * 0.055)
+    d.rectangle([inset, inset, w - inset, h - inset], fill=255)
+    mask = mask.filter(ImageFilter.GaussianBlur(min(w, h) * 0.055))
+    dark = ImageEnhance.Brightness(img).enhance(1.0 - strength)
+    return Image.composite(img, dark, mask)
+
+
+# ---------------------------------------------------------------- helpers
+def load(spec, tw, th, grade=True):
+    p = ASSETS / spec["src"]
+    if not p.exists():
+        im = Image.new("RGB", (tw, th), CREAM_D)
+        d = ImageDraw.Draw(im)
+        f = rob(15, "Bold")
+        t = f"[ {spec['src']} missing ]"
+        d.text(((tw - d.textlength(t, font=f)) / 2, th / 2), t, font=f, fill=INK_S)
+        return im, False
+    img = Image.open(p).convert("RGB")
+    if spec.get("plate"):
+        img = blur_regions(img, spec["plate"])
+    iw, ih = img.size
+    scale = max(tw / iw, th / ih) * spec.get("zoom", 1.0)
+    nw, nh = max(tw, int(iw * scale + .5)), max(th, int(ih * scale + .5))
+    img = img.resize((nw, nh), Image.LANCZOS)
+    left = int((nw - tw) * 0.5)
+    top = int((nh - th) * spec.get("bias_y", 0.5))
+    img = img.crop((left, top, left + tw, top + th))
+    if grade:
+        img = vintage_grade(img)
+    # per-image tone trim - the flare shot needs the haze cut so the card row
+    # reads evenly against the two clean shots
+    if spec.get("contrast", 1.0) != 1.0:
+        img = ImageEnhance.Contrast(img).enhance(spec["contrast"])
+    if spec.get("expo", 1.0) != 1.0:
+        img = ImageEnhance.Brightness(img).enhance(spec["expo"])
+    return img, True
+
+
+def hard_text(d, xy, text, fnt, fill, outline=None, ow=0, shadow=None, off=0,
+              spacing=0):
+    """Type with a hard offset shadow and optional outline - letterpress feel."""
+    x, y = xy
+    if shadow is not None and off:
+        track(d, (x + off, y + off), text, fnt, shadow, spacing=spacing)
+    if outline is not None and ow:
+        # emulate an outer contour by stamping the glyphs around the centre
+        for dx, dy in ((-ow, 0), (ow, 0), (0, -ow), (0, ow),
+                       (-ow, -ow), (ow, -ow), (-ow, ow), (ow, ow)):
+            track(d, (x + dx, y + dy), text, fnt, outline, spacing=spacing)
+    track(d, (x, y), text, fnt, fill, spacing=spacing)
+
+
+def chip(d, box, text, fnt, bg, fg, spacing=0):
+    x0, y0, x1, y1 = box
+    d.rectangle([x0, y0, x1, y1], fill=bg)
+    tw = track_w(d, text, fnt, spacing)
+    bb = d.textbbox((0, 0), text, font=fnt)
+    track(d, (x0 + ((x1 - x0) - tw) / 2, y0 + ((y1 - y0) - (bb[3] - bb[1])) / 2
+              - bb[1]), text, fnt, fg, spacing=spacing)
+
+
+def badge_round(size):
+    ss = 4
+    d0 = size * ss
+    im = Image.new("RGBA", (d0, d0), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    d.ellipse([0, 0, d0 - 1, d0 - 1], fill=RED + (250,))
+    d.ellipse([0, 0, d0 - 1, d0 - 1], outline=CREAM + (235,),
+              width=max(1, d0 // 40))
+    ins = d0 * 0.062
+    d.ellipse([ins, ins, d0 - ins, d0 - ins], outline=GOLD + (150,),
+              width=max(1, d0 // 85))
+    im = im.resize((size, size), Image.LANCZOS)
+    d = ImageDraw.Draw(im)
+    f = font(ARCHIVO, max(7, int(size * 0.118)), "Bold")
+    for t, fy in zip(("TUNED", "MODIFIED", "PERFECTED"), (0.25, 0.435, 0.62)):
+        sp = max(1, int(size * 0.012))
+        tw = track_w(d, t, f, sp)
+        track(d, ((size - tw) / 2, size * fy), t, f, CREAM_L + (255,), spacing=sp)
+    return im
+
+
+def diagonal_flash(text, bw, bh, angle=-13):
+    ss = 3
+    im = Image.new("RGBA", (bw * ss, bh * ss), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    d.rectangle([0, 0, bw * ss, bh * ss], fill=RED + (250,))
+    d.rectangle([0, 0, bw * ss, bh * ss], outline=CREAM + (230,),
+                width=max(1, int(3 * ss * SC)))
+    f = font(NOTOJP, int(bh * ss * 0.54), "Black")
+    bb = d.textbbox((0, 0), text, font=f)
+    d.text(((bw * ss - (bb[2] - bb[0])) / 2 - bb[0],
+            (bh * ss - (bb[3] - bb[1])) / 2 - bb[1]), text, font=f,
+           fill=CREAM_L + (255,))
+    return im.resize((bw, bh), Image.LANCZOS).rotate(
+        angle, expand=True, resample=Image.BICUBIC)
+
+
+# ---------------------------------------------------------------- build
+def build_poster():
+    canvas = paper((W, H))
+    d = ImageDraw.Draw(canvas)
+
+    # ---------------- geometry (bottom-up, so nothing can leave dead space)
+    # All vehicle data now lives in the black bar at the base of the sheet,
+    # so the mid-page cream band is gone and the hero reclaims that height.
+    foot_h = s(262)
+    # caption is two lines shorter without the owner credit, so the photos
+    # take that height back
+    cards_pad, card_img_h, card_txt_h = s(16), s(378), s(58)
+    cards_block = cards_pad * 2 + card_img_h + card_txt_h
+    banner_h = s(60)
+
+    strip_h = s(62)
+    mast_top = strip_h + s(10)
+
+    foot_top = H - foot_h
+    cards_top = foot_top - cards_block
+    banner_top = cards_top - banner_h
+    hero_bot = banner_top
+
+    # ================================================ TOP STRIP
+    d.rectangle([0, 0, W, strip_h], fill=INK)
+    d.rectangle([0, strip_h - s(5), W, strip_h], fill=RED)
+    f_sj = njp(15, "Bold")
+    f_se = arch(10.5, "Bold")
+    sp = s(2.2)
+    widths = [track_w(d, t, f_sj, sp) for t in STRIP_ITEMS]
+    mark = s(26)
+    total = sum(widths) + mark * (len(STRIP_ITEMS) - 1)
+    sx = (W - total) / 2
+    for i, t in enumerate(STRIP_ITEMS):
+        track(d, (sx, s(9)), t, f_sj, CREAM_L, spacing=sp)
+        sx += widths[i]
+        if i < len(STRIP_ITEMS) - 1:
+            cx = sx + mark / 2
+            star_pts = []
+            for k in range(10):
+                a = -math.pi / 2 + k * math.pi / 5
+                rr = s(6) if k % 2 == 0 else s(2.6)
+                star_pts.append((cx + rr * math.cos(a), s(18) + rr * math.sin(a)))
+            d.polygon(star_pts, fill=GOLD)
+            sx += mark
+    ew = track_w(d, STRIP_EN, f_se, s(3))
+    track(d, ((W - ew) / 2, s(36)), STRIP_EN, f_se, (176, 166, 148), spacing=s(3))
+
+    # ================================================ MASTHEAD
+    # Size the wordmark so it genuinely spans the sheet - a masthead with cream
+    # margins either side reads as timid. Solve for the point size that fills
+    # the measure, then let the geometry below follow the resulting ink height.
+    # Fit must budget for its own decoration: the contour stroke grows the ink
+    # on every side and the offset shadow extends right and down. Sizing to
+    # W-40 and then adding a 7px stroke plus a 13px shadow clipped both edges.
+    STROKE = max(1, s(6))
+    SHADOW = s(10)
+    target_w = W - s(112) - STROKE * 2 - SHADOW
+    lo, hi = 40, 900
+    for _ in range(22):
+        mid = (lo + hi) / 2
+        if font(ANTON, int(mid)).getlength(MAST) < target_w:
+            lo = mid
+        else:
+            hi = mid
+    f_mast = font(ANTON, int(lo))
+
+    # Anton carries a large top bearing: at this point size the ink begins
+    # ~134px below the anchor, which left a dead cream band under the strip.
+    # Solve the draw position from where the INK should land, not the anchor.
+    probe = d.textbbox((0, 0), MAST, font=f_mast)
+    bearing_x, bearing_y = probe[0], probe[1]
+    draw_y = strip_h + s(16) - bearing_y
+
+    mb = d.textbbox((0, draw_y), MAST, font=f_mast)
+    mw = mb[2] - mb[0]
+    mast_ink_bot = mb[3]
+    mast_ink_h = mast_ink_bot - mb[1]
+    mx = (W - mw) / 2 - bearing_x
+
+    # hard offset shadow, then a single clean contour - the previous 8-way
+    # glyph stamping produced a lumpy, uneven halo
+    d.text((mx + SHADOW, draw_y + SHADOW), MAST, font=f_mast, fill=RED_D)
+    d.text((mx, draw_y), MAST, font=f_mast, fill=INK,
+           stroke_width=STROKE, stroke_fill=CREAM_L)
+
+    # The photo should clip only the feet of the letters. At 0.20 the hook of
+    # the J was cut and the wordmark read as ".JDMYARD".
+    hero_top = int(mast_ink_bot - mast_ink_h * 0.11)
+    hero_h = hero_bot - hero_top
+
+    # ================================================ HERO
+    hero, hero_ok = load(HERO, W, hero_h)
+
+    # scrims: top so the masthead cut stays readable, bottom to hold type
+    hero.paste(Image.new("RGB", (W, s(120)), (0, 0, 0)), (0, 0),
+               vgrad((W, s(120)), 150, 0, gamma=0.9))
+    sh = int(hero_h * 0.50)
+    hero.paste(Image.new("RGB", (W, sh), (0, 0, 0)), (0, hero_h - sh),
+               vgrad((W, sh), 0, 214, gamma=2.0))
+    canvas.paste(hero, (0, hero_top))
+    d = ImageDraw.Draw(canvas)
+
+    # hairline frame so the photo sits on the stock rather than floating
+    d.rectangle([0, hero_top, W - 1, hero_bot - 1], outline=CREAM_D, width=s(2))
+
+    # masthead sub-lines, riding on the photo's top scrim. Both sit left - on
+    # the right they collided with the corner flash.
+    f_msub = njp(17, "Bold")
+    f_men = arch(13, "Bold")
+    sub_x = s(30)
+    jw = track_w(d, MAST_SUB, f_msub, s(5))
+    track(d, (sub_x, hero_top + s(16)), MAST_SUB, f_msub, (236, 158, 158),
+          spacing=s(5))
+    sep = sub_x + jw + s(14)
+    d.rectangle([sep, hero_top + s(20), sep + s(2), hero_top + s(38)], fill=GOLD)
+    track(d, (sep + s(14), hero_top + s(22)), MAST_EN, f_men, CREAM_D,
+          spacing=s(6))
+
+    # ---- giant stacked kanji, left, overlapping the photo
+    f_st = njp(158, "Black")
+    st_x = s(28)
+    line_h = s(156)
+    st_y = hero_top + s(84)
+    for i, ln in enumerate(STACK):
+        ly = st_y + i * line_h
+        d.text((st_x + s(10), ly + s(10)), ln, font=f_st, fill=(20, 14, 12))
+        d.text((st_x, ly), ln, font=f_st, fill=CREAM_L,
+               stroke_width=max(1, s(6)), stroke_fill=RED_D)
+
+    # gold year chip beneath
+    f_yr = arch(21, "Bold")
+    yw = track_w(d, STACK_YEARS, f_yr, s(2))
+    yy = st_y + line_h * len(STACK) + s(4)
+    d.rectangle([st_x + s(4) + s(6), yy + s(6), st_x + s(4) + yw + s(30),
+                 yy + s(40)], fill=(20, 14, 12))
+    chip(d, (st_x + s(4), yy, st_x + s(4) + yw + s(24), yy + s(34)),
+         STACK_YEARS, f_yr, GOLD, (26, 20, 8), spacing=s(2))
+
+    # ---- corner flash, top right
+    fl = diagonal_flash(BANNER_JP, s(140), s(62))
+    canvas.paste(fl, (W - fl.width - s(26), hero_top + s(30)), fl)
+    d = ImageDraw.Draw(canvas)
+
+    # ---- cover lines, right aligned down the right of the frame.
+    # These sit over the bonnet, which is otherwise a large empty highlight -
+    # keeping them left under the kanji left the composition lopsided.
+    f_cat = njp(14, "Bold")
+    f_line = njp(24, "Bold")
+    cl_right = W - s(30)
+    cl_y = hero_top + hero_h * 0.40
+    for cat, line in COVER_LINES:
+        lw = track_w(d, line, f_line, s(1))
+        cwid = track_w(d, cat, f_cat, s(1.5)) + s(20)
+        # chip sits above its line, both flush to the right margin
+        chip(d, (cl_right - cwid, cl_y, cl_right, cl_y + s(24)), cat, f_cat,
+             RED, CREAM_L, spacing=s(1.5))
+        d.text((cl_right - lw, cl_y + s(28)), line, font=f_line, fill=CREAM_L,
+               stroke_width=max(1, s(4)), stroke_fill=(14, 10, 9))
+        cl_y += s(74)
+
+    # ---- badge, bottom left over the paving
+    bsz = s(128)
+    bimg = badge_round(bsz)
+    canvas.paste(bimg, (s(30), hero_bot - bsz - s(26)), bimg)
+    d = ImageDraw.Draw(canvas)
+
+    # ---- car identity beside the badge (owner credit removed)
+    f_ident = font(ARCHIVO, s(34), "Black")
+    f_meta = arch(12, "Bold")
+    fx = s(30) + bsz + s(22)
+    fy = hero_bot - s(94)
+    d.text((fx, fy), MODEL, font=f_ident, fill=CREAM_L,
+           stroke_width=max(1, s(3)), stroke_fill=(14, 10, 8))
+    ibb = d.textbbox((fx, fy), MODEL, font=f_ident)
+    track(d, (fx + s(2), ibb[3] + s(8)), MODEL_SUB, f_meta, GOLD, spacing=s(2))
+
+    # ---- issue block, bottom right of the hero
+    ib_w, ib_h = s(168), s(126)
+    ib_x, ib_y = W - ib_w - s(26), hero_bot - ib_h - s(22)
+    d.rectangle([ib_x + s(7), ib_y + s(7), ib_x + ib_w + s(7), ib_y + ib_h + s(7)],
+                fill=(18, 13, 11))
+    d.rectangle([ib_x, ib_y, ib_x + ib_w, ib_y + ib_h], fill=CREAM_L)
+    d.rectangle([ib_x, ib_y, ib_x + ib_w, ib_y + ib_h], outline=INK, width=s(3))
+    d.rectangle([ib_x, ib_y, ib_x + ib_w, ib_y + s(8)], fill=RED)
+    f_no = anton(74)
+    nb = d.textbbox((0, 0), ISSUE_NO, font=f_no)
+    d.text((ib_x + (ib_w - (nb[2] - nb[0])) / 2 - nb[0], ib_y + s(10) - nb[1]),
+           ISSUE_NO, font=f_no, fill=INK)
+    f_iy = arch(15, "Bold")
+    yw2 = track_w(d, ISSUE_YEAR, f_iy, s(2.5))
+    track(d, (ib_x + (ib_w - yw2) / 2, ib_y + s(80)), ISSUE_YEAR, f_iy, RED_D,
+          spacing=s(2.5))
+    f_im = njp(13, "Bold")
+    mw2 = track_w(d, ISSUE_JP, f_im, s(1.5))
+    track(d, (ib_x + (ib_w - mw2) / 2, ib_y + s(100)), ISSUE_JP, f_im, INK_S,
+          spacing=s(1.5))
+
+    # ================================================ RED BANNER
+    d.rectangle([0, banner_top, W, banner_top + banner_h], fill=RED)
+    d.rectangle([0, banner_top, W, banner_top + s(3)], fill=(96, 12, 15))
+    f_bn = njp(23, "Bold")
+    bw2 = track_w(d, RED_BANNER, f_bn, s(4))
+    bb = d.textbbox((0, 0), RED_BANNER, font=f_bn)
+    track(d, ((W - bw2) / 2, banner_top + (banner_h - (bb[3] - bb[1])) / 2 - bb[1]),
+          RED_BANNER, f_bn, CREAM_L, spacing=s(4))
+
+    # ================================================ OWNER CARDS
+    pad = s(20)
+    gap = s(16)
+    cw = (W - pad * 2 - gap * 2) // 3
+    for i, c in enumerate(CARDS):
+        cx = pad + (cw + gap) * i
+        cy = cards_top + cards_pad
+        ph, ok = load(c, cw, card_img_h)
+        # drop shadow then photo then keyline
+        d.rectangle([cx + s(6), cy + s(6), cx + cw + s(6), cy + card_img_h + s(6)],
+                    fill=CREAM_D)
+        canvas.paste(ph, (cx, cy))
+        d = ImageDraw.Draw(canvas)
+        d.rectangle([cx, cy, cx + cw - 1, cy + card_img_h - 1], outline=INK,
+                    width=s(3))
+
+        ch2 = s(38)
+        chip(d, (cx, cy, cx + ch2, cy + ch2), c["idx"], anton(23), RED, CREAM_L)
+
+        # caption: Japanese label over the shot description. Owner names and
+        # handles removed.
+        ty = cy + card_img_h + s(12)
+        track(d, (cx + s(2), ty), c["jp"], njp(14, "Bold"), RED_D, spacing=s(2))
+        track(d, (cx + s(2), ty + s(24)), c["cap"], osw(18, "SemiBold"), INK,
+              spacing=s(0.6))
+
+    # ================================================ DATA BAR (base of sheet)
+    # Black information bar carrying all the vehicle data: spec figures across
+    # the top, description left and identity right, brand lockup along the base.
+    d.rectangle([0, foot_top, W, H], fill=INK)
+    d.rectangle([0, foot_top, W, foot_top + s(5)], fill=RED)
+
+    L = s(30)
+    R = W - s(30)
+    WHITE_ = CREAM_L
+    MUTED = (176, 172, 166)
+    FAINT = (128, 124, 118)
+    HAIR_D = (58, 54, 50)
+
+    # ---- header row
+    f_bt = arch(11, "Bold")
+    track(d, (L, foot_top + s(18)), BAND_TITLE, f_bt, WHITE_, spacing=s(2.4))
+    btw = track_w(d, BAND_TITLE, f_bt, s(2.4))
+    track(d, (L + btw + s(14), foot_top + s(18)), BAND_TITLE_JP, njp(11),
+          (226, 104, 110), spacing=s(2))
+    f_ml = arch(9.5, "Bold")
+    mlw = track_w(d, META_LINE, f_ml, s(1.4))
+    track(d, (R - mlw, foot_top + s(19)), META_LINE, f_ml, FAINT,
+          spacing=s(1.4))
+    d.line([(L, foot_top + s(40)), (R, foot_top + s(40))], fill=HAIR_D,
+           width=max(1, s(1)))
+
+    # ---- spec figures across the full measure
+    n_cells = len(SPEC_CELLS)
+    cell_w = (R - L) / n_cells
+    f_ck = arch(9, "Bold")
+    f_cv = osw(21, "SemiBold")
+    for i, (k, v) in enumerate(SPEC_CELLS):
+        cxx = L + cell_w * i
+        track(d, (cxx, foot_top + s(52)), k, f_ck, FAINT, spacing=s(1.3))
+        track(d, (cxx, foot_top + s(68)), v, f_cv, WHITE_, spacing=s(0.4))
+        if i < n_cells - 1:
+            d.line([(cxx + cell_w - s(14), foot_top + s(50)),
+                    (cxx + cell_w - s(14), foot_top + s(96))],
+                   fill=HAIR_D, width=max(1, s(1)))
+    d.line([(L, foot_top + s(110)), (R, foot_top + s(110))], fill=HAIR_D,
+           width=max(1, s(1)))
+
+    # ---- description left, identity right.
+    # Leading is tight here on purpose: at 20px both columns overran the rule
+    # below them, clipping the last line of each.
+    f_ft = arch(16, "Bold")
+    f_fb = rob(14.5, "Regular")
+    ry = foot_top + s(120)
+    track(d, (L, ry), FOOT_TITLE, f_ft, WHITE_, spacing=s(1.4))
+    for i, line in enumerate(FOOT_BODY):
+        d.text((L, ry + s(24) + i * s(18)), line, font=f_fb, fill=MUTED)
+
+    ry2 = ry
+    for i, line in enumerate(FOOT_RIGHT):
+        f = arch(14, "Bold") if i == 0 else f_fb
+        col = WHITE_ if i == 0 else MUTED
+        lw = d.textlength(line, font=f)
+        d.text((R - lw, ry2), line, font=f, fill=col)
+        ry2 += s(22) if i == 0 else s(18)
+
+    d.line([(L, foot_top + s(206)), (R, foot_top + s(206))], fill=HAIR_D,
+           width=max(1, s(1)))
+
+    # ---- brand lockup along the base
+    by2 = foot_top + s(216)
+    f_bd = font(ANTON, s(30))
+    d.text((L, by2), FOOT_BRAND, font=f_bd, fill=WHITE_)
+    bdw = d.textlength(FOOT_BRAND, font=f_bd)
+    d.text((L + bdw + s(14), by2 + s(12)), FOOT_HANDLE, font=rob(16, "Bold"),
+           fill=(232, 96, 104))
+
+    f_tag = arch(11, "Bold")
+    tgw = track_w(d, FOOT_TAG, f_tag, s(2.4))
+    track(d, ((W - tgw) / 2, by2 + s(16)), FOOT_TAG, f_tag, MUTED,
+          spacing=s(2.4))
+
+    f_stamp = njp(20, "Black")
+    sw2 = track_w(d, FOOT_STAMP, f_stamp, s(3))
+    stx, sty = R - sw2 - s(12), by2 + s(8)
+    d.rectangle([stx - s(11), sty - s(7), stx + sw2 + s(9), sty + s(30)],
+                outline=(226, 104, 110), width=max(1, s(2)))
+    track(d, (stx, sty), FOOT_STAMP, f_stamp, (232, 110, 116), spacing=s(3))
+
+    # ================================================ PRINT FINISH
+    canvas = print_pass(canvas)
+    canvas = edge_age(canvas)
+
+    suffix = "" if W == 1654 else f"@{W}"
+    out = OUT / f"poster{suffix}.png"
+    canvas.save(out, "PNG")
+    print(f"wrote {out}  ({W}x{H})  hero={HERO['src']}  "
+          f"cards={[c['src'] for c in CARDS]}")
+    return out
+
+
+if __name__ == "__main__":
+    build_poster()
