@@ -67,6 +67,23 @@ COVER_LINES = [
 
 RED_BANNER = "本物のパーツ。本物のパフォーマンス。"
 
+# ---- car identity + technical data band
+MODEL = "NISSAN 370Z"
+MODEL_SUB = "Z34  ·  2009 - 2020  ·  RWD"
+META_LINE = "MANUFACTURED BY NISSAN MOTOR CO., LTD.  ·  ORIGIN : JAPAN"
+BAND_TITLE = "TECHNICAL DATA"
+BAND_TITLE_JP = "主要諸元"
+
+# Commonly cited Z34 figures - verify against the actual car before printing.
+SPEC_CELLS = [
+    ("ENGINE", "VQ37VHR"),
+    ("DISPLACEMENT", "3696 CC"),
+    ("POWER", "328 HP"),
+    ("TORQUE", "366 NM"),
+    ("0 - 100 KM/H", "5.1 S"),
+    ("KERB WEIGHT", "1520 KG"),
+]
+
 ISSUE_NO = "01"
 ISSUE_YEAR = "2026"
 ISSUE_MONTH = "AUGUST"
@@ -86,7 +103,7 @@ CARDS = [
     # roofline - a tight mid-car crop looked like a duplicate of card 03.
     dict(src="7.jpg", idx="01", jp="夕陽", name="Owner One",
          car="370Z · Golden Hour", ig="@handle_one",
-         bias_y=0.26, zoom=1.06, plate=None),
+         bias_y=0.26, zoom=1.06, plate=None, contrast=1.20, expo=0.94),
     dict(src="8.jpg", idx="02", jp="正面", name="Owner Two",
          car="370Z · Front End", ig="@handle_two",
          bias_y=0.40, zoom=1.06, plate=PLATE_8),
@@ -225,6 +242,12 @@ def load(spec, tw, th, grade=True):
     img = img.crop((left, top, left + tw, top + th))
     if grade:
         img = vintage_grade(img)
+    # per-image tone trim - the flare shot needs the haze cut so the card row
+    # reads evenly against the two clean shots
+    if spec.get("contrast", 1.0) != 1.0:
+        img = ImageEnhance.Contrast(img).enhance(spec["contrast"])
+    if spec.get("expo", 1.0) != 1.0:
+        img = ImageEnhance.Brightness(img).enhance(spec["expo"])
     return img, True
 
 
@@ -294,17 +317,19 @@ def build_poster():
     d = ImageDraw.Draw(canvas)
 
     # ---------------- geometry (bottom-up, so nothing can leave dead space)
-    foot_h = s(126)
-    cards_pad, card_img_h, card_txt_h = s(18), s(360), s(104)
+    foot_h = s(120)
+    cards_pad, card_img_h, card_txt_h = s(16), s(330), s(100)
     cards_block = cards_pad * 2 + card_img_h + card_txt_h
-    banner_h = s(64)
+    band_h = s(152)
+    banner_h = s(60)
 
     strip_h = s(62)
     mast_top = strip_h + s(10)
 
     foot_top = H - foot_h
     cards_top = foot_top - cards_block
-    banner_top = cards_top - banner_h
+    band_top = cards_top - band_h
+    banner_top = band_top - banner_h
     hero_bot = banner_top
 
     # ================================================ TOP STRIP
@@ -477,6 +502,54 @@ def build_poster():
     bb = d.textbbox((0, 0), RED_BANNER, font=f_bn)
     track(d, ((W - bw2) / 2, banner_top + (banner_h - (bb[3] - bb[1])) / 2 - bb[1]),
           RED_BANNER, f_bn, CREAM_L, spacing=s(4))
+
+    # ================================================ CAR + TECHNICAL BAND
+    # Car identity on the left, spec figures ruled off to the right. This is
+    # the information that was carried on the spec sheet.
+    d.rectangle([0, band_top, W, band_top + band_h], fill=CREAM_L)
+    d.rectangle([0, band_top, W, band_top + s(4)], fill=INK)
+
+    bx = s(30)
+    # header row
+    f_bt = arch(11, "Bold")
+    track(d, (bx, band_top + s(14)), BAND_TITLE, f_bt, INK, spacing=s(2.4))
+    btw = track_w(d, BAND_TITLE, f_bt, s(2.4))
+    track(d, (bx + btw + s(14), band_top + s(14)), BAND_TITLE_JP, njp(11),
+          RED_D, spacing=s(2))
+    f_ml = arch(9.5, "Bold")
+    mlw = track_w(d, META_LINE, f_ml, s(1.4))
+    track(d, (W - s(30) - mlw, band_top + s(15)), META_LINE, f_ml,
+          (140, 130, 116), spacing=s(1.4))
+    d.line([(bx, band_top + s(36)), (W - s(30), band_top + s(36))],
+           fill=CREAM_D, width=max(1, s(1)))
+
+    # model name, left
+    name_w = int(W * 0.34)
+    msize = s(48)
+    while msize > s(20) and font(ARCHIVO, msize, "Black").getlength(MODEL) > name_w:
+        msize -= s(1)
+    f_model = font(ARCHIVO, msize, "Black")
+    d.text((bx, band_top + s(52)), MODEL, font=f_model, fill=INK)
+    mbb = d.textbbox((bx, band_top + s(52)), MODEL, font=f_model)
+    track(d, (bx + s(2), mbb[3] + s(8)), MODEL_SUB, arch(12, "Bold"), RED_D,
+          spacing=s(2))
+
+    # spec cells, right
+    cells_x = bx + name_w + s(26)
+    cells_w = W - s(30) - cells_x
+    n_cells = len(SPEC_CELLS)
+    cell_w = cells_w / n_cells
+    f_ck = arch(9, "Bold")
+    f_cv = osw(20, "SemiBold")
+    for i, (k, v) in enumerate(SPEC_CELLS):
+        cxx = cells_x + cell_w * i
+        track(d, (cxx, band_top + s(58)), k, f_ck, (146, 136, 122),
+              spacing=s(1.3))
+        track(d, (cxx, band_top + s(74)), v, f_cv, INK, spacing=s(0.4))
+        if i < n_cells - 1:
+            d.line([(cxx + cell_w - s(12), band_top + s(54)),
+                    (cxx + cell_w - s(12), band_top + s(104))],
+                   fill=CREAM_D, width=max(1, s(1)))
 
     # ================================================ OWNER CARDS
     pad = s(20)
