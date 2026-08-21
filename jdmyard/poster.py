@@ -80,15 +80,19 @@ HERO = dict(src=os.environ.get("POSTER_HERO", "7.jpg"),
             bias_y=0.46, zoom=1.02, plate=None)
 
 CARDS = [
-    dict(src="8.jpg", idx="01", jp="正面", name="Owner One",
-         car="370Z · Front End", ig="@handle_one",
-         bias_y=0.40, zoom=1.04, plate=PLATE_8),
-    dict(src="9.jpg", idx="02", jp="斜め前", name="Owner Two",
-         car="370Z · Three Quarter", ig="@handle_two",
-         bias_y=0.48, zoom=1.12, plate=None),
-    dict(src="3.JPG", idx="03", jp="ホイール", name="Owner Three",
-         car="370Z · Forged Wheels", ig="@handle_three",
-         bias_y=0.46, zoom=1.02, plate=None),
+    # 7.jpg also carries the hero, so this card is framed much tighter to read
+    # as its own shot rather than a duplicate of the cover image.
+    # 7.jpg also carries the hero. Framed high here to catch the sun flare and
+    # roofline - a tight mid-car crop looked like a duplicate of card 03.
+    dict(src="7.jpg", idx="01", jp="夕陽", name="Owner One",
+         car="370Z · Golden Hour", ig="@handle_one",
+         bias_y=0.26, zoom=1.06, plate=None),
+    dict(src="8.jpg", idx="02", jp="正面", name="Owner Two",
+         car="370Z · Front End", ig="@handle_two",
+         bias_y=0.40, zoom=1.06, plate=PLATE_8),
+    dict(src="9.jpg", idx="03", jp="斜め前", name="Owner Three",
+         car="370Z · Three Quarter", ig="@handle_three",
+         bias_y=0.46, zoom=1.12, plate=None),
 ]
 
 FOOT_HANDLE = "@jdmyard"
@@ -506,16 +510,29 @@ def build_poster():
     d.rectangle([0, foot_top, W, foot_top + s(4)], fill=INK)
     f_f1 = arch(14, "Bold")
     f_f2 = rob(15, "Regular")
-    track(d, (s(30), foot_top + s(30)), FOOT_L, f_f1, INK, spacing=s(1.6))
-    d.text((s(30), foot_top + s(56)), FOOT_HANDLE, font=rob(19, "Bold"),
+    track(d, (s(30), foot_top + s(28)), FOOT_L, f_f1, INK, spacing=s(1.6))
+    d.text((s(30), foot_top + s(52)), FOOT_HANDLE, font=rob(19, "Bold"),
            fill=RED_D)
+    # centre line lifted onto the same optical row as the handle, and a rule
+    # run under it, so the middle of the footer is not left empty
     fmw = track_w(d, FOOT_M, f_f1, s(1.8))
-    track(d, ((W - fmw) / 2, foot_top + s(84)), FOOT_M, f_f1, INK_S,
-          spacing=s(1.8))
-    f_stamp = njp(30, "Black")
+    fmx = (W - fmw) / 2
+    track(d, (fmx, foot_top + s(56)), FOOT_M, f_f1, INK_S, spacing=s(1.8))
+    d.line([(fmx, foot_top + s(78)), (fmx + fmw, foot_top + s(78))],
+           fill=CREAM_D, width=max(1, s(1)))
+    f_fjp = njp(13, "Bold")
+    jpw = track_w(d, "日本車専門誌", f_fjp, s(4))
+    track(d, ((W - jpw) / 2, foot_top + s(88)), "日本車専門誌", f_fjp,
+          (150, 140, 126), spacing=s(4))
+    # 日本製 stamp - boxed and inked up. At CREAM_D on cream it was invisible
+    # and read as a printing fault rather than a mark.
+    f_stamp = njp(26, "Black")
     sw2 = track_w(d, FOOT_STAMP, f_stamp, s(3))
-    track(d, (W - sw2 - s(30), foot_top + s(34)), FOOT_STAMP, f_stamp,
-          CREAM_D, spacing=s(3))
+    stx = W - sw2 - s(46)
+    sty = foot_top + s(34)
+    d.rectangle([stx - s(14), sty - s(9), stx + sw2 + s(12), sty + s(38)],
+                outline=RED_D, width=max(1, s(2)))
+    track(d, (stx, sty), FOOT_STAMP, f_stamp, RED_D, spacing=s(3))
 
     # ================================================ PRINT FINISH
     canvas = print_pass(canvas)
