@@ -1,20 +1,13 @@
-# Economics Task 6 — Balance of Payments and the Terms of Trade
+# Economics Task 6 - Balance of Payments and the Terms of Trade
 
-**Complete study notes.** Built from the class decks *Balance of Payments BOP 2025* and
-*Terms of Trade TOT 2025*, with current ABS data added.
-
-Assessment format: short answer test — multiple choice and short answer/data questions.
-
-Syllabus coverage: the concept and structure of Australia's balance of payments; reasons for
-Australia's current account balance; the current account balance and the savings/investment gap;
-the concepts of the terms of trade and the terms of trade index; the effects of changes in
-Australia's terms of trade.
+**Complete study notes** (long version). Built from the class decks *Balance of Payments BOP 2025* and *Terms of Trade TOT 2025*, with current ABS data.
 
 ---
 
 [TOC]
 
 ---
+
 # Task 6: Balance of Payments and the Terms of Trade — Study Notes
 
 Notes built directly from your two class decks (`Balance of Payments BOP 2025.pptx`, `Terms of Trade TOT 2025.pptx`), with current ABS data added so your contemporary examples are up to date.
@@ -625,7 +618,7 @@ net income = −950
 | **Capital and financial account** | +$2,000 (shares)<br>+$10,000 (currency) | −$2,000 (currency)<br>−$5,000 (currency) | **+$5,000** |
 | **Totals** | **+$17,000** | **−$17,000** | **$0** |
 
-> ⚠️ **Heads up:** the solution slide in class (slide 59) shows the totals column as CA **+$5,000** and KAFA **−$5,000**. That looks like a typo — the signs are swapped. Check it yourself: the current account has a $5,000 credit and a $10,000 debit, so it *must* be **−$5,000**, and Australia imported more than it exported, which is a trade deficit funded by capital inflow (a KAFA **surplus**). The version above is the arithmetically consistent one. The second table below (slide 62) is correct as given in class.
+> ⚠ **Heads up:** the solution slide in class (slide 59) shows the totals column as CA **+$5,000** and KAFA **−$5,000**. That looks like a typo — the signs are swapped. Check it yourself: the current account has a $5,000 credit and a $10,000 debit, so it *must* be **−$5,000**, and Australia imported more than it exported, which is a trade deficit funded by capital inflow (a KAFA **surplus**). The version above is the arithmetically consistent one. The second table below (slide 62) is correct as given in class.
 
 ### 10.3 Second table
 
@@ -732,7 +725,7 @@ Six factors. Learn the chain for each in **both directions**.
 **If the AUD appreciates:**
 > Imports become **cheaper** for domestic residents and exports become **more expensive** for overseas buyers. Assuming demand for X and M is price elastic, exports decrease and imports increase → **credits fall and debits rise** → **decreasing BOGS and the CAB**.
 
-⚠️ **You must state the elasticity assumption.** It's a marked point. If demand were inelastic, a depreciation could actually worsen the trade balance in the short run (because the higher price of imports outweighs the smaller fall in quantity).
+⚠ **You must state the elasticity assumption.** It's a marked point. If demand were inelastic, a depreciation could actually worsen the trade balance in the short run (because the higher price of imports outweighs the smaller fall in quantity).
 
 ### 2.4 The terms of trade
 
@@ -1084,7 +1077,7 @@ Y2 → Y3:  (97.4 − 95.5) / 95.5 × 100 = +2.0%  → FAVOURABLE
 Y3 → Y4:  (101.9 − 97.4)/ 97.4 × 100 = +4.6%  → FAVOURABLE
 ```
 
-### 4.2 ⚠️ The percentage points vs per cent trap
+### 4.2 ⚠ The percentage points vs per cent trap
 
 From Year 2 to Year 3 the TOT rose from 95.5 to 97.4.
 
@@ -1209,7 +1202,7 @@ Import price of manufactured/intermediate goods ↓  →  MPI ↓  →  TOT ↑ 
 - **Example:** 2022–2024, the Ukraine–Russia war and tensions in the Middle East spiked oil prices → **rise in MPI** → **deterioration in the TOT**
 - **Higher oil prices potentially affect all import prices**, because they increase **energy and transport costs**
 
-⚠️ **Two-way effect worth knowing.** Higher oil prices raise the MPI (bad for the TOT), but they also raise the price of Australia's **energy export substitutes** — coal and LNG — which raises the XPI (good for the TOT). Which effect dominates depends on the relative weights. In 2016–19 the XPI effect dominated via LNG; in 2022 both indexes rose together.
+⚠ **Two-way effect worth knowing.** Higher oil prices raise the MPI (bad for the TOT), but they also raise the price of Australia's **energy export substitutes** — coal and LNG — which raises the XPI (good for the TOT). Which effect dominates depends on the relative weights. In 2016–19 the XPI effect dominated via LNG; in 2022 both indexes rose together.
 
 ### 5.4 Extension: the exchange rate
 
@@ -1302,9 +1295,9 @@ Mentioning that offset shows genuine understanding and is worth a mark in an "an
 
 Given XPI 100 → 115 → 102 and MPI 100 → 110 → 108, so the TOT is 100 → 104.5 → 94.4:
 
-- ✅ **Correct:** in Year 3 a given quantity of exports buys **fewer imports** than in Year 2.
-- ❌ "Import prices increased faster than export prices" — over the whole period import prices rose 10% (100→110) while export prices rose 15% (100→115), so imports did **not** increase faster.
-- ❌ Anything about the **value** of exports falling or declining — value is price × quantity, and we only have **price indexes with no quantities**, so we can't conclude anything about value.
+- **Correct —** in Year 3 a given quantity of exports buys **fewer imports** than in Year 2.
+- **Wrong —** "Import prices increased faster than export prices" — over the whole period import prices rose 10% (100→110) while export prices rose 15% (100→115), so imports did **not** increase faster.
+- **Wrong —** Anything about the **value** of exports falling or declining — value is price × quantity, and we only have **price indexes with no quantities**, so we can't conclude anything about value.
 
 ---
 
@@ -1532,7 +1525,7 @@ This is consistent with the TOT index falling from about **117.0 in the March qu
 
 *Sources: [ABS International Trade Price Indexes](https://www.abs.gov.au/statistics/economy/price-indexes-and-inflation/international-trade-price-indexes-australia/latest-release); [ABS media release — import prices record biggest rise since December 2021](https://www.abs.gov.au/media-centre/media-releases/import-prices-record-biggest-rise-december-2021); [Trading Economics — Australia Terms of Trade](https://tradingeconomics.com/australia/terms-of-trade). Content summarised and rephrased for licensing compliance.*
 
-> ⚠️ **A note on which TOT series you're looking at.** The ~111.9 / 117.0 figures come from the **national accounts** TOT (based on implicit price deflators for all goods *and services*). The XPI/MPI from the International Trade Price Indexes cover **merchandise (goods) only**. The two series move together but the exact index numbers differ. In an exam, just use whatever indexes the data table gives you.
+> ⚠ **A note on which TOT series you're looking at.** The ~111.9 / 117.0 figures come from the **national accounts** TOT (based on implicit price deflators for all goods *and services*). The XPI/MPI from the International Trade Price Indexes cover **merchandise (goods) only**. The two series move together but the exact index numbers differ. In an exam, just use whatever indexes the data table gives you.
 
 ---
 

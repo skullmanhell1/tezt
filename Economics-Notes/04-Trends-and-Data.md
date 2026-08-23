@@ -222,7 +222,7 @@ This is consistent with the TOT index falling from about **117.0 in the March qu
 
 *Sources: [ABS International Trade Price Indexes](https://www.abs.gov.au/statistics/economy/price-indexes-and-inflation/international-trade-price-indexes-australia/latest-release); [ABS media release — import prices record biggest rise since December 2021](https://www.abs.gov.au/media-centre/media-releases/import-prices-record-biggest-rise-december-2021); [Trading Economics — Australia Terms of Trade](https://tradingeconomics.com/australia/terms-of-trade). Content summarised and rephrased for licensing compliance.*
 
-> ⚠️ **A note on which TOT series you're looking at.** The ~111.9 / 117.0 figures come from the **national accounts** TOT (based on implicit price deflators for all goods *and services*). The XPI/MPI from the International Trade Price Indexes cover **merchandise (goods) only**. The two series move together but the exact index numbers differ. In an exam, just use whatever indexes the data table gives you.
+> ⚠ **A note on which TOT series you're looking at.** The ~111.9 / 117.0 figures come from the **national accounts** TOT (based on implicit price deflators for all goods *and services*). The XPI/MPI from the International Trade Price Indexes cover **merchandise (goods) only**. The two series move together but the exact index numbers differ. In an exam, just use whatever indexes the data table gives you.
 
 ---
 

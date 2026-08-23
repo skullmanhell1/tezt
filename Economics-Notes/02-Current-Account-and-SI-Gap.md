@@ -61,7 +61,7 @@ Six factors. Learn the chain for each in **both directions**.
 **If the AUD appreciates:**
 > Imports become **cheaper** for domestic residents and exports become **more expensive** for overseas buyers. Assuming demand for X and M is price elastic, exports decrease and imports increase → **credits fall and debits rise** → **decreasing BOGS and the CAB**.
 
-⚠️ **You must state the elasticity assumption.** It's a marked point. If demand were inelastic, a depreciation could actually worsen the trade balance in the short run (because the higher price of imports outweighs the smaller fall in quantity).
+⚠ **You must state the elasticity assumption.** It's a marked point. If demand were inelastic, a depreciation could actually worsen the trade balance in the short run (because the higher price of imports outweighs the smaller fall in quantity).
 
 ### 2.4 The terms of trade
 

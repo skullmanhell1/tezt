@@ -18,6 +18,16 @@ The five things the task statement says you'll be assessed on:
 
 ## The files
 
+### Download
+
+| File | Pages | Use it for |
+|---|---|---|
+| **`Task6-Condensed-Notes.pdf`** | **5** | **Start here.** Everything you need for the test, nothing padded. |
+| `Task6-BOP-and-TOT-Notes.pdf` | 65 | The long version, including all practice questions and answers. |
+| `Task6-BOP-and-TOT-Notes.zip` | — | Both PDFs plus all source files. |
+
+### Source files
+
 | File | Use it for |
 |---|---|
 | [00-Cheat-Sheet.md](00-Cheat-Sheet.md) | Last 30 minutes before the test. Every definition, formula and chain on one page. |

@@ -378,7 +378,7 @@ net income = −950
 | **Capital and financial account** | +$2,000 (shares)<br>+$10,000 (currency) | −$2,000 (currency)<br>−$5,000 (currency) | **+$5,000** |
 | **Totals** | **+$17,000** | **−$17,000** | **$0** |
 
-> ⚠️ **Heads up:** the solution slide in class (slide 59) shows the totals column as CA **+$5,000** and KAFA **−$5,000**. That looks like a typo — the signs are swapped. Check it yourself: the current account has a $5,000 credit and a $10,000 debit, so it *must* be **−$5,000**, and Australia imported more than it exported, which is a trade deficit funded by capital inflow (a KAFA **surplus**). The version above is the arithmetically consistent one. The second table below (slide 62) is correct as given in class.
+> ⚠ **Heads up:** the solution slide in class (slide 59) shows the totals column as CA **+$5,000** and KAFA **−$5,000**. That looks like a typo — the signs are swapped. Check it yourself: the current account has a $5,000 credit and a $10,000 debit, so it *must* be **−$5,000**, and Australia imported more than it exported, which is a trade deficit funded by capital inflow (a KAFA **surplus**). The version above is the arithmetically consistent one. The second table below (slide 62) is correct as given in class.
 
 ### 10.3 Second table
 
