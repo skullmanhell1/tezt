@@ -39,7 +39,7 @@ hr { border:none; border-top:1px solid var(--line); margin:2.5em 0; }
 strong { color:#000; }
 .toc { background:#fff; border:1px solid var(--line); border-radius:6px;
   padding:1em 1.6em; margin:2em 0 3em; font-family:-apple-system,"Segoe UI",Roboto,sans-serif;
-  font-size:.92em; page-break-after:always; }
+  font-size:.92em; }
 .toc > ul { padding-left:1.1em; } .toc ul ul { font-size:.94em; color:var(--mut); }
 .toc a { text-decoration:none; }
 .toctitle { font-size:1.2em; font-weight:600; color:var(--accent); margin:.2em 0 .6em; }
@@ -51,9 +51,11 @@ strong { color:#000; }
   h1 { page-break-before:always; margin-top:0; }
   h1:first-of-type { page-break-before:avoid; }
   h2,h3,h4 { page-break-after:avoid; }
-  pre,blockquote,table { page-break-inside:avoid; }
+  blockquote,table { page-break-inside:avoid; }
+  pre { page-break-inside:auto; }
   a { color:var(--ink); text-decoration:none; }
-  .toc { page-break-after:always; }
+  .toc { page-break-after:auto; }
+  hr:has(+ h1) { display:none; }
 }
 @page { size:A4; margin:16mm 14mm; }
 </style>
