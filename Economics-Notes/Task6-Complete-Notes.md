@@ -33,7 +33,8 @@ The five things the task statement says you'll be assessed on:
 | File | Pages | Use it for |
 |---|---|---|
 | **`Task6-Condensed-Notes.pdf`** | **5** | **Start here.** Everything you need for the test, nothing padded. |
-| `Task6-BOP-and-TOT-Notes.pdf` | 65 | The long version, including all practice questions and answers. |
+| **`Task6-Past-Exam-Questions.pdf`** | **4** | **Then do this.** 9 real past exam MCQs + a 12-mark data response, from your class slides, fully worked. |
+| `Task6-BOP-and-TOT-Notes.pdf` | 72 | The long version, including all practice questions and answers. |
 | `Task6-BOP-and-TOT-Notes.zip` | — | Both PDFs plus all source files. |
 
 ### Source files
@@ -231,9 +232,9 @@ A **fall** in the TOT reverses every single one of those.
 | Goods trade balance, Mar 2026 (month) | Deficit of **$1,841m** — first monthly deficit since Dec 2017 |
 | XPI, Jun qtr 2026 | **+1.1%** for the quarter, +3.9% through the year |
 | MPI, Jun qtr 2026 | **+5.7%** for the quarter, +6.2% through the year (biggest rise since Dec 2021) |
-| TOT, Jun qtr 2026 | Fell to **111.9** from 117.0 — a fall of ~4.4% |
+| TOT, Jun qtr 2026 | **XPI +1.1% vs MPI +5.7%** → TOT fell **≈4.4%** |
 | Record CAS run | **June 2019 – March 2023** — first sustained surplus since 1975 |
-| TOT record high | **~128 index points**, September quarter 2021 |
+| TOT peak | **115.6 in Jun qtr 2022** (RBA national accounts basis), **+70.5%** above the Mar 2016 trough of **67.8**; **−16.6%** since, to **96.4** in Mar 2026 |
 | Iron ore price collapse | US$180/t (2011) → US$40/t (2015) |
 
 ## Traps
@@ -1493,8 +1494,9 @@ So during the 2019–2023 CAS period, the KAFA moved into **deficit**. As Austra
 
 **The key analytical points:**
 - Even though **both XPI and MPI fell through 2020**, the TOT was still **favourable** — because the **MPI fell by more than the XPI**
-- In the year to **September 2021, the XPI rose 41% while the MPI rose 6.4%** — the TOT reached a **historic high of 128 index points**
-- It then fell to **125 index points in the December 2021 quarter**
+- In the year to **September 2021, the XPI rose 41% while the MPI rose 6.4%** — a very large favourable movement
+- On the **RBA national accounts series** the TOT peaked at **115.6 in the June quarter 2022**, **+70.5%** above its March 2016 trough of **67.8**
+- Your class deck quotes a peak of **128 index points** in the September quarter 2021. That figure is the **goods-only trade price index on an older base year** — see the caveat below
 
 #### 2023 – present: TOT DECLINE
 
@@ -1525,7 +1527,7 @@ Most current data:
 Exact: (1.011 ÷ 1.057) − 1 = −4.35%
 ```
 
-This is consistent with the TOT index falling from about **117.0 in the March quarter 2026 to about 111.9 in the June quarter 2026** — a fall of roughly **4.4%**, i.e. **unfavourable**.
+So the June quarter 2026 movement was a fall of roughly **4.4%** — **unfavourable**. For reference, on the RBA national accounts series the TOT sat at **96.4 in the March quarter 2026**, some **16.6% below** its June 2022 peak of 115.6.
 
 **Why:**
 - The **MPI surge** was driven by **fuel prices** (Middle East conflict disrupting oil supply)
@@ -1535,7 +1537,7 @@ This is consistent with the TOT index falling from about **117.0 in the March qu
 
 *Sources: [ABS International Trade Price Indexes](https://www.abs.gov.au/statistics/economy/price-indexes-and-inflation/international-trade-price-indexes-australia/latest-release); [ABS media release — import prices record biggest rise since December 2021](https://www.abs.gov.au/media-centre/media-releases/import-prices-record-biggest-rise-december-2021); [Trading Economics — Australia Terms of Trade](https://tradingeconomics.com/australia/terms-of-trade). Content summarised and rephrased for licensing compliance.*
 
-> ⚠ **A note on which TOT series you're looking at.** The ~111.9 / 117.0 figures come from the **national accounts** TOT (based on implicit price deflators for all goods *and services*). The XPI/MPI from the International Trade Price Indexes cover **merchandise (goods) only**. The two series move together but the exact index numbers differ. In an exam, just use whatever indexes the data table gives you.
+> ⚠ **Index levels are not comparable across series or base years.** There are two different TOT measures: the **national accounts** TOT (goods *and* services, the RBA/ABS series charted here) and the **International Trade Price Indexes** (XPI/MPI, **goods only**). They also get **rebased** periodically, which shifts every level. That is why the same quarter can be quoted as 128 on one series and ~106 on another, and why the syllabus insists **only the change matters, not the level**. Percentage changes are base-independent and therefore always safe to quote. In the exam, use whatever indexes the data table gives you and never mix series.
 
 ---
 
@@ -1573,17 +1575,20 @@ If a chart in the exam overlays the RBA Index of Commodity Prices with the TOT, 
 
 | Stat | Value |
 |---|---|
-| **TOT historic high** | **128 index points**, September quarter 2021 (fell to 125 in Dec qtr 2021) |
+| **TOT peak** | **115.6**, June quarter 2022 (RBA national accounts basis) |
 | Year to Sept 2021 | **XPI +41%**, **MPI +6.4%** |
 | XPI rise, 2016–19 | **+40%** (TOT +30%) |
 | Iron ore price collapse | **US$180/t (2011) → US$40/t (2015)** |
+| TOT trough | **67.8**, March quarter 2016 |
+| TOT, Mar qtr 2026 | **96.4** — **−16.6%** from the 2022 peak |
+| CAD, Mar qtr 2026 | **−3.7% of GDP**; peak CAS was **+3.3%** (Sep qtr 2021); trade balance peaked at **6.7% of GDP** |
 | Oil price fall, last qtr 2015 | **US$48 → US$32** (a 33% fall) |
 | Petrol, March 2022 | Above **$2 per litre** — highest in a decade |
 | Oil and petroleum import prices, Mar qtr 2024 | **−17.7%** |
 | Australian inflation, 2023 | **7%** |
 | **XPI, Jun qtr 2026** | **+1.1%** qtr / +3.9% yoy |
 | **MPI, Jun qtr 2026** | **+5.7%** qtr / +6.2% yoy — biggest rise since Dec 2021 |
-| **TOT, Jun qtr 2026** | Fell to **~111.9** from ~117.0 — about **−4.4%** |
+| **TOT, Jun qtr 2026** | Fell about **4.4%** (from XPI/MPI movements) |
 | Metalliferous ores, Jun qtr 2026 | **−1.4%** |
 | XPI range over the decade | 64 → 114 (**range 60**) |
 | MPI range over the decade | 83 → 113 (**range 29**) |

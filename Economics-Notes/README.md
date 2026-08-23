@@ -22,10 +22,16 @@ The five things the task statement says you'll be assessed on:
 
 | File | Pages | Use it for |
 |---|---|---|
-| **`Task6-Condensed-Notes.pdf`** | **5** | **Start here.** Everything you need for the test, nothing padded. |
-| **`Task6-Past-Exam-Questions.pdf`** | **4** | **Then do this.** 9 real past exam MCQs + a 12-mark data response, from your class slides, fully worked. |
-| `Task6-BOP-and-TOT-Notes.pdf` | 72 | The long version, including all practice questions and answers. |
-| `Task6-BOP-and-TOT-Notes.zip` | — | Both PDFs plus all source files. |
+| **`Task6-Illustrated-Notes.pdf`** | **12** | **Start here.** Full detail with 7 diagrams — RBA data charts plus D/S and flow diagrams. |
+| `Task6-Condensed-Notes.pdf` | 5 | Cram sheet. Same coverage, no diagrams, maximum density. |
+| **`Task6-Past-Exam-Questions.pdf`** | **4** | 9 real past exam MCQs + a 12-mark data response, fully worked. |
+| `Task6-BOP-and-TOT-Notes.pdf` | 72 | Long reference version with all practice questions. |
+| `Task6-BOP-and-TOT-Notes.zip` | — | Everything, including the figure PNGs. |
+
+### Figures
+
+Charts are built from live **RBA Statistical Tables H1 and I1**; the supply/demand and flow
+diagrams are drawn to exact computed geometry. Source PNGs are in `figures/`.
 
 ### Source files
 

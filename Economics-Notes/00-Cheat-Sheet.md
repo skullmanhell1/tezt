@@ -165,9 +165,9 @@ A **fall** in the TOT reverses every single one of those.
 | Goods trade balance, Mar 2026 (month) | Deficit of **$1,841m** — first monthly deficit since Dec 2017 |
 | XPI, Jun qtr 2026 | **+1.1%** for the quarter, +3.9% through the year |
 | MPI, Jun qtr 2026 | **+5.7%** for the quarter, +6.2% through the year (biggest rise since Dec 2021) |
-| TOT, Jun qtr 2026 | Fell to **111.9** from 117.0 — a fall of ~4.4% |
+| TOT, Jun qtr 2026 | **XPI +1.1% vs MPI +5.7%** → TOT fell **≈4.4%** |
 | Record CAS run | **June 2019 – March 2023** — first sustained surplus since 1975 |
-| TOT record high | **~128 index points**, September quarter 2021 |
+| TOT peak | **115.6 in Jun qtr 2022** (RBA national accounts basis), **+70.5%** above the Mar 2016 trough of **67.8**; **−16.6%** since, to **96.4** in Mar 2026 |
 | Iron ore price collapse | US$180/t (2011) → US$40/t (2015) |
 
 ## Traps

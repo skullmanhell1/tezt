@@ -200,7 +200,7 @@ Same volume of exports earns more revenue. **Reverse all of these for a fall.**
 | 2014–16 | TOT and CAB **falling** | Commodity prices collapse (iron ore US$180→US$40/t); China slowing; oil US$48→US$32; MPI stable |
 | 2016–19 | TOT **+30%**, CAB **rising** but still CAD | XPI +40% (coal, iron ore, LNG); OPEC stabilised oil → LNG demand ↑. MPI rose by less. NPY deficit also rose (foreign-owned firms' profits) |
 | 2020 | TOT small **fall**; CAB **rising** | COVID recession → XPI ↓ (LNG, coal); MPI ↓ (oil collapse, strong AUD). M fell more than X → BOGS ↑ |
-| 2020–22 | TOT to a **record 128** (Sept qtr 2021) | Year to Sept 2021: **XPI +41% vs MPI +6.4%**. Recovery demand for raw materials; Ukraine war lifted oil → LNG/coal |
+| 2020–22 | TOT **rising** to its peak of **115.6** (Jun qtr 2022) | Year to Sept 2021: **XPI +41% vs MPI +6.4%**. Recovery demand for raw materials; Ukraine war lifted oil → LNG/coal |
 | **Jun 2019 – Mar 2023** | **Current account SURPLUS — first since 1975** | Record BOGS (**$30b** Jun 2021; peak **$40.6b** Jun 2022) on bulk commodity prices, iron ore driving a record **$53.3b** of metal ores exports. **NPY stayed in deficit** — the CAS was a BOGS story |
 | 2023–25 | TOT and CAB **falling** → back to **CAD by 2024** | China slowdown → iron ore ↓ → XPI ↓ (MPI also fell, but XPI fell more). Recovery → income ↑ → M ↑. Foreign investment ↑ → dividends ↑ → NPY deficit ↑ |
 | 2025–26 | CAD **widening sharply** | Mar qtr 2026 CAD **$27.1b** (from $23.0b): primary income paid overseas **+$1.6b** on stronger dividends; trade surplus fell $5.2b to $3.9b; **first monthly goods deficit since Dec 2017** |
@@ -210,7 +210,7 @@ Same volume of exports earns more revenue. **Reverse all of these for a fall.**
 
 ## 13. Statistics to quote
 
-CAD **$27.1b** (Mar qtr 2026), up from **$23.0b** · first monthly goods deficit since **Dec 2017** · **XPI +1.1% vs MPI +5.7%** (Jun qtr 2026) · TOT **~111.9**, down from ~117.0 · TOT record **128** (Sept qtr 2021) · **XPI +41% vs MPI +6.4%** (year to Sept 2021) · CAS **Jun 2019 – Mar 2023**, first since **1975** · BOGS peak **$40.6b** (Jun 2022) · iron ore **US$180 → US$40/t** (2011–15) · commodities **~75%** of exports · XPI range **60** vs MPI range **29**
+CAD **$27.1b** (Mar qtr 2026), up from **$23.0b** · first monthly goods deficit since **Dec 2017** · **XPI +1.1% vs MPI +5.7%** (Jun qtr 2026) · TOT fell **≈4.4%** in Jun qtr 2026 · TOT trough **67.8** (Mar 2016) → peak **115.6** (Jun 2022) = **+70.5%**, then **−16.6%** to **96.4** (Mar 2026) · **XPI +41% vs MPI +6.4%** (year to Sept 2021) · CAS **Jun 2019 – Mar 2023**, first since **1975**, peak **+3.3% of GDP**; CAD now **−3.7% of GDP** · BOGS peak **$40.6b** (Jun 2022) · iron ore **US$180 → US$40/t** (2011–15) · commodities **~75%** of exports · XPI range **60** vs MPI range **29**
 
 ## 14. Exam technique
 
