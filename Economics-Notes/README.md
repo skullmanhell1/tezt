@@ -23,7 +23,8 @@ The five things the task statement says you'll be assessed on:
 | File | Pages | Use it for |
 |---|---|---|
 | **`Task6-Condensed-Notes.pdf`** | **5** | **Start here.** Everything you need for the test, nothing padded. |
-| `Task6-BOP-and-TOT-Notes.pdf` | 65 | The long version, including all practice questions and answers. |
+| **`Task6-Past-Exam-Questions.pdf`** | **4** | **Then do this.** 9 real past exam MCQs + a 12-mark data response, from your class slides, fully worked. |
+| `Task6-BOP-and-TOT-Notes.pdf` | 72 | The long version, including all practice questions and answers. |
 | `Task6-BOP-and-TOT-Notes.zip` | — | Both PDFs plus all source files. |
 
 ### Source files

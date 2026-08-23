@@ -119,6 +119,15 @@ Net income:  net goods = 600 − 500 = +100
 
 **NPY = servicing costs.** Foreign **debt** → **interest**; foreign **equity** → **dividends and profits**. The deficit widens with a bigger S–I gap, a larger stock of foreign liabilities, higher interest rates, and higher profits of foreign-owned Australian firms.
 
+**Structural vs cyclical — use this framing, questions ask for it by name:**
+
+| | **STRUCTURAL** | **CYCLICAL** |
+|---|---|---|
+| | Fundamental factors that mainly affect the **income balance** | Temporary factors, caused by the business cycle, that mainly affect the **trade balance** |
+| | Savings–investment gap · foreign investment · foreign liabilities | Domestic business cycle · world business cycle · exchange rates · commodity prices · terms of trade |
+
+Structural factors are why the CAD **persists**; cyclical factors are why it **fluctuates**.
+
 ## 8. Savings–investment gap
 
 > Australia has a **small population** and a **relatively low national savings rate** → a **gap between intended investment and domestic savings** → to close it Australia **borrows overseas (foreign debt)** and **sells Australian assets (foreign equity)** → both create **servicing obligations** (interest, dividends, profits) recorded as **primary income debits** → **NPY deficit widens → CAB falls**. The capital inflow funding the gap **is** the KAFA surplus — the mirror of the CAD.
