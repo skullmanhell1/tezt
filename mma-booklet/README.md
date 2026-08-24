@@ -6,7 +6,16 @@ A 16-page print-ready A4 booklet covering the research, semiotic analysis, ideat
 marketing plan for **APEX PREDATOR MMA** — a fight-wear brand aimed at the MMA subculture.
 Branded to match the existing `mma-coverpage/` cover page (same lockup, palette and typefaces).
 
-**Output:** `APEX-MMA-Marketing-Booklet.pdf`
+Two versions of the same content:
+
+| File | What it's for |
+|---|---|
+| `APEX-MMA-Marketing-Booklet.pdf` | the **designed** version — 16pp, A4, print-ready |
+| `APEX-MMA-Marketing-Booklet.docx` | the **editable** version — real Word headings, tables and lists |
+
+> **These are two independent copies of the text.** Editing the Word file does not
+> change the PDF, and vice versa. If you rewrite the copy in Word and want the designed
+> PDF brought back into line, the strings live in `build_mma_booklet.py`.
 
 ## How it answers the brief
 
@@ -71,14 +80,32 @@ before you shoot. To fill one:
 Accepted extensions: `.jpg`, `.jpeg`, `.png`. The build prints which slots are still empty, and
 p13's contact sheet shows the whole set at a glance.
 
+## The editable Word version
+
+`APEX-MMA-Marketing-Booklet.docx` carries the same research copy as the PDF, built for editing
+rather than for print:
+
+- **Real Word heading styles** (Heading 1/2/3), so the Navigation pane works and the contents page
+  is a live `TOC` field — right-click it and choose *Update Field* to build it.
+- **Real Word tables** for the semiotics analysis, misreading analysis, shot list, palette and
+  budget, so rows can be added or reworded.
+- **Headings use Word's all-caps *formatting***, not upper-cased text. The stored words stay
+  normally cased, so you can edit a heading without typing in caps.
+- **Every photograph is a shaded placeholder box** printing its shot brief. Click inside one,
+  delete the text, then *Insert > Pictures*.
+- **Only fonts that ship with Word** (Impact for display, Calibri for body), so it opens correctly
+  anywhere. For an exact match with the PDF, install [Anton](https://fonts.google.com/specimen/Anton)
+  and [Barlow Condensed](https://fonts.google.com/specimen/Barlow+Condensed) — both free — and
+  restyle the headings.
+
 ## Building
 
 ```bash
-pip install reportlab pillow
-python3 build_mma_booklet.py
-```
+pip install reportlab pillow python-docx
 
-Writes `APEX-MMA-Marketing-Booklet.pdf` and regenerates `SHOT-LIST.md`.
+python3 build_mma_booklet.py    # -> the PDF, and regenerates SHOT-LIST.md
+python3 build_mma_docx.py       # -> the Word document
+```
 
 ## Editing
 
@@ -101,7 +128,9 @@ font before setting the row height, so cells cannot clip.
 | File | Use |
 |---|---|
 | `APEX-MMA-Marketing-Booklet.pdf` | the final product — 16pp, A4, print-ready |
-| `build_mma_booklet.py` | the source that generates it |
+| `APEX-MMA-Marketing-Booklet.docx` | the editable Word version of the same content |
+| `build_mma_booklet.py` | generates the PDF |
+| `build_mma_docx.py` | generates the Word document |
 | `SHOT-LIST.md` | the 20 photography briefs (generated) |
 | `photos/` | drop your own photographs here |
 | `brand/APEX-MMA-poster.png` | the existing cover artwork, placed on p10 |
