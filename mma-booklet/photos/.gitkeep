@@ -1,0 +1,2 @@
+Drop your own photographs here, named after the slot codes in SHOT-LIST.md
+(for example hero-01.jpg), then re-run: python3 build_mma_booklet.py
